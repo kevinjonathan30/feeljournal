@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D47AB71290441E700B779A2 /* FeelJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB70290441E700B779A2 /* FeelJournalApp.swift */; };
-		5D47AB73290441E700B779A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB72290441E700B779A2 /* ContentView.swift */; };
+		5D47AB73290441E700B779A2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB72290441E700B779A2 /* RootView.swift */; };
 		5D47AB75290441EB00B779A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D47AB74290441EB00B779A2 /* Assets.xcassets */; };
 		5D47AB78290441EB00B779A2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D47AB77290441EB00B779A2 /* Preview Assets.xcassets */; };
 		5D47AB822904F0FD00B779A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB812904F0FD00B779A2 /* HomeView.swift */; };
@@ -25,7 +25,7 @@
 /* Begin PBXFileReference section */
 		5D47AB6D290441E700B779A2 /* FeelJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D47AB70290441E700B779A2 /* FeelJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelJournalApp.swift; sourceTree = "<group>"; };
-		5D47AB72290441E700B779A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5D47AB72290441E700B779A2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5D47AB74290441EB00B779A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D47AB77290441EB00B779A2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5D47AB812904F0FD00B779A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 				5D47AB7F2904F09900B779A2 /* Connector */,
 				5D47AB7E2904F07900B779A2 /* Domain */,
 				5D47AB70290441E700B779A2 /* FeelJournalApp.swift */,
-				5D47AB72290441E700B779A2 /* ContentView.swift */,
+				5D47AB72290441E700B779A2 /* RootView.swift */,
 				5D47AB74290441EB00B779A2 /* Assets.xcassets */,
 				5D47AB76290441EB00B779A2 /* Preview Content */,
 			);
@@ -238,7 +238,7 @@
 			files = (
 				5D47AB822904F0FD00B779A2 /* HomeView.swift in Sources */,
 				5DAACB6A292B84BC009584B8 /* JournalEntryItem+CoreDataClass.swift in Sources */,
-				5D47AB73290441E700B779A2 /* ContentView.swift in Sources */,
+				5D47AB73290441E700B779A2 /* RootView.swift in Sources */,
 				5D47AB71290441E700B779A2 /* FeelJournalApp.swift in Sources */,
 				5D47AB842904F11100B779A2 /* HomeViewModel.swift in Sources */,
 				5D47AB8F2904F29600B779A2 /* AnalyticsView.swift in Sources */,
@@ -373,26 +373,29 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"FeelJournal/Preview Content\"";
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -402,26 +405,29 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"FeelJournal/Preview Content\"";
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
