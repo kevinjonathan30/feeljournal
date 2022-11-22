@@ -20,6 +20,7 @@
 		5DAACB65292B8316009584B8 /* FeelJournalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB63292B8316009584B8 /* FeelJournalModel.xcdatamodeld */; };
 		5DAACB6A292B84BC009584B8 /* JournalEntryItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB68292B84BC009584B8 /* JournalEntryItem+CoreDataClass.swift */; };
 		5DAACB6B292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB69292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift */; };
+		5DAACB6D292CD932009584B8 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB6C292CD932009584B8 /* Journal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		5DAACB64292B8316009584B8 /* FeelJournalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeelJournalModel.xcdatamodel; sourceTree = "<group>"; };
 		5DAACB68292B84BC009584B8 /* JournalEntryItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntryItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5DAACB69292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntryItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5DAACB6C292CD932009584B8 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				5D47AB922904F2C700B779A2 /* CoreData */,
+				5DAACB6C292CD932009584B8 /* Journal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				5DAACB6B292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift in Sources */,
 				5DAACB65292B8316009584B8 /* FeelJournalModel.xcdatamodeld in Sources */,
 				5D47AB912904F2A400B779A2 /* AnalyticsViewModel.swift in Sources */,
+				5DAACB6D292CD932009584B8 /* Journal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
