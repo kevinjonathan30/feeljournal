@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct RootView: View {
+    @EnvironmentObject var router: Router<Path>
+    
     var body: some View {
         TabView {
             HomeView()
                 .tabItem {
                     Label("My Journal", systemImage: "book.fill")
                 }
-            
+
             AnalyticsView()
                 .tabItem {
                     Label("Analytics", systemImage: "chart.pie.fill")
                 }
-        }
+        }.navigationTitle("FeelJournal")
     }
 }
 

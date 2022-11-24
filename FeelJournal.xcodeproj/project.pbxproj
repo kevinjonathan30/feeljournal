@@ -21,6 +21,8 @@
 		5DAACB6A292B84BC009584B8 /* JournalEntryItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB68292B84BC009584B8 /* JournalEntryItem+CoreDataClass.swift */; };
 		5DAACB6B292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB69292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift */; };
 		5DAACB6D292CD932009584B8 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB6C292CD932009584B8 /* Journal.swift */; };
+		5DAACB71292F906C009584B8 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB70292F906C009584B8 /* ViewRouter.swift */; };
+		5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB73292F98AF009584B8 /* JournalDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		5DAACB68292B84BC009584B8 /* JournalEntryItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntryItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5DAACB69292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntryItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5DAACB6C292CD932009584B8 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		5DAACB70292F906C009584B8 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		5DAACB73292F98AF009584B8 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 				5D47AB7E2904F07900B779A2 /* Domain */,
 				5D47AB70290441E700B779A2 /* FeelJournalApp.swift */,
 				5D47AB72290441E700B779A2 /* RootView.swift */,
+				5DAACB70292F906C009584B8 /* ViewRouter.swift */,
 				5D47AB74290441EB00B779A2 /* Assets.xcassets */,
 				5D47AB76290441EB00B779A2 /* Preview Content */,
 			);
@@ -93,9 +98,10 @@
 		5D47AB7E2904F07900B779A2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				5D47AB802904F0AF00B779A2 /* Home */,
 				5D47AB852904F12000B779A2 /* AddJournal */,
 				5D47AB862904F17500B779A2 /* Analytics */,
+				5D47AB802904F0AF00B779A2 /* Home */,
+				5DAACB72292F9884009584B8 /* JournalDetail */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -167,6 +173,14 @@
 				5DAACB69292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift */,
 			);
 			path = JournalEntryItem;
+			sourceTree = "<group>";
+		};
+		5DAACB72292F9884009584B8 /* JournalDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5DAACB73292F98AF009584B8 /* JournalDetailView.swift */,
+			);
+			path = JournalDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +261,8 @@
 				5D47AB8F2904F29600B779A2 /* AnalyticsView.swift in Sources */,
 				5D47AB8B2904F26500B779A2 /* AddJournalViewModel.swift in Sources */,
 				5D47AB892904F25800B779A2 /* AddJournalView.swift in Sources */,
+				5DAACB71292F906C009584B8 /* ViewRouter.swift in Sources */,
+				5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */,
 				5DAACB6B292B84BC009584B8 /* JournalEntryItem+CoreDataProperties.swift in Sources */,
 				5DAACB65292B8316009584B8 /* FeelJournalModel.xcdatamodeld in Sources */,
 				5D47AB912904F2A400B779A2 /* AnalyticsViewModel.swift in Sources */,

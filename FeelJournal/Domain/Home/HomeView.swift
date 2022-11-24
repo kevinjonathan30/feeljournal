@@ -8,40 +8,84 @@
 import SwiftUI
 
 struct HomeView: View {
-    var datas = [Journal(title: "Hi", createdAt: Date(), body: "Hello there!", feelingIndex: 0.7), Journal(title: "I am sad today", createdAt: Date(), body: "Why is this happening, i am literally very sad and want to cry", feelingIndex: -0.3)]
+    @EnvironmentObject var router: Router<Path>
+    @ObservedObject var viewModel: HomeViewModel
+    
+    init(viewModel: HomeViewModel = .init()) {
+        _viewModel = ObservedObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
-        NavigationView {
+        ZStack {
             ScrollView {
                 LazyVStack {
-                    ForEach(datas) { data in
-                        ZStack(alignment: .leading) {
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(.indigo)
-                            
-                            HStack {
-                                Text("\(data.feelingIndex > 0 ? "😀" : "😢")")
-                                
-                                VStack(alignment: .leading) {
-                                    Text(data.title ?? "")
-                                        .foregroundColor(.white)
-                                        .bold()
-                                    
-                                    Text(data.body ?? "")
-                                        .foregroundColor(.white)
-                                }
-                                
-                                Spacer()
-                                
-                                Text("\(data.createdAt?.formatted(date: .abbreviated, time: .omitted) ?? Date().formatted(date: .abbreviated, time: .omitted))")
-                                    .font(.caption2)
-                                    .foregroundColor(.white)
-                            }.padding(16)
-                        }.padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+                    ForEach(viewModel.datas) { data in
+                        CardView(data: data)
                     }
                 }
             }
-            .navigationTitle("FeelJournal")
+            
+            FloatingButton()
+                .zIndex(999)
+        }
+        .navigationTitle("FeelJournal")
+        .refreshable {
+            viewModel.getJournalList()
+        }
+    }
+    
+    @ViewBuilder
+    func CardView(data: Journal) -> some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.indigo)
+            
+            HStack {
+                Text("\(data.feelingIndex > 0 ? "😀" : "😢")")
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(data.title ?? "")
+                            .foregroundColor(.white)
+                            .bold()
+                        
+                        Spacer()
+                        
+                        Text("\(data.createdAt?.formatted(date: .abbreviated, time: .omitted) ?? Date().formatted(date: .abbreviated, time: .omitted))")
+                            .font(.caption2)
+                            .foregroundColor(.white)
+                    }
+                    
+                    Text(data.body ?? "")
+                        .foregroundColor(.white)
+                }
+            }.padding(16)
+        }
+        .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+        .onTapGesture {
+            router.push(.journalDetail(data.title ?? ""))
+        }
+    }
+    
+    @ViewBuilder
+    func FloatingButton() -> some View {
+        VStack {
+            Spacer()
+            
+            Button(action: {
+                router.push(.addJournal)
+            }) {
+                Text("Add New Note")
+                    .bold()
+                    .padding()
+                    .background(
+                        Capsule(style: .continuous)
+                            .strokeBorder(.indigo, lineWidth: 3)
+                            .background(.background)
+                            .clipShape(Capsule())
+                    )
+            }
+            .padding(.bottom)
         }
     }
 }
