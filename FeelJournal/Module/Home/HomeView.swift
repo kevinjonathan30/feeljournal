@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var router: Router<Path>
-    @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var presenter: HomePresenter
+    @EnvironmentObject private var router: Router<Path>
     
-    init(viewModel: HomeViewModel = .init()) {
-        _viewModel = ObservedObject(wrappedValue: viewModel)
+    init(presenter: HomePresenter = .init()) {
+        _presenter = ObservedObject(wrappedValue: presenter)
     }
     
     var body: some View {
         ZStack {
             ScrollView {
                 LazyVStack {
-                    ForEach(viewModel.datas) { data in
+                    ForEach(presenter.datas) { data in
                         CardView(data: data)
                     }
                 }
@@ -30,12 +30,14 @@ struct HomeView: View {
         }
         .navigationTitle("FeelJournal")
         .refreshable {
-            viewModel.getJournalList()
+            presenter.getJournalList()
         }
     }
-    
+}
+
+private extension HomeView {
     @ViewBuilder
-    func CardView(data: Journal) -> some View {
+    private func CardView(data: Journal) -> some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 16)
                 .fill(.indigo)
@@ -68,7 +70,7 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    func FloatingButton() -> some View {
+    private func FloatingButton() -> some View {
         VStack {
             Spacer()
             

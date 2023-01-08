@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  HomePresenter.swift
 //  FeelJournal
 //
 //  Created by Kevin Jonathan on 23/10/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class HomeViewModel: ObservableObject {
+class HomePresenter: ObservableObject {
     @Published var datas: [Journal] = []
     
     init() {
@@ -15,7 +15,7 @@ class HomeViewModel: ObservableObject {
     }
 }
 
-extension HomeViewModel {
+extension HomePresenter {
     func getJournalList() {
         datas = []
         withAnimation {
