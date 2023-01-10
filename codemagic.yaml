@@ -1,0 +1,45 @@
+workflows:  
+  ios-project-debug: # workflow ID
+    name: iOS Debug # workflow name
+    triggering:
+      events:                       # List the events that trigger builds
+        - push
+        - pull_request
+        - tag
+      branch_patterns:              # Include or exclude watched branches
+        - pattern: 'release'
+          include: true
+          source: true
+        - pattern: '*'
+          include: false
+          source: false
+      tag_patterns:
+        - pattern: '*'
+          include: true
+      cancel_previous_builds: false
+    environment:
+      xcode: latest
+      cocoapods: default
+      vars:
+          XCODE_PROJECT: "FeelJournal.xcodeproj"
+          XCODE_SCHEME: "FeelJournal"
+    scripts:
+      - name: Run tests
+        script: |
+          xcodebuild \
+          -project "$XCODE_PROJECT" \
+          -scheme "$XCODE_SCHEME" \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 12,OS=16.1' \
+          clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO          
+      - name: Build debug app
+        script: |
+          xcodebuild build -project "$XCODE_PROJECT" \
+          -scheme "$XCODE_SCHEME" \
+          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO          
+    artifacts:
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+    publishing:
+      email:
+        recipients:
+          - kevinjonathan3010@gmail.com
