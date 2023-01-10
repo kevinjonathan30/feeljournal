@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D36FB68296D8D3E00D888CC /* FeelJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D36FB67296D8D3E00D888CC /* FeelJournalTests.swift */; };
 		5D47AB71290441E700B779A2 /* FeelJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB70290441E700B779A2 /* FeelJournalApp.swift */; };
 		5D47AB73290441E700B779A2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB72290441E700B779A2 /* RootView.swift */; };
 		5D47AB75290441EB00B779A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D47AB74290441EB00B779A2 /* Assets.xcassets */; };
@@ -22,7 +23,19 @@
 		5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB73292F98AF009584B8 /* JournalDetailView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5D36FB69296D8D3E00D888CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D47AB65290441E700B779A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D47AB6C290441E700B779A2;
+			remoteInfo = FeelJournal;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5D36FB65296D8D3E00D888CC /* FeelJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D36FB67296D8D3E00D888CC /* FeelJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelJournalTests.swift; sourceTree = "<group>"; };
 		5D47AB6D290441E700B779A2 /* FeelJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D47AB70290441E700B779A2 /* FeelJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelJournalApp.swift; sourceTree = "<group>"; };
 		5D47AB72290441E700B779A2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -40,6 +53,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5D36FB62296D8D3E00D888CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D47AB6A290441E700B779A2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -50,10 +70,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D36FB66296D8D3E00D888CC /* FeelJournalTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D36FB67296D8D3E00D888CC /* FeelJournalTests.swift */,
+			);
+			path = FeelJournalTests;
+			sourceTree = "<group>";
+		};
 		5D47AB64290441E700B779A2 = {
 			isa = PBXGroup;
 			children = (
 				5D47AB6F290441E700B779A2 /* FeelJournal */,
+				5D36FB66296D8D3E00D888CC /* FeelJournalTests */,
 				5D47AB6E290441E700B779A2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				5D47AB6D290441E700B779A2 /* FeelJournal.app */,
+				5D36FB65296D8D3E00D888CC /* FeelJournalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +183,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5D36FB64296D8D3E00D888CC /* FeelJournalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D36FB6D296D8D3E00D888CC /* Build configuration list for PBXNativeTarget "FeelJournalTests" */;
+			buildPhases = (
+				5D36FB61296D8D3E00D888CC /* Sources */,
+				5D36FB62296D8D3E00D888CC /* Frameworks */,
+				5D36FB63296D8D3E00D888CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D36FB6A296D8D3E00D888CC /* PBXTargetDependency */,
+			);
+			name = FeelJournalTests;
+			productName = FeelJournalTests;
+			productReference = 5D36FB65296D8D3E00D888CC /* FeelJournalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5D47AB6C290441E700B779A2 /* FeelJournal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D47AB7B290441EB00B779A2 /* Build configuration list for PBXNativeTarget "FeelJournal" */;
@@ -177,9 +225,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					5D36FB64296D8D3E00D888CC = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 5D47AB6C290441E700B779A2;
+					};
 					5D47AB6C290441E700B779A2 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -199,11 +251,19 @@
 			projectRoot = "";
 			targets = (
 				5D47AB6C290441E700B779A2 /* FeelJournal */,
+				5D36FB64296D8D3E00D888CC /* FeelJournalTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5D36FB63296D8D3E00D888CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D47AB6B290441E700B779A2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -216,6 +276,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D36FB61296D8D3E00D888CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D36FB68296D8D3E00D888CC /* FeelJournalTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D47AB69290441E700B779A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -236,7 +304,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5D36FB6A296D8D3E00D888CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D47AB6C290441E700B779A2 /* FeelJournal */;
+			targetProxy = 5D36FB69296D8D3E00D888CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5D36FB6B296D8D3E00D888CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3USSPQR589;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeelJournal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FeelJournal";
+			};
+			name = Debug;
+		};
+		5D36FB6C296D8D3E00D888CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3USSPQR589;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeelJournal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FeelJournal";
+			};
+			name = Release;
+		};
 		5D47AB79290441EB00B779A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -418,6 +532,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5D36FB6D296D8D3E00D888CC /* Build configuration list for PBXNativeTarget "FeelJournalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D36FB6B296D8D3E00D888CC /* Debug */,
+				5D36FB6C296D8D3E00D888CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5D47AB68290441E700B779A2 /* Build configuration list for PBXProject "FeelJournal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
