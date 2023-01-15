@@ -10,6 +10,9 @@ workflows:
         - pattern: 'release'
           include: true
           source: true
+        - pattern: 'master'
+          include: true
+          source: true
         - pattern: '*'
           include: false
           source: false
