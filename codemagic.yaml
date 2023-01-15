@@ -7,15 +7,12 @@ workflows:
         - pull_request
         - tag
       branch_patterns:
-        - pattern: 'release'
+        - pattern: '*release*'
           include: true
           source: true
-        - pattern: 'master'
+        - pattern: '*master*'
           include: true
           source: true
-        - pattern: '*'
-          include: false
-          source: false
       tag_patterns:
         - pattern: '*'
           include: true
