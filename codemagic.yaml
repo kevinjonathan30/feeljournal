@@ -1,12 +1,12 @@
 workflows:  
-  ios-project-debug: # workflow ID
-    name: iOS Debug # workflow name
+  ios-project-debug:
+    name: iOS Debug
     triggering:
-      events:                       # List the events that trigger builds
+      events:
         - push
         - pull_request
         - tag
-      branch_patterns:              # Include or exclude watched branches
+      branch_patterns:
         - pattern: 'release'
           include: true
           source: true
