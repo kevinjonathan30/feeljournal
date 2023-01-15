@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 /// Used to bridge between views and the router
 struct ViewRouter<T: Hashable, Content: View>: View {
     @ObservedObject var router: Router<T>

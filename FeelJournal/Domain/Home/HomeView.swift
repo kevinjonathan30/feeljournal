@@ -20,12 +20,12 @@ struct HomeView: View {
             ScrollView {
                 LazyVStack {
                     ForEach(presenter.datas) { data in
-                        CardView(data: data)
+                        cardView(data: data)
                     }
                 }
             }
             
-            FloatingButton()
+            floatingButton()
                 .zIndex(999)
         }
         .navigationTitle("FeelJournal")
@@ -35,15 +35,17 @@ struct HomeView: View {
     }
 }
 
+// MARK: ViewBuilder
+
 private extension HomeView {
     @ViewBuilder
-    private func CardView(data: Journal) -> some View {
+    private func cardView(data: Journal) -> some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 16)
                 .fill(.indigo)
             
             HStack {
-                Text("\(data.feelingIndex > 0 ? "😀" : "😢")")
+                Text(getFeelingByIndex(feelingIndex: data.feelingIndex))
                 
                 VStack(alignment: .leading) {
                     HStack {
@@ -53,7 +55,7 @@ private extension HomeView {
                         
                         Spacer()
                         
-                        Text("\(data.createdAt?.formatted(date: .abbreviated, time: .omitted) ?? Date().formatted(date: .abbreviated, time: .omitted))")
+                        Text(getCreatedDate(createdAt: data.createdAt))
                             .font(.caption2)
                             .foregroundColor(.white)
                     }
@@ -70,7 +72,7 @@ private extension HomeView {
     }
     
     @ViewBuilder
-    private func FloatingButton() -> some View {
+    private func floatingButton() -> some View {
         VStack {
             Spacer()
             
@@ -89,6 +91,17 @@ private extension HomeView {
             }
             .padding(.bottom)
         }
+    }
+}
+
+// MARK: Helper
+
+private extension HomeView {
+    private func getFeelingByIndex(feelingIndex: Double) -> String {
+        return feelingIndex > 0 ? "😀" : "😢"
+    }
+    private func getCreatedDate(createdAt: Date?) -> String {
+        return "\(createdAt?.formatted(date: .abbreviated, time: .omitted) ?? Date().formatted(date: .abbreviated, time: .omitted))"
     }
 }
 
