@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var presenter: HomePresenter
     @EnvironmentObject private var router: Router<Path>
-    
-    init(presenter: HomePresenter = .init()) {
-        _presenter = ObservedObject(wrappedValue: presenter)
-    }
+    @ObservedObject var presenter: HomePresenter
     
     var body: some View {
         ZStack {
-            ScrollView {
-                LazyVStack {
-                    ForEach(presenter.datas) { data in
-                        cardView(data: data)
+            switch presenter.viewState {
+            case .loading:
+                ProgressView()
+            case .fail:
+                Text("Failed to Get Data")
+            case .empty:
+                Text("No Journal")
+            case .loaded:
+                ScrollView {
+                    LazyVStack {
+                        ForEach(presenter.journals) { journal in
+                            cardView(journal: journal)
+                        }
                     }
                 }
             }
-            
             floatingButton()
                 .zIndex(999)
         }
@@ -39,35 +43,35 @@ struct HomeView: View {
 
 private extension HomeView {
     @ViewBuilder
-    private func cardView(data: Journal) -> some View {
+    private func cardView(journal: JournalModel) -> some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 16)
                 .fill(.indigo)
             
             HStack {
-                Text(getFeelingByIndex(feelingIndex: data.feelingIndex))
+                Text(getFeelingByIndex(feelingIndex: journal.feelingIndex ?? 0.0))
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(data.title ?? "")
+                        Text(journal.title ?? "")
                             .foregroundColor(.white)
                             .bold()
                         
                         Spacer()
                         
-                        Text(getCreatedDate(createdAt: data.createdAt))
+                        Text(getCreatedDate(createdAt: journal.createdAt))
                             .font(.caption2)
                             .foregroundColor(.white)
                     }
                     
-                    Text(data.body ?? "")
+                    Text(journal.body ?? "")
                         .foregroundColor(.white)
                 }
             }.padding(16)
         }
         .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
         .onTapGesture {
-            router.push(.journalDetail(data.title ?? ""))
+            router.push(.journalDetail(journal.title ?? ""))
         }
     }
     
@@ -79,7 +83,7 @@ private extension HomeView {
             Button(action: {
                 router.push(.addJournal)
             }) {
-                Text("Add New Note")
+                Text("Add New Journal")
                     .bold()
                     .padding()
                     .background(
@@ -107,6 +111,6 @@ private extension HomeView {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(presenter: HomePresenter(homeUseCase: Provider().provideHome()))
     }
 }

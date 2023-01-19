@@ -10,9 +10,14 @@ import SwiftUI
 struct RootView: View {
     @EnvironmentObject var router: Router<Path>
     
+    // Presenter
+    @EnvironmentObject var homePresenter: HomePresenter
+}
+
+extension RootView {
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(presenter: homePresenter)
                 .tabItem {
                     Label("My Journal", systemImage: "book.fill")
                 }

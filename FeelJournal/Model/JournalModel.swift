@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Journal: Identifiable {
+struct JournalModel: Identifiable {
     var id: UUID = UUID()
     var title: String?
     var createdAt: Date?
     var body: String?
-    var feelingIndex: Double
+    var feelingIndex: Double?
 }
