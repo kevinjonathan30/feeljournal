@@ -17,16 +17,18 @@ struct RootView: View {
 extension RootView {
     var body: some View {
         TabView {
-            HomeView(presenter: homePresenter)
-                .tabItem {
-                    Label("My Journal", systemImage: "book.fill")
-                }
+            NavigationView {
+                HomeView(presenter: homePresenter)
+            }.tabItem {
+                Label("My Journal", systemImage: "book.fill")
+            }
 
-            AnalyticsView()
-                .tabItem {
-                    Label("Analytics", systemImage: "chart.pie.fill")
-                }
-        }.navigationTitle("FeelJournal")
+            NavigationView {
+                AnalyticsView()
+            }.tabItem {
+                Label("Analytics", systemImage: "chart.pie.fill")
+            }
+        }
     }
 }
 

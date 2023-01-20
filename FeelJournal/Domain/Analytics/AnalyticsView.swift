@@ -11,7 +11,7 @@ struct AnalyticsView: View {
     var body: some View {
         VStack {
             Text("AnalyticsView")
-        }
+        }.navigationTitle("Analytics")
     }
 }
 

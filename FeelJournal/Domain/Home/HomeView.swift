@@ -12,7 +12,7 @@ struct HomeView: View {
     @ObservedObject var presenter: HomePresenter
     
     var body: some View {
-        ZStack {
+        VStack {
             switch presenter.viewState {
             case .loading:
                 ProgressView()
@@ -29,10 +29,18 @@ struct HomeView: View {
                     }
                 }
             }
-            floatingButton()
-                .zIndex(999)
         }
         .navigationTitle("FeelJournal")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button(action: {
+                    router.push(.addJournal)
+                }) {
+                    Image(systemName: "square.and.pencil")
+                        .foregroundColor(.indigo)
+                }
+            }
+        }
         .onAppear {
             presenter.getJournalList()
         }
@@ -92,10 +100,10 @@ private extension HomeView {
                             .strokeBorder(.indigo, lineWidth: 3)
                             .background(.background)
                             .clipShape(Capsule())
+                            .shadow(color: Color.accentColor, radius: 4)
                     )
             }
             .padding(.bottom)
-            .shadow(color: Color.white.opacity(0.5), radius: 4)
         }
     }
 }
