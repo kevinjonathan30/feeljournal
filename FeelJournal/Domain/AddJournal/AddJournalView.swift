@@ -16,8 +16,10 @@ struct AddJournalView: View {
             switch presenter.index {
             case 0:
                 titleView()
-            default:
+            case 1:
                 bodyView()
+            default:
+                ProgressView()
             }
         }
         .hideKeyboardOnTap()
@@ -25,6 +27,11 @@ struct AddJournalView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             presenter.resetState()
+        }
+        .onChange(of: presenter.isSuccess) { isSuccess in
+            if isSuccess {
+                self.router.pop()
+            }
         }
     }
 }
@@ -76,9 +83,7 @@ extension AddJournalView {
             
             button(text: "Done", action: {
                 if !presenter.titleValue.isEmpty && !presenter.bodyValue.isEmpty {
-                    self.presenter.addJournal {
-                        self.router.pop()
-                    }
+                    self.presenter.addJournal()
                 }
             }).disabled(presenter.bodyValue.isEmpty)
         }

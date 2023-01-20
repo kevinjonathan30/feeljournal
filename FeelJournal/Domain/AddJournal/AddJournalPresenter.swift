@@ -12,6 +12,7 @@ class AddJournalPresenter: ObservableObject {
     @Published var titleValue = ""
     @Published var bodyValue = ""
     @Published var index = 0
+    @Published var isSuccess = false
     
     private let addJournalUseCase: AddJournalUseCase
     
@@ -31,9 +32,10 @@ extension AddJournalPresenter {
         titleValue = ""
         bodyValue = ""
         index = 0
+        isSuccess = false
     }
     
-    func addJournal(completion: (() -> Void)?) {
+    func addJournal() {
         var journal = JournalModel()
         journal.title = titleValue
         journal.body = bodyValue
@@ -51,9 +53,7 @@ extension AddJournalPresenter {
                 }
             }, receiveValue: { [weak self] isSuccess in
                 guard let self = self else { return }
-                if isSuccess {
-                    completion?()
-                }
+                self.isSuccess = isSuccess
             })
             .store(in: &cancellables)
     }
