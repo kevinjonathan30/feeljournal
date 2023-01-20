@@ -52,6 +52,7 @@ extension AddJournalView {
             .padding()
             
             button(text: "Next")
+                .disabled(presenter.titleValue.isEmpty)
         }
     }
     
@@ -79,7 +80,7 @@ extension AddJournalView {
                         self.router.pop()
                     }
                 }
-            })
+            }).disabled(presenter.bodyValue.isEmpty)
         }
     }
     
@@ -93,7 +94,7 @@ extension AddJournalView {
                 hideKeyboard()
                 action?()
             }
-        })
+        }).buttonStyle(.borderedProminent)
     }
 }
 
