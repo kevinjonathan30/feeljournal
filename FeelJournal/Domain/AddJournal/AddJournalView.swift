@@ -70,16 +70,19 @@ extension AddJournalView {
                 .font(.title3)
                 .bold()
             
-            TextEditor(text: $presenter.bodyValue)
-                .autocorrectionDisabled()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.indigo)
-                )
-                .padding()
-                .frame(
-                    height: UIScreen.main.bounds.height * 0.3
-                )
+            TextField(
+                "Write it here..",
+                text: $presenter.bodyValue,
+                axis: .vertical
+            )
+            .multilineTextAlignment(.leading)
+            .lineLimit(10, reservesSpace: true)
+            .padding(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.indigo)
+            )
+            .padding()
             
             button(text: "Done", action: {
                 if !presenter.titleValue.isEmpty && !presenter.bodyValue.isEmpty {
