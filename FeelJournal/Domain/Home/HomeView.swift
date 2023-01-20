@@ -95,6 +95,7 @@ private extension HomeView {
                     )
             }
             .padding(.bottom)
+            .shadow(color: Color.white.opacity(0.5), radius: 4)
         }
     }
 }
