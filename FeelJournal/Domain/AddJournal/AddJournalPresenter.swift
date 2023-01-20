@@ -32,4 +32,29 @@ extension AddJournalPresenter {
         bodyValue = ""
         index = 0
     }
+    
+    func addJournal(completion: (() -> Void)?) {
+        var journal = JournalModel()
+        journal.title = titleValue
+        journal.body = bodyValue
+        journal.createdAt = Date()
+        journal.feelingIndex = 0
+        
+        addJournalUseCase.addJournal(journal: journal)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(_):
+                    break
+                case .finished:
+                    break
+                }
+            }, receiveValue: { [weak self] isSuccess in
+                guard let self = self else { return }
+                if isSuccess {
+                    completion?()
+                }
+            })
+            .store(in: &cancellables)
+    }
 }

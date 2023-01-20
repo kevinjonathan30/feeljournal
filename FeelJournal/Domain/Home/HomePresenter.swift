@@ -19,7 +19,6 @@ class HomePresenter: ObservableObject {
     
     init(homeUseCase: HomeUseCase) {
         self.homeUseCase = homeUseCase
-        getJournalList()
     }
     
     deinit {

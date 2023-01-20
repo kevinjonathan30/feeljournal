@@ -33,7 +33,7 @@ struct HomeView: View {
                 .zIndex(999)
         }
         .navigationTitle("FeelJournal")
-        .refreshable {
+        .onAppear {
             presenter.getJournalList()
         }
     }
@@ -62,10 +62,11 @@ private extension HomeView {
                         Text(getCreatedDate(createdAt: journal.createdAt))
                             .font(.caption2)
                             .foregroundColor(.white)
-                    }
+                    }.padding(.bottom, 1)
                     
                     Text(journal.body ?? "")
                         .foregroundColor(.white)
+                        .lineLimit(2)
                 }
             }.padding(16)
         }

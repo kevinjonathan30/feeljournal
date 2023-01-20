@@ -16,10 +16,8 @@ struct AddJournalView: View {
             switch presenter.index {
             case 0:
                 titleView()
-            case 1:
-                bodyView()
             default:
-                Text("Done")
+                bodyView()
             }
         }
         .hideKeyboardOnTap()
@@ -28,7 +26,6 @@ struct AddJournalView: View {
         .onAppear {
             presenter.resetState()
         }
-        .onDisappear {}
     }
 }
 
@@ -38,6 +35,7 @@ extension AddJournalView {
         VStack {
             Text("Write down your today's chapter!")
                 .font(.title3)
+                .bold()
             
             TextField(
                 "Untitled",
@@ -53,7 +51,7 @@ extension AddJournalView {
             )
             .padding()
             
-            button()
+            button(text: "Next")
         }
     }
     
@@ -62,6 +60,7 @@ extension AddJournalView {
         VStack {
             Text("How about the story?")
                 .font(.title3)
+                .bold()
             
             TextEditor(text: $presenter.bodyValue)
                 .autocorrectionDisabled()
@@ -74,16 +73,25 @@ extension AddJournalView {
                     height: UIScreen.main.bounds.height * 0.3
                 )
             
-            button()
+            button(text: "Done", action: {
+                if !presenter.titleValue.isEmpty && !presenter.bodyValue.isEmpty {
+                    self.presenter.addJournal {
+                        self.router.pop()
+                    }
+                }
+            })
         }
     }
     
     @ViewBuilder
-    func button() -> some View {
-        Button("Next", action: {
+    func button(text: String, action: (() -> Void)? = nil) -> some View {
+        Button(text, action: {
             withAnimation(.spring()) {
-                presenter.index += 1
+                if presenter.index == 0 {
+                    presenter.index += 1
+                }
                 hideKeyboard()
+                action?()
             }
         })
     }
