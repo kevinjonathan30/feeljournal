@@ -10,6 +10,7 @@ import Combine
 
 protocol HomeUseCase {
     func getJournalList() -> AnyPublisher<[JournalModel], Error>
+    func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error>
 }
 
 class HomeInteractor: HomeUseCase {
@@ -21,5 +22,9 @@ class HomeInteractor: HomeUseCase {
     
     func getJournalList() -> AnyPublisher<[JournalModel], Error> {
         return repository.getJournalList()
+    }
+    
+    func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error> {
+        return repository.deleteJournal(withId: id)
     }
 }

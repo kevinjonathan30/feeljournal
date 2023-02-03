@@ -12,6 +12,7 @@ import Combine
 protocol LocaleDataSourceProtocol: AnyObject {
     func getJournalList() -> AnyPublisher<[JournalEntity], Error>
     func addJournal(from journalEntity: JournalEntity) -> AnyPublisher<Bool, Error>
+    func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error>
 }
 
 class LocaleDataSource: NSObject {
@@ -49,6 +50,28 @@ extension LocaleDataSource: LocaleDataSourceProtocol {
                 do {
                     try realm.write {
                         realm.add(journalEntity, update: .all)
+                        completion(.success(true))
+                    }
+                } catch {
+                    completion(.failure(DatabaseError.requestFailed))
+                }
+            } else {
+                completion(.failure(DatabaseError.invalidInstance))
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func deleteJournal(
+        withId id: String
+    ) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            if let realm = self.realm {
+                do {
+                    let journals = realm.objects(JournalEntity.self).filter("id = %@", id)
+                    try realm.write {
+                        for journal in journals {
+                            realm.delete(journal)
+                        }
                         completion(.success(true))
                     }
                 } catch {

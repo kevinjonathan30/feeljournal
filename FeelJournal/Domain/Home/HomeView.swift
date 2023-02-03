@@ -52,31 +52,40 @@ struct HomeView: View {
 private extension HomeView {
     @ViewBuilder
     private func cardView(journal: JournalModel) -> some View {
-        ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.indigo)
+        HStack {
+            Text(getFeelingByIndex(feelingIndex: journal.feelingIndex ?? 0.0))
             
-            HStack {
-                Text(getFeelingByIndex(feelingIndex: journal.feelingIndex ?? 0.0))
-                
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(journal.title ?? "")
-                            .foregroundColor(.white)
-                            .bold()
-                        
-                        Spacer()
-                        
-                        Text(getCreatedDate(createdAt: journal.createdAt))
-                            .font(.caption2)
-                            .foregroundColor(.white)
-                    }.padding(.bottom, 1)
-                    
-                    Text(journal.body ?? "")
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(journal.title ?? "")
                         .foregroundColor(.white)
-                        .lineLimit(2)
-                }
-            }.padding(16)
+                        .bold()
+                    
+                    Spacer()
+                    
+                    Text(getCreatedDate(createdAt: journal.createdAt))
+                        .font(.caption2)
+                        .foregroundColor(.white)
+                }.padding(.bottom, 1)
+                
+                Text(journal.body ?? "")
+                    .foregroundColor(.white)
+                    .lineLimit(2)
+            }
+        }.padding(16)
+        .background(RoundedRectangle(cornerRadius: 16).fill(.indigo))
+        .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .contextMenu {
+            Button {
+                router.push(.journalDetail(journal.title ?? ""))
+            } label: {
+                Label("View Detail", systemImage: "book.fill")
+            }
+            Button(role: .destructive) {
+                self.presenter.deleteJournal(withId: journal.id.uuidString)
+            } label: {
+                Label("Delete Journal", systemImage: "trash.fill")
+            }
         }
         .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
         .onTapGesture {

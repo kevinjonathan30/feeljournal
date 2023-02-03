@@ -53,4 +53,21 @@ extension HomePresenter {
             })
             .store(in: &cancellables)
     }
+    
+    func deleteJournal(withId id: String) {
+        homeUseCase.deleteJournal(withId: id)
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { [weak self] isSuccess in
+                guard let self = self else { return }
+                if isSuccess {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        withAnimation(.spring()) {
+                            self.journals.removeAll { $0.id == UUID(uuidString: id) }
+                        }
+                    }
+                }
+            })
+            .store(in: &cancellables)
+    }
 }
