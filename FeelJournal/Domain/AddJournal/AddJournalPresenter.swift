@@ -40,13 +40,13 @@ extension AddJournalPresenter {
         journal.title = titleValue
         journal.body = bodyValue
         journal.createdAt = Date()
-        journal.feelingIndex = 0
+        journal.feelingIndex = NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue)
         
         addJournalUseCase.addJournal(journal: journal)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
-                case .failure(_):
+                case .failure:
                     break
                 case .finished:
                     break

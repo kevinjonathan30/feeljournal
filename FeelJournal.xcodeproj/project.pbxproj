@@ -39,6 +39,7 @@
 		5DAACB6D292CD932009584B8 /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB6C292CD932009584B8 /* JournalModel.swift */; };
 		5DAACB71292F906C009584B8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB70292F906C009584B8 /* Router.swift */; };
 		5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB73292F98AF009584B8 /* JournalDetailView.swift */; };
+		5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		5DAACB6C292CD932009584B8 /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalModel.swift; sourceTree = "<group>"; };
 		5DAACB70292F906C009584B8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5DAACB73292F98AF009584B8 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
+		5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				5D9E52532979072200335294 /* Provider.swift */,
+				5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 		};
 		5D791C2929744EB40086032A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -474,6 +478,7 @@
 				5D47AB73290441E700B779A2 /* RootView.swift in Sources */,
 				5D9E52542979072200335294 /* Provider.swift in Sources */,
 				5D9E526929790DA500335294 /* LocalizationExtension.swift in Sources */,
+				5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */,
 				5D9E5273297937B000335294 /* ViewExtension.swift in Sources */,
 				5D9E525B2979087100335294 /* HomeInteractor.swift in Sources */,
 				5D9E526729790D7300335294 /* CustomErrorExtension.swift in Sources */,
