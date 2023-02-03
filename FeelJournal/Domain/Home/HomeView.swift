@@ -77,7 +77,7 @@ private extension HomeView {
         .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .contextMenu {
             Button {
-                router.push(.journalDetail(journal.title ?? ""))
+                router.push(.journalDetail(journal))
             } label: {
                 Label("View Detail", systemImage: "book.fill")
             }
@@ -89,7 +89,7 @@ private extension HomeView {
         }
         .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
         .onTapGesture {
-            router.push(.journalDetail(journal.title ?? ""))
+            router.push(.journalDetail(journal))
         }
     }
     

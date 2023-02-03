@@ -26,8 +26,8 @@ extension FeelJournalApp {
                         RootView()
                     case .addJournal:
                         AddJournalView(presenter: addJournalPresenter)
-                    case .journalDetail(let title):
-                        JournalDetailView(title: title)
+                    case .journalDetail(let journal):
+                        JournalDetailView(journal: journal)
                     }
                 }
             }

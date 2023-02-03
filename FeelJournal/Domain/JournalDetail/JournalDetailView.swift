@@ -9,27 +9,27 @@ import SwiftUI
 
 struct JournalDetailView: View {
     @EnvironmentObject var router: Router<Path>
-    let title: String
+    let journal: JournalModel
     
-    init(title: String) {
-        self.title = title
+    init(journal: JournalModel) {
+        self.journal = journal
     }
     
     var body: some View {
-        VStack {
-            Text(title)
-            
-            Button(action: {
-                router.push(.journalDetail(title))
-            }, label: {
-                Text("View Detail")
-            })
-            
-            Button(action: {
-                router.popToRoot()
-            }, label: {
-                Text("Back")
-            })
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text(journal.title ?? "")
+                    .font(.title2)
+                    .bold()
+                    .padding(.bottom, 8)
+                
+                Text(journal.body ?? "")
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
         }
         .navigationTitle("Journal Detail")
         .navigationBarTitleDisplayMode(.inline)
@@ -38,6 +38,13 @@ struct JournalDetailView: View {
 
 struct JournalDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalDetailView(title: "Hello, World!")
+        let journal = JournalModel(
+            id: UUID(),
+            title: "Hello world",
+            createdAt: Date(),
+            body: "This is a sample body",
+            feelingIndex: 0
+        )
+        JournalDetailView(journal: journal)
     }
 }
