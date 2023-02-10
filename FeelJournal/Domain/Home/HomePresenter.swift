@@ -12,6 +12,7 @@ class HomePresenter: ObservableObject {
     @Published var journals: [JournalModel] = []
     @Published var errorMessage: String = ""
     @Published var viewState: ViewState = .loading
+    @Published var searchQuery: String = ""
     
     private let homeUseCase: HomeUseCase
     
@@ -19,6 +20,7 @@ class HomePresenter: ObservableObject {
     
     init(homeUseCase: HomeUseCase) {
         self.homeUseCase = homeUseCase
+        initSearchJournalObserver()
     }
     
     deinit {
@@ -27,9 +29,20 @@ class HomePresenter: ObservableObject {
 }
 
 extension HomePresenter {
-    func getJournalList() {
+    func initSearchJournalObserver() {
+        $searchQuery
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] searchQuery in
+                guard let self = self else { return }
+                self.getJournalList(query: searchQuery)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func getJournalList(query: String = "") {
         viewState = .loading
-        homeUseCase.getJournalList()
+        homeUseCase.getJournalList(query: query)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {

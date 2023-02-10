@@ -10,7 +10,7 @@ import RealmSwift
 import Combine
 
 protocol LocaleDataSourceProtocol: AnyObject {
-    func getJournalList() -> AnyPublisher<[JournalEntity], Error>
+    func getJournalList(query: String) -> AnyPublisher<[JournalEntity], Error>
     func addJournal(from journalEntity: JournalEntity) -> AnyPublisher<Bool, Error>
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error>
 }
@@ -28,14 +28,18 @@ class LocaleDataSource: NSObject {
 }
 
 extension LocaleDataSource: LocaleDataSourceProtocol {
-    func getJournalList() -> AnyPublisher<[JournalEntity], Error> {
+    func getJournalList(query: String = "") -> AnyPublisher<[JournalEntity], Error> {
         return Future<[JournalEntity], Error> { completion in
             if let realm = self.realm {
                 let journalEntities = {
                     realm.objects(JournalEntity.self)
                         .sorted(byKeyPath: "createdAt", ascending: false)
                 }()
-                completion(.success(journalEntities.toArray(ofType: JournalEntity.self)))
+                var journalEntityList = journalEntities.toArray(ofType: JournalEntity.self)
+                if !query.isEmpty {
+                    journalEntityList = journalEntityList.filter({ ($0.title ?? "").contains(query) || ($0.body ?? "").contains(query) })
+                }
+                completion(.success(journalEntityList))
             } else {
                 completion(.failure(DatabaseError.invalidInstance))
             }

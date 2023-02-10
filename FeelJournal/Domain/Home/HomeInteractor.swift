@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol HomeUseCase {
-    func getJournalList() -> AnyPublisher<[JournalModel], Error>
+    func getJournalList(query: String) -> AnyPublisher<[JournalModel], Error>
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error>
 }
 
@@ -20,8 +20,8 @@ class HomeInteractor: HomeUseCase {
         self.repository = repository
     }
     
-    func getJournalList() -> AnyPublisher<[JournalModel], Error> {
-        return repository.getJournalList()
+    func getJournalList(query: String = "") -> AnyPublisher<[JournalModel], Error> {
+        return repository.getJournalList(query: query)
     }
     
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error> {

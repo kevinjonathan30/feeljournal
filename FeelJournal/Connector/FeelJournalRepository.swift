@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol FeelJournalRepositoryProtocol {
-    func getJournalList() -> AnyPublisher<[JournalModel], Error>
+    func getJournalList(query: String) -> AnyPublisher<[JournalModel], Error>
     func addJournal(from journal: JournalModel) -> AnyPublisher<Bool, Error>
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error>
 }
@@ -29,8 +29,8 @@ class FeelJournalRepository: NSObject {
 }
 
 extension FeelJournalRepository: FeelJournalRepositoryProtocol {
-    func getJournalList() -> AnyPublisher<[JournalModel], Error> {
-        return self.locale.getJournalList()
+    func getJournalList(query: String = "") -> AnyPublisher<[JournalModel], Error> {
+        return self.locale.getJournalList(query: query)
             .map { JournalMapper.mapJournalEntityListToModelList(input: $0) }
             .eraseToAnyPublisher()
     }

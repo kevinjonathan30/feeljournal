@@ -70,7 +70,7 @@ private extension AnalyticsView {
                         case 0:
                             Text("Neutral")
                         default:
-                            EmptyView()
+                            Color.clear
                         }
                     }
                 }

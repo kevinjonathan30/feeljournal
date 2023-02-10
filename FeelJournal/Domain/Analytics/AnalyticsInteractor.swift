@@ -20,6 +20,6 @@ class AnalyticsInteractor: AnalyticsUseCase {
     }
     
     func getJournalList() -> AnyPublisher<[JournalModel], Error> {
-        return repository.getJournalList()
+        return repository.getJournalList(query: "")
     }
 }
