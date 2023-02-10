@@ -14,6 +14,7 @@ struct FeelJournalApp: App {
     // Presenter
     let homePresenter = HomePresenter(homeUseCase: Provider().provideHome())
     let addJournalPresenter = AddJournalPresenter(addJournalUseCase: Provider().provideAddJournal())
+    let analyticsPresenter = AnalyticsPresenter(analyticsUseCase: Provider().provideAnalytics())
 }
 
 extension FeelJournalApp {
@@ -33,6 +34,7 @@ extension FeelJournalApp {
             }
             .environmentObject(router)
             .environmentObject(homePresenter)
+            .environmentObject(analyticsPresenter)
         }
     }
 }

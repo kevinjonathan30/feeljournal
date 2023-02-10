@@ -40,6 +40,7 @@
 		5DAACB71292F906C009584B8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB70292F906C009584B8 /* Router.swift */; };
 		5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB73292F98AF009584B8 /* JournalDetailView.swift */; };
 		5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */; };
+		5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		5DAACB70292F906C009584B8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5DAACB73292F98AF009584B8 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageProcessor.swift; sourceTree = "<group>"; };
+		5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			children = (
 				5D47AB8E2904F29600B779A2 /* AnalyticsView.swift */,
 				5D47AB902904F2A400B779A2 /* AnalyticsPresenter.swift */,
+				5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				5D9E5276297937F100335294 /* HideKeyboardModifier.swift in Sources */,
 				5D47AB8F2904F29600B779A2 /* AnalyticsView.swift in Sources */,
 				5D47AB8B2904F26500B779A2 /* AddJournalPresenter.swift in Sources */,
+				5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */,
 				5D47AB892904F25800B779A2 /* AddJournalView.swift in Sources */,
 				5DAACB71292F906C009584B8 /* Router.swift in Sources */,
 				5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */,

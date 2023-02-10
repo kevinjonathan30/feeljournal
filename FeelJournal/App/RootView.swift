@@ -12,6 +12,7 @@ struct RootView: View {
     
     // Presenter
     @EnvironmentObject var homePresenter: HomePresenter
+    @EnvironmentObject var analyticsPresenter: AnalyticsPresenter
 }
 
 extension RootView {
@@ -24,9 +25,9 @@ extension RootView {
             }
 
             NavigationView {
-                AnalyticsView()
+                AnalyticsView(presenter: analyticsPresenter)
             }.tabItem {
-                Label("Analytics", systemImage: "chart.pie.fill")
+                Label("Analytics", systemImage: "chart.xyaxis.line")
             }
         }
     }

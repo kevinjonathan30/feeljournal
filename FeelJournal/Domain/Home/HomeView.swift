@@ -121,7 +121,16 @@ private extension HomeView {
 
 private extension HomeView {
     private func getFeelingByIndex(feelingIndex: Double) -> String {
-        return feelingIndex > 0 ? "😀" : "😢"
+        switch feelingIndex {
+        case let value where value > 0 && value <= 1:
+            return "😀"
+        case let value where value < 0 && value >= -1:
+            return "😢"
+        case 0:
+            return "😐"
+        default:
+            return "❓"
+        }
     }
     private func getCreatedDate(createdAt: Date?) -> String {
         return "\(createdAt?.formatted(date: .abbreviated, time: .omitted) ?? Date().formatted(date: .abbreviated, time: .omitted))"
