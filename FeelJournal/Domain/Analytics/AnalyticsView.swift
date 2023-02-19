@@ -13,6 +13,16 @@ struct AnalyticsView: View {
     
     var body: some View {
         VStack {
+            Picker("What is your favorite color?", selection: $presenter.selectedFilter) {
+                Text("Last 7 days").tag(0)
+                Text("Last 30 days").tag(1)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            .onChange(of: presenter.selectedFilter) { _ in
+                presenter.getJournalList()
+            }
+            
             List {
                 VStack {
                     HStack {
@@ -47,7 +57,29 @@ struct AnalyticsView: View {
 private extension AnalyticsView {
     @ViewBuilder
     func chartView() -> some View {
-        Chart(self.presenter.journals) {
+        VStack {
+            switch presenter.viewState {
+            case .loading:
+                ProgressView()
+            case .fail, .empty:
+                chartFailView()
+            case .loaded:
+                chartLoadedView()
+            }
+        }
+        .frame(height: UIScreen.main.bounds.height * 0.25)
+    }
+    
+    @ViewBuilder
+    func chartFailView() -> some View {
+        Text(self.presenter.message)
+            .font(.headline)
+            .foregroundColor(.gray)
+    }
+    
+    @ViewBuilder
+    func chartLoadedView() -> some View {
+        Chart(presenter.journals) {
             LineMark(
                 x: .value("Date", $0.createdAt ?? Date()),
                 y: .value("Value", $0.feelingIndex ?? 0)
@@ -76,7 +108,6 @@ private extension AnalyticsView {
                 }
             }
         }
-        .frame(height: UIScreen.main.bounds.height * 0.25)
     }
 }
 

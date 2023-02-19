@@ -10,6 +10,9 @@ import Combine
 
 class AnalyticsPresenter: ObservableObject {
     @Published var journals: [JournalModel] = []
+    @Published var selectedFilter = 0
+    @Published var viewState: ViewState = .loading
+    @Published var message: String = ""
     
     private let analyticsUseCase: AnalyticsUseCase
     
@@ -31,14 +34,29 @@ extension AnalyticsPresenter {
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    self.viewState = .fail
+                    self.message = error.localizedDescription
                 case .finished:
                     break
                 }
             }, receiveValue: { [weak self] journals in
                 guard let self = self else { return }
-                withAnimation(.spring()) {
-                    self.journals = journals
+                withAnimation {
+                    switch self.selectedFilter {
+                    case 0:
+                        self.journals = journals.filter({ $0.createdAt ?? Date() > Date(timeIntervalSinceNow: -7 * 60 * 60 * 24) })
+                    case 1:
+                        self.journals = journals.filter({ $0.createdAt ?? Date() > Date(timeIntervalSinceNow: -30 * 60 * 60 * 24) })
+                    default:
+                        break
+                    }
+                    
+                    if journals.isEmpty {
+                        self.viewState = .empty
+                        self.message = "No Data"
+                    } else {
+                        self.viewState = .loaded
+                    }
                 }
             })
             .store(in: &cancellables)

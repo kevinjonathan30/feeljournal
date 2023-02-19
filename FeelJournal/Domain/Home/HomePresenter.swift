@@ -54,7 +54,7 @@ extension HomePresenter {
                 }
             }, receiveValue: { [weak self] journals in
                 guard let self = self else { return }
-                withAnimation(.spring()) {
+                withAnimation {
                     self.journals = journals
                     
                     if journals.isEmpty {
@@ -75,7 +75,7 @@ extension HomePresenter {
                 guard let self = self else { return }
                 if isSuccess {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation(.spring()) {
+                        withAnimation {
                             self.journals.removeAll { $0.id == UUID(uuidString: id) }
                         }
                     }

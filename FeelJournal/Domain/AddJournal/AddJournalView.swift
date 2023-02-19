@@ -95,7 +95,7 @@ extension AddJournalView {
     @ViewBuilder
     func button(text: String, action: (() -> Void)? = nil) -> some View {
         Button(text, action: {
-            withAnimation(.spring()) {
+            withAnimation {
                 if presenter.index == 0 {
                     presenter.index += 1
                 }
