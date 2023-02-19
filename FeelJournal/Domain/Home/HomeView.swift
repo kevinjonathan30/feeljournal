@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var router: Router<Path>
     @ObservedObject var presenter: HomePresenter
     
     var body: some View {
@@ -34,7 +33,7 @@ struct HomeView: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button(action: {
-                    router.push(.addJournal)
+                    NavigationController.push(.addJournal)
                 }) {
                     Image(systemName: "square.and.pencil")
                         .foregroundColor(.indigo)
@@ -81,7 +80,7 @@ private extension HomeView {
         .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .contextMenu {
             Button {
-                router.push(.journalDetail(journal))
+                NavigationController.push(.journalDetail(journal))
             } label: {
                 Label("View Detail", systemImage: "book.fill")
             }
@@ -93,7 +92,7 @@ private extension HomeView {
         }
         .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
         .onTapGesture {
-            router.push(.journalDetail(journal))
+            NavigationController.push(.journalDetail(journal))
         }
     }
     
@@ -103,7 +102,7 @@ private extension HomeView {
             Spacer()
             
             Button(action: {
-                router.push(.addJournal)
+                NavigationController.push(.addJournal)
             }) {
                 Text("Add New Journal")
                     .bold()

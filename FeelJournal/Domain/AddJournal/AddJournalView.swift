@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddJournalView: View {
-    @EnvironmentObject private var router: Router<Path>
     @ObservedObject var presenter: AddJournalPresenter
     
     var body: some View {
@@ -30,7 +29,7 @@ struct AddJournalView: View {
         }
         .onChange(of: presenter.isSuccess) { isSuccess in
             if isSuccess {
-                self.router.pop()
+                NavigationController.pop()
             }
         }
     }

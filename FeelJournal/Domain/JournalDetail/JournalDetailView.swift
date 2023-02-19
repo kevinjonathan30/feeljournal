@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct JournalDetailView: View {
-    @EnvironmentObject var router: Router<Path>
     let journal: JournalModel
     
     init(journal: JournalModel) {

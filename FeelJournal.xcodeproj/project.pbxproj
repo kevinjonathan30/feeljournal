@@ -18,6 +18,7 @@
 		5D47AB8B2904F26500B779A2 /* AddJournalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB8A2904F26500B779A2 /* AddJournalPresenter.swift */; };
 		5D47AB8F2904F29600B779A2 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB8E2904F29600B779A2 /* AnalyticsView.swift */; };
 		5D47AB912904F2A400B779A2 /* AnalyticsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB902904F2A400B779A2 /* AnalyticsPresenter.swift */; };
+		5D7013C929A2202300C5E1B7 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7013C829A2202300C5E1B7 /* NavigationController.swift */; };
 		5D791C28297449720086032A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5D791C27297449720086032A /* .swiftlint.yml */; };
 		5D9E524E2979049600335294 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E524D2979049600335294 /* Path.swift */; };
 		5D9E5250297904B500335294 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E524F297904B500335294 /* ViewRouter.swift */; };
@@ -67,6 +68,7 @@
 		5D47AB8A2904F26500B779A2 /* AddJournalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalPresenter.swift; sourceTree = "<group>"; };
 		5D47AB8E2904F29600B779A2 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		5D47AB902904F2A400B779A2 /* AnalyticsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsPresenter.swift; sourceTree = "<group>"; };
+		5D7013C829A2202300C5E1B7 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5D791C27297449720086032A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		5D9E524D2979049600335294 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		5D9E524F297904B500335294 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			children = (
 				5D9E52532979072200335294 /* Provider.swift */,
 				5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */,
+				5D7013C829A2202300C5E1B7 /* NavigationController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */,
 				5D47AB892904F25800B779A2 /* AddJournalView.swift in Sources */,
 				5DAACB71292F906C009584B8 /* Router.swift in Sources */,
+				5D7013C929A2202300C5E1B7 /* NavigationController.swift in Sources */,
 				5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */,
 				5D47AB912904F2A400B779A2 /* AnalyticsPresenter.swift in Sources */,
 				5D9E525D29790B7000335294 /* FeelJournalRepository.swift in Sources */,

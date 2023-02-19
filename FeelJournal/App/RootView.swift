@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct RootView: View {
-    @EnvironmentObject var router: Router<Path>
-    
     // Presenter
     @EnvironmentObject var homePresenter: HomePresenter
     @EnvironmentObject var analyticsPresenter: AnalyticsPresenter

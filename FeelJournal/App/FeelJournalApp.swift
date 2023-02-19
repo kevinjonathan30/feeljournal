@@ -8,9 +8,7 @@
 import SwiftUI
 
 @main
-struct FeelJournalApp: App {
-    @ObservedObject var router = Router<Path>(root: .root)
-    
+struct FeelJournalApp: App {    
     // Presenter
     let homePresenter = HomePresenter(homeUseCase: Provider().provideHome())
     let addJournalPresenter = AddJournalPresenter(addJournalUseCase: Provider().provideAddJournal())
@@ -21,7 +19,7 @@ extension FeelJournalApp {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ViewRouter(router: router) { path in
+                ViewRouter(router: NavigationController.router) { path in
                     switch path {
                     case .root:
                         RootView()
@@ -32,7 +30,6 @@ extension FeelJournalApp {
                     }
                 }
             }
-            .environmentObject(router)
             .environmentObject(homePresenter)
             .environmentObject(analyticsPresenter)
         }
