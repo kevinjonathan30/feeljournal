@@ -40,9 +40,6 @@ struct HomeView: View {
                 }
             }
         }
-        .onAppear {
-            presenter.getJournalList()
-        }
         .refreshable {
             presenter.getJournalList()
         }

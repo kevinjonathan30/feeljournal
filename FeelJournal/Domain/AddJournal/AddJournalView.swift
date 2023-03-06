@@ -27,11 +27,6 @@ struct AddJournalView: View {
         .onAppear {
             presenter.resetState()
         }
-        .onChange(of: presenter.isSuccess) { isSuccess in
-            if isSuccess {
-                NavigationController.pop()
-            }
-        }
     }
 }
 

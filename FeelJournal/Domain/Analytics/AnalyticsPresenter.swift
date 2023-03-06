@@ -20,6 +20,8 @@ class AnalyticsPresenter: ObservableObject {
     
     init(analyticsUseCase: AnalyticsUseCase) {
         self.analyticsUseCase = analyticsUseCase
+        getJournalList()
+        initJournalObserver()
     }
     
     deinit {
@@ -28,6 +30,21 @@ class AnalyticsPresenter: ObservableObject {
 }
 
 extension AnalyticsPresenter {
+    func initJournalObserver() {
+        EventPublisher.shared.journalPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] event in
+                guard let self = self else { return }
+                switch event {
+                case .refreshAnalytics:
+                    self.getJournalList()
+                default:
+                    break
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
     func getJournalList() {
         analyticsUseCase.getJournalList()
             .receive(on: RunLoop.main)
@@ -51,7 +68,7 @@ extension AnalyticsPresenter {
                         break
                     }
                     
-                    if journals.isEmpty {
+                    if self.journals.isEmpty {
                         self.viewState = .empty
                         self.message = "No Data"
                     } else {

@@ -13,7 +13,7 @@ struct AnalyticsView: View {
     
     var body: some View {
         VStack {
-            Picker("What is your favorite color?", selection: $presenter.selectedFilter) {
+            Picker("Date Filter", selection: $presenter.selectedFilter) {
                 Text("Last 7 days").tag(0)
                 Text("Last 30 days").tag(1)
             }
@@ -46,9 +46,6 @@ struct AnalyticsView: View {
             }
         }
         .navigationTitle("Analytics")
-        .onAppear {
-            presenter.getJournalList()
-        }
     }
 }
 

@@ -12,7 +12,6 @@ class AddJournalPresenter: ObservableObject {
     @Published var titleValue = ""
     @Published var bodyValue = ""
     @Published var index = 0
-    @Published var isSuccess = false
     
     private let addJournalUseCase: AddJournalUseCase
     
@@ -32,7 +31,6 @@ extension AddJournalPresenter {
         titleValue = ""
         bodyValue = ""
         index = 0
-        isSuccess = false
     }
     
     func addJournal() {
@@ -51,9 +49,12 @@ extension AddJournalPresenter {
                 case .finished:
                     break
                 }
-            }, receiveValue: { [weak self] isSuccess in
-                guard let self = self else { return }
-                self.isSuccess = isSuccess
+            }, receiveValue: { isSuccess in
+                if isSuccess {
+                    EventPublisher.shared.journalSubject.send(.refreshJournalList)
+                    EventPublisher.shared.journalSubject.send(.refreshAnalytics)
+                    NavigationController.pop()
+                }
             })
             .store(in: &cancellables)
     }
