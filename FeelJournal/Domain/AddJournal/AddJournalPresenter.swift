@@ -9,10 +9,8 @@ import SwiftUI
 import Combine
 
 class AddJournalPresenter: ObservableObject {
-    @Published var titleValue = ""
     @Published var bodyValue = ""
-    @Published var index = 0
-    @Published var isSuccess = false
+    @Published var viewState: AddJournalViewState = .selectMenu
     
     private let addJournalUseCase: AddJournalUseCase
     
@@ -29,15 +27,13 @@ class AddJournalPresenter: ObservableObject {
 
 extension AddJournalPresenter {
     func resetState() {
-        titleValue = ""
+        viewState = .selectMenu
         bodyValue = ""
-        index = 0
-        isSuccess = false
     }
     
     func addJournal() {
         var journal = JournalModel()
-        journal.title = titleValue
+        journal.title = ""
         journal.body = bodyValue
         journal.createdAt = Date()
         journal.feelingIndex = NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue)
@@ -51,10 +47,19 @@ extension AddJournalPresenter {
                 case .finished:
                     break
                 }
-            }, receiveValue: { [weak self] isSuccess in
-                guard let self = self else { return }
-                self.isSuccess = isSuccess
+            }, receiveValue: { isSuccess in
+                if isSuccess {
+                    EventPublisher.shared.journalSubject.send(.refreshJournalList)
+                    EventPublisher.shared.journalSubject.send(.refreshAnalytics)
+                    NavigationController.pop()
+                }
             })
             .store(in: &cancellables)
     }
+}
+
+enum AddJournalViewState {
+    case selectMenu
+    case audio
+    case text
 }

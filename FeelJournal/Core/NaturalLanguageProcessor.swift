@@ -12,6 +12,9 @@ struct NaturalLanguageProcessor {
     static func processSentimentAnalysis(input: String) -> Double {
         let tagger = NLTagger(tagSchemes: [.sentimentScore])
         tagger.string = input
+        
+        guard tagger.dominantLanguage != NLLanguage.undetermined else { return -2 }
+        
         let sentiment = tagger.tag(at: input.startIndex, unit: .paragraph, scheme: .sentimentScore).0
         let score = Double(sentiment?.rawValue ?? "0") ?? 0
         return score

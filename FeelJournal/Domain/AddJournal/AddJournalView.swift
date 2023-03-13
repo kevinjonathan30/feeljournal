@@ -8,70 +8,121 @@
 import SwiftUI
 
 struct AddJournalView: View {
-    @EnvironmentObject private var router: Router<Path>
     @ObservedObject var presenter: AddJournalPresenter
     
     var body: some View {
         VStack {
-            switch presenter.index {
-            case 0:
-                titleView()
-            case 1:
-                bodyView()
-            default:
-                ProgressView()
+            switch presenter.viewState {
+            case .selectMenu:
+                selectView()
+            case .audio:
+                audioView()
+            case .text:
+                textView()
             }
         }
         .hideKeyboardOnTap()
         .navigationTitle("Add Journal")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button {
+                    withAnimation {
+                        hideKeyboard()
+                        if !presenter.bodyValue.isEmpty {
+                            self.presenter.addJournal()
+                        }
+                    }
+                } label: {
+                    Text("Done")
+                        .bold()
+                }
+                .disabled(presenter.bodyValue.isEmpty)
+            }
+        }
         .onAppear {
             presenter.resetState()
-        }
-        .onChange(of: presenter.isSuccess) { isSuccess in
-            if isSuccess {
-                self.router.pop()
-            }
         }
     }
 }
 
 extension AddJournalView {
     @ViewBuilder
-    func titleView() -> some View {
+    func selectView() -> some View {
         VStack {
-            Text("Write down your today's chapter!")
+            Spacer()
+            
+            Text("Use Voice Record?")
                 .font(.title3)
                 .bold()
             
-            TextField(
-                "Untitled",
-                text: $presenter.titleValue,
-                axis: .vertical
-            )
-            .lineLimit(5)
-            .font(.headline)
-            .padding(8)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.indigo)
-            )
-            .padding()
+            Spacer()
             
-            button(text: "Next")
-                .disabled(presenter.titleValue.isEmpty)
+            CommonCard(
+                leading: AnyView(
+                    Image(systemName: "waveform.circle.fill")
+                        .font(.system(size: 48))
+                        .padding()
+                        .foregroundColor(.indigo)
+                ),
+                title: "Use Voice",
+                subtitle: "Record with voice"
+            )
+            .action {
+                withAnimation {
+                    presenter.viewState = .audio
+                }
+            }
+            .opacity(0.2)
+            .disabled(true) // TODO: Re-enable once voice feature is developed
+            
+            CommonCard(
+                leading: AnyView(
+                    Image(systemName: "square.and.pencil.circle.fill")
+                        .font(.system(size: 48))
+                        .padding()
+                        .foregroundColor(.indigo)
+                ),
+                title: "Don't Use Voice",
+                subtitle: "Type with keyboard"
+            )
+            .action {
+                withAnimation {
+                    presenter.viewState = .text
+                }
+            }
+            
+            Spacer()
+        }
+        .padding()
+    }
+    
+    @ViewBuilder
+    func audioView() -> some View {
+        VStack {
+            Text("How are you feeling today?")
+                .font(.title3)
+                .bold()
+            
+            Button {
+                print("Play")
+            } label: {
+                Image(systemName: "mic.circle.fill")
+                    .font(.system(size: 48))
+            }
+            .padding()
         }
     }
     
     @ViewBuilder
-    func bodyView() -> some View {
+    func textView() -> some View {
         VStack {
-            Text("How about the story?")
+            Text("How are you feeling today?")
                 .font(.title3)
                 .bold()
             
             TextField(
-                "Write it here..",
+                "Write about your day here..",
                 text: $presenter.bodyValue,
                 axis: .vertical
             )
@@ -83,26 +134,7 @@ extension AddJournalView {
                     .stroke(Color.indigo)
             )
             .padding()
-            
-            button(text: "Done", action: {
-                if !presenter.titleValue.isEmpty && !presenter.bodyValue.isEmpty {
-                    self.presenter.addJournal()
-                }
-            }).disabled(presenter.bodyValue.isEmpty)
         }
-    }
-    
-    @ViewBuilder
-    func button(text: String, action: (() -> Void)? = nil) -> some View {
-        Button(text, action: {
-            withAnimation(.spring()) {
-                if presenter.index == 0 {
-                    presenter.index += 1
-                }
-                hideKeyboard()
-                action?()
-            }
-        }).buttonStyle(.borderedProminent)
     }
 }
 
