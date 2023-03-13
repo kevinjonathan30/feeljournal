@@ -94,6 +94,10 @@ extension HomePresenter {
                         withAnimation {
                             self.journals.removeAll { $0.id == UUID(uuidString: id) }
                             EventPublisher.shared.journalSubject.send(.refreshAnalytics)
+                            
+                            if self.journals.isEmpty {
+                                self.viewState = .empty
+                            }
                         }
                     }
                 }

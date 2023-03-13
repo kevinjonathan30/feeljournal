@@ -17,7 +17,7 @@ struct JournalDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text(journal.title ?? "")
+                Text((journal.createdAt ?? Date()).convertToFullDateInString())
                     .font(.title2)
                     .bold()
                     .padding(.bottom, 8)
@@ -42,7 +42,8 @@ struct JournalDetailView_Previews: PreviewProvider {
             title: "Hello world",
             createdAt: Date(),
             body: "This is a sample body",
-            feelingIndex: 0
+            feelingIndex: 0,
+            audioUrl: ""
         )
         JournalDetailView(journal: journal)
     }

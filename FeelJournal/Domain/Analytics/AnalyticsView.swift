@@ -30,18 +30,36 @@ struct AnalyticsView: View {
                             .foregroundColor(.indigo)
                             .font(.footnote)
                         
-                        Text("My Overall Stats")
+                        Text("My Feeling Stats")
                             .font(.footnote)
                             .bold()
                             .foregroundColor(.indigo)
                         
                         Spacer()
                     }
-                    
-                    Divider()
-                        .padding(.bottom, 4)
+                    .padding(.bottom, 4)
                     
                     chartView()
+                }
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "memories")
+                            .foregroundColor(.indigo)
+                            .font(.footnote)
+                        
+                        Text("Most Common Feeling")
+                            .font(.footnote)
+                            .bold()
+                            .foregroundColor(.indigo)
+                        
+                        Spacer()
+                    }
+                    .padding(.bottom, 4)
+                    
+                    Text(presenter.commonFeeling)
+                        .font(.headline)
+                        .padding(.bottom, 4)
                 }
             }
         }

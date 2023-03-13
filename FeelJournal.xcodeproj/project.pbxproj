@@ -29,7 +29,7 @@
 		5D9E525D29790B7000335294 /* FeelJournalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E525C29790B7000335294 /* FeelJournalRepository.swift */; };
 		5D9E526029790B9B00335294 /* LocaleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E525F29790B9B00335294 /* LocaleDataSource.swift */; };
 		5D9E526329790C1F00335294 /* JournalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E526229790C1F00335294 /* JournalEntity.swift */; };
-		5D9E526729790D7300335294 /* CustomErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E526629790D7300335294 /* CustomErrorExtension.swift */; };
+		5D9E526729790D7300335294 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E526629790D7300335294 /* CustomError.swift */; };
 		5D9E526929790DA500335294 /* LocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E526829790DA500335294 /* LocalizationExtension.swift */; };
 		5D9E526B29790DCD00335294 /* ResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E526A29790DCD00335294 /* ResultExtension.swift */; };
 		5D9E526E29790F1E00335294 /* JournalMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E526D29790F1E00335294 /* JournalMapper.swift */; };
@@ -41,6 +41,8 @@
 		5DAACB71292F906C009584B8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB70292F906C009584B8 /* Router.swift */; };
 		5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB73292F98AF009584B8 /* JournalDetailView.swift */; };
 		5DD18B2329B5F27C008E6FE5 /* EventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */; };
+		5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2629BB2428008E6FE5 /* CommonCard.swift */; };
+		5DD18B2929BB38AF008E6FE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */; };
 		5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */; };
 		5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */; };
 /* End PBXBuildFile section */
@@ -78,7 +80,7 @@
 		5D9E525C29790B7000335294 /* FeelJournalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelJournalRepository.swift; sourceTree = "<group>"; };
 		5D9E525F29790B9B00335294 /* LocaleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleDataSource.swift; sourceTree = "<group>"; };
 		5D9E526229790C1F00335294 /* JournalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntity.swift; sourceTree = "<group>"; };
-		5D9E526629790D7300335294 /* CustomErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorExtension.swift; sourceTree = "<group>"; };
+		5D9E526629790D7300335294 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		5D9E526829790DA500335294 /* LocalizationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtension.swift; sourceTree = "<group>"; };
 		5D9E526A29790DCD00335294 /* ResultExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtension.swift; sourceTree = "<group>"; };
 		5D9E526D29790F1E00335294 /* JournalMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMapper.swift; sourceTree = "<group>"; };
@@ -90,6 +92,9 @@
 		5DAACB70292F906C009584B8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5DAACB73292F98AF009584B8 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublisher.swift; sourceTree = "<group>"; };
+		5DD18B2629BB2428008E6FE5 /* CommonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCard.swift; sourceTree = "<group>"; };
+		5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		5DD18B2A29BF2924008E6FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageProcessor.swift; sourceTree = "<group>"; };
 		5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,16 +148,18 @@
 		5D47AB6F290441E700B779A2 /* FeelJournal */ = {
 			isa = PBXGroup;
 			children = (
+				5DD18B2A29BF2924008E6FE5 /* Info.plist */,
 				5D9E524B2979043400335294 /* App */,
-				5D9E52522979071000335294 /* Core */,
-				5D47AB872904F1D900B779A2 /* Model */,
+				5DD18B2429BB2339008E6FE5 /* Common */,
 				5D47AB7F2904F09900B779A2 /* Connector */,
+				5D9E52522979071000335294 /* Core */,
 				5D47AB7E2904F07900B779A2 /* Domain */,
+				5D47AB872904F1D900B779A2 /* Model */,
+				5D47AB76290441EB00B779A2 /* Preview Content */,
+				5DD18B2529BB2358008E6FE5 /* Resource */,
 				5D9E524C2979047500335294 /* Router */,
 				5D9E526429790CED00335294 /* Utility */,
-				5D47AB74290441EB00B779A2 /* Assets.xcassets */,
 				5D791C27297449720086032A /* .swiftlint.yml */,
-				5D47AB76290441EB00B779A2 /* Preview Content */,
 			);
 			path = FeelJournal;
 			sourceTree = "<group>";
@@ -284,7 +291,7 @@
 		5D9E526529790D5F00335294 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5D9E526629790D7300335294 /* CustomErrorExtension.swift */,
+				5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */,
 				5D9E526829790DA500335294 /* LocalizationExtension.swift */,
 				5D9E526A29790DCD00335294 /* ResultExtension.swift */,
 				5D9E5272297937B000335294 /* ViewExtension.swift */,
@@ -304,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				5D9E5270297919A600335294 /* ViewState.swift */,
+				5D9E526629790D7300335294 /* CustomError.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -322,6 +330,22 @@
 				5DAACB73292F98AF009584B8 /* JournalDetailView.swift */,
 			);
 			path = JournalDetail;
+			sourceTree = "<group>";
+		};
+		5DD18B2429BB2339008E6FE5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5DD18B2629BB2428008E6FE5 /* CommonCard.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5DD18B2529BB2358008E6FE5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5D47AB74290441EB00B779A2 /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,8 +513,9 @@
 				5D9E526929790DA500335294 /* LocalizationExtension.swift in Sources */,
 				5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */,
 				5D9E5273297937B000335294 /* ViewExtension.swift in Sources */,
+				5DD18B2929BB38AF008E6FE5 /* DateExtension.swift in Sources */,
 				5D9E525B2979087100335294 /* HomeInteractor.swift in Sources */,
-				5D9E526729790D7300335294 /* CustomErrorExtension.swift in Sources */,
+				5D9E526729790D7300335294 /* CustomError.swift in Sources */,
 				5DD18B2329B5F27C008E6FE5 /* EventPublisher.swift in Sources */,
 				5D9E5271297919A600335294 /* ViewState.swift in Sources */,
 				5D9E526E29790F1E00335294 /* JournalMapper.swift in Sources */,
@@ -501,6 +526,7 @@
 				5D47AB8F2904F29600B779A2 /* AnalyticsView.swift in Sources */,
 				5D47AB8B2904F26500B779A2 /* AddJournalPresenter.swift in Sources */,
 				5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */,
+				5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */,
 				5D47AB892904F25800B779A2 /* AddJournalView.swift in Sources */,
 				5DAACB71292F906C009584B8 /* Router.swift in Sources */,
 				5D7013C929A2202300C5E1B7 /* NavigationController.swift in Sources */,
@@ -687,8 +713,8 @@
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeelJournal/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -719,8 +745,8 @@
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeelJournal/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -13,6 +13,7 @@ class AnalyticsPresenter: ObservableObject {
     @Published var selectedFilter = 0
     @Published var viewState: ViewState = .loading
     @Published var message: String = ""
+    @Published var commonFeeling: String = "-"
     
     private let analyticsUseCase: AnalyticsUseCase
     
@@ -68,6 +69,8 @@ extension AnalyticsPresenter {
                         break
                     }
                     
+                    self.determineCommonFeeling()
+                    
                     if self.journals.isEmpty {
                         self.viewState = .empty
                         self.message = "No Data"
@@ -77,5 +80,21 @@ extension AnalyticsPresenter {
                 }
             })
             .store(in: &cancellables)
+    }
+    
+    func determineCommonFeeling() {
+        let feelingSum = self.journals.map({ $0.feelingIndex ?? 0.0 }).reduce(0, +)
+        
+        let averageFeeling: Double = feelingSum / Double(self.journals.count)
+        switch averageFeeling {
+        case let value where value > 0 && value <= 1:
+            self.commonFeeling =  "😀 Happy"
+        case let value where value < 0 && value >= -1:
+            self.commonFeeling = "😢 Sad"
+        case 0:
+            self.commonFeeling = "😐 Neutral"
+        default:
+            self.commonFeeling = "❓Unknown"
+        }
     }
 }
