@@ -14,6 +14,7 @@ public class JournalEntity: Object {
     @Persisted var createdAt: Date?
     @Persisted var body: String?
     @Persisted var feelingIndex: Double?
+    @Persisted var audioUrl: String?
     
     public override static func primaryKey() -> String? {
         return "id"

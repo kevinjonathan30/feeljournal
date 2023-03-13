@@ -21,6 +21,7 @@ class HomePresenter: ObservableObject {
     init(homeUseCase: HomeUseCase) {
         self.homeUseCase = homeUseCase
         initSearchJournalObserver()
+        initJournalObserver()
     }
     
     deinit {
@@ -40,6 +41,21 @@ extension HomePresenter {
             .store(in: &cancellables)
     }
     
+    func initJournalObserver() {
+        EventPublisher.shared.journalPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] event in
+                guard let self = self else { return }
+                switch event {
+                case .refreshJournalList:
+                    self.getJournalList(query: self.searchQuery)
+                default:
+                    break
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
     func getJournalList(query: String = "") {
         viewState = .loading
         homeUseCase.getJournalList(query: query)
@@ -54,7 +70,7 @@ extension HomePresenter {
                 }
             }, receiveValue: { [weak self] journals in
                 guard let self = self else { return }
-                withAnimation(.spring()) {
+                withAnimation {
                     self.journals = journals
                     
                     if journals.isEmpty {
@@ -75,8 +91,13 @@ extension HomePresenter {
                 guard let self = self else { return }
                 if isSuccess {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation(.spring()) {
+                        withAnimation {
                             self.journals.removeAll { $0.id == UUID(uuidString: id) }
+                            EventPublisher.shared.journalSubject.send(.refreshAnalytics)
+                            
+                            if self.journals.isEmpty {
+                                self.viewState = .empty
+                            }
                         }
                     }
                 }

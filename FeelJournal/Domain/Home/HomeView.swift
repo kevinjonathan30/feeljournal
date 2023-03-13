@@ -8,41 +8,29 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var router: Router<Path>
     @ObservedObject var presenter: HomePresenter
     
     var body: some View {
         VStack {
-            switch presenter.viewState {
-            case .loading:
-                ProgressView()
-            case .fail:
-                Text("Failed to Get Data")
-            case .empty:
-                Text("No Journal")
-            case .loaded:
-                ScrollView {
-                    LazyVStack {
-                        ForEach(presenter.journals) { journal in
-                            cardView(journal: journal)
-                        }
-                    }
+            ZStack {
+                switch presenter.viewState {
+                case .loading:
+                    ProgressView()
+                case .fail:
+                    Text("Failed to Get Data")
+                case .empty:
+                    Text("No Journal")
+                case .loaded:
+                    loadedView()
                 }
+                
+                floatingButton()
             }
         }
         .navigationTitle("FeelJournal")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(action: {
-                    router.push(.addJournal)
-                }) {
-                    Image(systemName: "square.and.pencil")
-                        .foregroundColor(.indigo)
-                }
             }
-        }
-        .onAppear {
-            presenter.getJournalList()
         }
         .refreshable {
             presenter.getJournalList()
@@ -55,45 +43,39 @@ struct HomeView: View {
 
 private extension HomeView {
     @ViewBuilder
-    private func cardView(journal: JournalModel) -> some View {
-        HStack {
-            Text(getFeelingByIndex(feelingIndex: journal.feelingIndex ?? 0.0))
-            
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(journal.title ?? "")
-                        .foregroundColor(.white)
-                        .bold()
-                    
-                    Spacer()
-                    
-                    Text(getCreatedDate(createdAt: journal.createdAt))
-                        .font(.caption2)
-                        .foregroundColor(.white)
-                }.padding(.bottom, 1)
-                
-                Text(journal.body ?? "")
-                    .foregroundColor(.white)
-                    .lineLimit(2)
+    private func loadedView() -> some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(presenter.journals) { journal in
+                    cardView(journal: journal)
+                }
             }
-        }.padding(16)
-        .background(RoundedRectangle(cornerRadius: 16).fill(.indigo))
-        .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+    }
+    
+    @ViewBuilder
+    private func cardView(journal: JournalModel) -> some View {
+        CommonCard(
+            leading: AnyView(Text(getFeelingByIndex(feelingIndex: journal.feelingIndex ?? 0.0))),
+            title: (journal.createdAt ?? Date()).convertToFullDateInString(),
+            subtitle: journal.body ?? ""
+        )
+        .action {
+            NavigationController.push(.journalDetail(journal))
+        }
         .contextMenu {
             Button {
-                router.push(.journalDetail(journal))
+                NavigationController.push(.journalDetail(journal))
             } label: {
                 Label("View Detail", systemImage: "book.fill")
             }
+            
             Button(role: .destructive) {
                 self.presenter.deleteJournal(withId: journal.id.uuidString)
             } label: {
                 Label("Delete Journal", systemImage: "trash.fill")
             }
-        }
-        .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-        .onTapGesture {
-            router.push(.journalDetail(journal))
         }
     }
     
@@ -102,21 +84,19 @@ private extension HomeView {
         VStack {
             Spacer()
             
-            Button(action: {
-                router.push(.addJournal)
-            }) {
-                Text("Add New Journal")
+            Button {
+                NavigationController.push(.addJournal)
+            } label: {
+                Image(systemName: "plus")
                     .bold()
+                    .foregroundColor(.white)
                     .padding()
                     .background(
                         Capsule(style: .continuous)
-                            .strokeBorder(.indigo, lineWidth: 3)
-                            .background(.background)
+                            .background(.indigo)
                             .clipShape(Capsule())
-                            .shadow(color: Color.accentColor, radius: 4)
                     )
             }
-            .padding(.bottom)
         }
     }
 }
@@ -135,9 +115,6 @@ private extension HomeView {
         default:
             return "❓"
         }
-    }
-    private func getCreatedDate(createdAt: Date?) -> String {
-        return "\(createdAt?.formatted(date: .abbreviated, time: .omitted) ?? Date().formatted(date: .abbreviated, time: .omitted))"
     }
 }
 

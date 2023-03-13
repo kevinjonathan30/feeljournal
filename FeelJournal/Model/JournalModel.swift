@@ -13,4 +13,5 @@ struct JournalModel: Identifiable, Hashable {
     var createdAt: Date?
     var body: String?
     var feelingIndex: Double?
+    var audioUrl: String?
 }

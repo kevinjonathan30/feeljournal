@@ -13,6 +13,16 @@ struct AnalyticsView: View {
     
     var body: some View {
         VStack {
+            Picker("Date Filter", selection: $presenter.selectedFilter) {
+                Text("Last 7 days").tag(0)
+                Text("Last 30 days").tag(1)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            .onChange(of: presenter.selectedFilter) { _ in
+                presenter.getJournalList()
+            }
+            
             List {
                 VStack {
                     HStack {
@@ -20,25 +30,40 @@ struct AnalyticsView: View {
                             .foregroundColor(.indigo)
                             .font(.footnote)
                         
-                        Text("My Overall Stats")
+                        Text("My Feeling Stats")
                             .font(.footnote)
                             .bold()
                             .foregroundColor(.indigo)
                         
                         Spacer()
                     }
-                    
-                    Divider()
-                        .padding(.bottom, 4)
+                    .padding(.bottom, 4)
                     
                     chartView()
+                }
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "memories")
+                            .foregroundColor(.indigo)
+                            .font(.footnote)
+                        
+                        Text("Most Common Feeling")
+                            .font(.footnote)
+                            .bold()
+                            .foregroundColor(.indigo)
+                        
+                        Spacer()
+                    }
+                    .padding(.bottom, 4)
+                    
+                    Text(presenter.commonFeeling)
+                        .font(.headline)
+                        .padding(.bottom, 4)
                 }
             }
         }
         .navigationTitle("Analytics")
-        .onAppear {
-            presenter.getJournalList()
-        }
     }
 }
 
@@ -47,7 +72,29 @@ struct AnalyticsView: View {
 private extension AnalyticsView {
     @ViewBuilder
     func chartView() -> some View {
-        Chart(self.presenter.journals) {
+        VStack {
+            switch presenter.viewState {
+            case .loading:
+                ProgressView()
+            case .fail, .empty:
+                chartFailView()
+            case .loaded:
+                chartLoadedView()
+            }
+        }
+        .frame(height: UIScreen.main.bounds.height * 0.25)
+    }
+    
+    @ViewBuilder
+    func chartFailView() -> some View {
+        Text(self.presenter.message)
+            .font(.headline)
+            .foregroundColor(.gray)
+    }
+    
+    @ViewBuilder
+    func chartLoadedView() -> some View {
+        Chart(presenter.journals) {
             LineMark(
                 x: .value("Date", $0.createdAt ?? Date()),
                 y: .value("Value", $0.feelingIndex ?? 0)
@@ -76,7 +123,6 @@ private extension AnalyticsView {
                 }
             }
         }
-        .frame(height: UIScreen.main.bounds.height * 0.25)
     }
 }
 
