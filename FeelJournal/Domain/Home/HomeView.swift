@@ -28,13 +28,6 @@ struct HomeView: View {
             }
         }
         .navigationTitle("FeelJournal")
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-            }
-        }
-        .refreshable {
-            presenter.getJournalList()
-        }
         .searchable(text: $presenter.searchQuery)
     }
 }
