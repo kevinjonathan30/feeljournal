@@ -8,7 +8,10 @@
 import SwiftUI
 
 @main
-struct FeelJournalApp: App {    
+struct FeelJournalApp: App {
+    // AppDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     // Presenter
     let homePresenter = HomePresenter(homeUseCase: Provider().provideHome())
     let addJournalPresenter = AddJournalPresenter(addJournalUseCase: Provider().provideAddJournal())

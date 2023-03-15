@@ -43,6 +43,12 @@
 		5DD18B2329B5F27C008E6FE5 /* EventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */; };
 		5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2629BB2428008E6FE5 /* CommonCard.swift */; };
 		5DD18B2929BB38AF008E6FE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */; };
+		5DDC3EA229C1CED500EFE1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */; };
+		5DDC3EA329C1CED500EFE1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */; };
+		5DDC3EA629C1CF9500EFE1CB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDC3EA529C1CF9500EFE1CB /* FirebaseAnalytics */; };
+		5DDC3EA829C1CF9500EFE1CB /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDC3EA729C1CF9500EFE1CB /* FirebaseCrashlytics */; };
+		5DDC3EAB29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */; };
+		5DDC3EAC29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */; };
 		5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */; };
 		5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */; };
 /* End PBXBuildFile section */
@@ -94,7 +100,9 @@
 		5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublisher.swift; sourceTree = "<group>"; };
 		5DD18B2629BB2428008E6FE5 /* CommonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCard.swift; sourceTree = "<group>"; };
 		5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		5DD18B2A29BF2924008E6FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5DD18B2A29BF2924008E6FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageProcessor.swift; sourceTree = "<group>"; };
 		5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +120,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D9E5259297907EA00335294 /* RealmSwift in Frameworks */,
+				5DDC3EA829C1CF9500EFE1CB /* FirebaseCrashlytics in Frameworks */,
 				5D9E5257297907EA00335294 /* Realm in Frameworks */,
+				5DDC3EA629C1CF9500EFE1CB /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +158,6 @@
 		5D47AB6F290441E700B779A2 /* FeelJournal */ = {
 			isa = PBXGroup;
 			children = (
-				5DD18B2A29BF2924008E6FE5 /* Info.plist */,
 				5D9E524B2979043400335294 /* App */,
 				5DD18B2429BB2339008E6FE5 /* Common */,
 				5D47AB7F2904F09900B779A2 /* Connector */,
@@ -233,6 +242,7 @@
 		5D9E524B2979043400335294 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */,
 				5D47AB70290441E700B779A2 /* FeelJournalApp.swift */,
 				5D47AB72290441E700B779A2 /* RootView.swift */,
 			);
@@ -343,6 +353,8 @@
 		5DD18B2529BB2358008E6FE5 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */,
+				5DD18B2A29BF2924008E6FE5 /* Info.plist */,
 				5D47AB74290441EB00B779A2 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -378,6 +390,7 @@
 				5D47AB6A290441E700B779A2 /* Frameworks */,
 				5D47AB6B290441E700B779A2 /* Resources */,
 				5D791C2929744EB40086032A /* ShellScript */,
+				5DDC3EAD29C1D0B900EFE1CB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -387,6 +400,8 @@
 			packageProductDependencies = (
 				5D9E5256297907EA00335294 /* Realm */,
 				5D9E5258297907EA00335294 /* RealmSwift */,
+				5DDC3EA529C1CF9500EFE1CB /* FirebaseAnalytics */,
+				5DDC3EA729C1CF9500EFE1CB /* FirebaseCrashlytics */,
 			);
 			productName = FeelJournal;
 			productReference = 5D47AB6D290441E700B779A2 /* FeelJournal.app */;
@@ -422,6 +437,7 @@
 			mainGroup = 5D47AB64290441E700B779A2;
 			packageReferences = (
 				5D9E5255297907EA00335294 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				5DDC3EA429C1CF9500EFE1CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 5D47AB6E290441E700B779A2 /* Products */;
 			projectDirPath = "";
@@ -438,6 +454,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DDC3EA329C1CED500EFE1CB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D791C28297449720086032A /* .swiftlint.yml in Resources */,
+				5DDC3EA229C1CED500EFE1CB /* GoogleService-Info.plist in Resources */,
 				5D47AB78290441EB00B779A2 /* Preview Assets.xcassets in Resources */,
 				5D47AB75290441EB00B779A2 /* Assets.xcassets in Resources */,
 			);
@@ -489,6 +507,25 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then \n    swiftlint \nelse \n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\" \nfi\n";
 		};
+		5DDC3EAD29C1D0B900EFE1CB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -496,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DDC3EAC29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */,
 				5D36FB68296D8D3E00D888CC /* FeelJournalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DDC3EAB29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */,
 				5D9E526B29790DCD00335294 /* ResultExtension.swift in Sources */,
 				5D47AB822904F0FD00B779A2 /* HomeView.swift in Sources */,
 				5D9E52782979460E00335294 /* AddJournalInteractor.swift in Sources */,
@@ -621,7 +660,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -713,7 +752,7 @@
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FeelJournal/Info.plist;
+				INFOPLIST_FILE = FeelJournal/Resource/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -745,7 +784,7 @@
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FeelJournal/Info.plist;
+				INFOPLIST_FILE = FeelJournal/Resource/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -807,6 +846,14 @@
 				minimumVersion = 10.34.0;
 			};
 		};
+		5DDC3EA429C1CF9500EFE1CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -819,6 +866,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5D9E5255297907EA00335294 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		5DDC3EA529C1CF9500EFE1CB /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DDC3EA429C1CF9500EFE1CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5DDC3EA729C1CF9500EFE1CB /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DDC3EA429C1CF9500EFE1CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
