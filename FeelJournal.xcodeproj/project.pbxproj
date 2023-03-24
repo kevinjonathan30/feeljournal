@@ -49,6 +49,8 @@
 		5DDC3EA829C1CF9500EFE1CB /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDC3EA729C1CF9500EFE1CB /* FirebaseCrashlytics */; };
 		5DDC3EAB29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */; };
 		5DDC3EAC29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */; };
+		5DE04DB429CDA28B008A79A8 /* JournalDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */; };
+		5DE04DB629CDA3FE008A79A8 /* JournalDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE04DB529CDA3FE008A79A8 /* JournalDetailInteractor.swift */; };
 		5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */; };
 		5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +105,8 @@
 		5DD18B2A29BF2924008E6FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailPresenter.swift; sourceTree = "<group>"; };
+		5DE04DB529CDA3FE008A79A8 /* JournalDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailInteractor.swift; sourceTree = "<group>"; };
 		5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageProcessor.swift; sourceTree = "<group>"; };
 		5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -338,6 +342,8 @@
 			isa = PBXGroup;
 			children = (
 				5DAACB73292F98AF009584B8 /* JournalDetailView.swift */,
+				5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */,
+				5DE04DB529CDA3FE008A79A8 /* JournalDetailInteractor.swift */,
 			);
 			path = JournalDetail;
 			sourceTree = "<group>";
@@ -509,6 +515,7 @@
 		};
 		5DDC3EAD29C1D0B900EFE1CB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -557,6 +564,8 @@
 				5D9E526729790D7300335294 /* CustomError.swift in Sources */,
 				5DD18B2329B5F27C008E6FE5 /* EventPublisher.swift in Sources */,
 				5D9E5271297919A600335294 /* ViewState.swift in Sources */,
+				5DE04DB429CDA28B008A79A8 /* JournalDetailPresenter.swift in Sources */,
+				5DE04DB629CDA3FE008A79A8 /* JournalDetailInteractor.swift in Sources */,
 				5D9E526E29790F1E00335294 /* JournalMapper.swift in Sources */,
 				5D47AB71290441E700B779A2 /* FeelJournalApp.swift in Sources */,
 				5D9E5250297904B500335294 /* ViewRouter.swift in Sources */,

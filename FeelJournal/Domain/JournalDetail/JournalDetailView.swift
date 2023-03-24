@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct JournalDetailView: View {
+    @ObservedObject var presenter: JournalDetailPresenter
     let journal: JournalModel
-    
-    init(journal: JournalModel) {
-        self.journal = journal
-    }
     
     var body: some View {
         ScrollView {
@@ -32,6 +29,24 @@ struct JournalDetailView: View {
         }
         .navigationTitle("Journal Detail")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Menu {
+                    Button(role: .destructive) {
+                        self.presenter.showConfirmationDialog = true
+                    } label: {
+                        Label("Delete Journal", systemImage: "trash.fill")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+            }
+        }
+        .confirmationDialog("This action cannot be undone.", isPresented: $presenter.showConfirmationDialog, titleVisibility: .visible) { // TODO: Refactor Confirmation Dialog Usage
+            Button("Delete Journal", role: .destructive) {
+                self.presenter.deleteJournal(withId: journal.id.uuidString)
+            }
+        }
     }
 }
 
@@ -45,6 +60,9 @@ struct JournalDetailView_Previews: PreviewProvider {
             feelingIndex: 0,
             audioUrl: ""
         )
-        JournalDetailView(journal: journal)
+        JournalDetailView(
+            presenter: JournalDetailPresenter(journalDetailUseCase: Provider().provideJournalDetail()),
+            journal: journal
+        )
     }
 }

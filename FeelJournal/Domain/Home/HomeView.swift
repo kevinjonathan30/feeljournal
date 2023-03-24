@@ -65,9 +65,14 @@ private extension HomeView {
             }
             
             Button(role: .destructive) {
-                self.presenter.deleteJournal(withId: journal.id.uuidString)
+                self.presenter.showConfirmationDialog = true
             } label: {
                 Label("Delete Journal", systemImage: "trash.fill")
+            }
+        }
+        .confirmationDialog("This action cannot be undone.", isPresented: $presenter.showConfirmationDialog, titleVisibility: .visible) {
+            Button("Delete Journal", role: .destructive) {
+                self.presenter.deleteJournal(withId: journal.id.uuidString)
             }
         }
     }

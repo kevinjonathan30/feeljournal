@@ -13,6 +13,7 @@ class HomePresenter: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var viewState: ViewState = .loading
     @Published var searchQuery: String = ""
+    @Published var showConfirmationDialog = false
     
     private let homeUseCase: HomeUseCase
     

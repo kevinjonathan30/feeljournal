@@ -12,14 +12,7 @@ struct AddJournalView: View {
     
     var body: some View {
         VStack {
-            switch presenter.viewState {
-            case .selectMenu:
-                selectView()
-            case .audio:
-                audioView()
-            case .text:
-                textView()
-            }
+            textView()
         }
         .hideKeyboardOnTap()
         .navigationTitle("Add Journal")
@@ -46,74 +39,9 @@ struct AddJournalView: View {
     }
 }
 
+// MARK: ViewBuilder
+
 extension AddJournalView {
-    @ViewBuilder
-    func selectView() -> some View {
-        VStack {
-            Spacer()
-            
-            Text("Use Voice Record?")
-                .font(.title3)
-                .bold()
-            
-            Spacer()
-            
-            CommonCard(
-                leading: AnyView(
-                    Image(systemName: "waveform.circle.fill")
-                        .font(.system(size: 48))
-                        .padding()
-                        .foregroundColor(.indigo)
-                ),
-                title: "Use Voice",
-                subtitle: "Record with voice"
-            )
-            .action {
-                withAnimation {
-                    presenter.viewState = .audio
-                }
-            }
-            .opacity(0.2)
-            .disabled(true) // TODO: Re-enable once voice feature is developed
-            
-            CommonCard(
-                leading: AnyView(
-                    Image(systemName: "square.and.pencil.circle.fill")
-                        .font(.system(size: 48))
-                        .padding()
-                        .foregroundColor(.indigo)
-                ),
-                title: "Don't Use Voice",
-                subtitle: "Type with keyboard"
-            )
-            .action {
-                withAnimation {
-                    presenter.viewState = .text
-                }
-            }
-            
-            Spacer()
-        }
-        .padding()
-    }
-    
-    @ViewBuilder
-    func audioView() -> some View {
-        VStack {
-            Text("How are you feeling today?")
-                .font(.title3)
-                .bold()
-            
-            Button {
-                print("Play")
-            } label: {
-                Image(systemName: "mic.circle.fill")
-                    .font(.system(size: 48))
-            }
-            .padding()
-        }
-    }
-    
     @ViewBuilder
     func textView() -> some View {
         VStack {
