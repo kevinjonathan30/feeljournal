@@ -14,6 +14,7 @@ class HomePresenter: ObservableObject {
     @Published var viewState: ViewState = .loading
     @Published var searchQuery: String = ""
     @Published var showConfirmationDialog = false
+    @Published var showOnboarding = false
     
     private let homeUseCase: HomeUseCase
     
@@ -23,12 +24,33 @@ class HomePresenter: ObservableObject {
         self.homeUseCase = homeUseCase
         initSearchJournalObserver()
         initJournalObserver()
+        getOnboardingStatus()
     }
     
     deinit {
         self.cancellables.removeAll()
     }
 }
+
+// MARK: Onboarding
+
+extension HomePresenter {
+    func getOnboardingStatus() {
+        if LocalStorageManager.getValue(key: "onboarding") == nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                guard let self = self else { return }
+                self.showOnboarding = true
+            }
+        }
+    }
+    
+    func setOnboardingDone() {
+        showOnboarding = false
+        LocalStorageManager.setValue(key: "onboarding", value: true)
+    }
+}
+
+// MARK: Handler
 
 extension HomePresenter {
     func initSearchJournalObserver() {

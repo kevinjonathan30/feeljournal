@@ -29,6 +29,20 @@ struct HomeView: View {
         }
         .navigationTitle("FeelJournal")
         .searchable(text: $presenter.searchQuery)
+        .sheet(isPresented: $presenter.showOnboarding) { // TODO: Onboarding
+            VStack {
+                Text("This is an onboarding")
+                
+                Button {
+                    presenter.showOnboarding = false
+                } label: {
+                    Text("Done")
+                }
+            }
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.hidden)
+        }
+        .interactiveDismissDisabled()
     }
 }
 
