@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 protocol JournalDetailUseCase {
+    func editJournal(journal: JournalModel) -> AnyPublisher<Bool, Error>
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error>
 }
 
@@ -17,6 +18,10 @@ class JournalDetailInteractor: JournalDetailUseCase {
     
     init(repository: FeelJournalRepositoryProtocol) {
         self.repository = repository
+    }
+    
+    func editJournal(journal: JournalModel) -> AnyPublisher<Bool, Error> {
+        return repository.editJournal(from: journal)
     }
     
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error> {

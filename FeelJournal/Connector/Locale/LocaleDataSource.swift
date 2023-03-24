@@ -12,6 +12,7 @@ import Combine
 protocol LocaleDataSourceProtocol: AnyObject {
     func getJournalList(query: String) -> AnyPublisher<[JournalEntity], Error>
     func addJournal(from journalEntity: JournalEntity) -> AnyPublisher<Bool, Error>
+    func editJournal(from journalEntity: JournalEntity) -> AnyPublisher<Bool, Error>
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error>
 }
 
@@ -47,6 +48,25 @@ extension LocaleDataSource: LocaleDataSourceProtocol {
     }
     
     func addJournal(
+        from journalEntity: JournalEntity
+    ) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { completion in
+            if let realm = self.realm {
+                do {
+                    try realm.write {
+                        realm.add(journalEntity, update: .all)
+                        completion(.success(true))
+                    }
+                } catch {
+                    completion(.failure(DatabaseError.requestFailed))
+                }
+            } else {
+                completion(.failure(DatabaseError.invalidInstance))
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func editJournal(
         from journalEntity: JournalEntity
     ) -> AnyPublisher<Bool, Error> {
         return Future<Bool, Error> { completion in

@@ -31,7 +31,7 @@ extension AddJournalPresenter {
     
     func addJournal() {
         var journal = JournalModel()
-        journal.title = ""
+        journal.title = Date().convertToFullDateInString()
         journal.body = bodyValue
         journal.createdAt = Date()
         journal.feelingIndex = NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue)
