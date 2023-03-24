@@ -39,10 +39,10 @@ struct HomeView: View {
                     Text("Done")
                 }
             }
-            .presentationDetents([.medium, .large])
+            .presentationDetents([.large])
             .presentationDragIndicator(.hidden)
         }
-        .interactiveDismissDisabled()
+        .interactiveDismissDisabled(true)
     }
 }
 
