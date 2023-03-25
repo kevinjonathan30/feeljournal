@@ -44,6 +44,7 @@
 		5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2629BB2428008E6FE5 /* CommonCard.swift */; };
 		5DD18B2929BB38AF008E6FE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */; };
 		5DDA802D29CDCD020049589A /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA802C29CDCD020049589A /* LocalStorageManager.swift */; };
+		5DDA803229CEEB120049589A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA803129CEEB120049589A /* OnboardingView.swift */; };
 		5DDC3EA229C1CED500EFE1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */; };
 		5DDC3EA329C1CED500EFE1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */; };
 		5DDC3EA629C1CF9500EFE1CB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDC3EA529C1CF9500EFE1CB /* FirebaseAnalytics */; };
@@ -105,6 +106,7 @@
 		5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		5DD18B2A29BF2924008E6FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DDA802C29CDCD020049589A /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
+		5DDA803129CEEB120049589A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailPresenter.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		5D47AB7E2904F07900B779A2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				5DDA802E29CEEAEA0049589A /* Onboarding */,
 				5D47AB852904F12000B779A2 /* AddJournal */,
 				5D47AB862904F17500B779A2 /* Analytics */,
 				5D47AB802904F0AF00B779A2 /* Home */,
@@ -367,6 +370,14 @@
 				5D47AB74290441EB00B779A2 /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		5DDA802E29CEEAEA0049589A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5DDA803129CEEB120049589A /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,6 +589,7 @@
 				5D47AB8B2904F26500B779A2 /* AddJournalPresenter.swift in Sources */,
 				5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */,
 				5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */,
+				5DDA803229CEEB120049589A /* OnboardingView.swift in Sources */,
 				5D47AB892904F25800B779A2 /* AddJournalView.swift in Sources */,
 				5DDA802D29CDCD020049589A /* LocalStorageManager.swift in Sources */,
 				5DAACB71292F906C009584B8 /* Router.swift in Sources */,
