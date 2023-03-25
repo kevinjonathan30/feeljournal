@@ -33,4 +33,9 @@ final class Provider: NSObject {
         let repository = provideRepository()
         return AnalyticsInteractor(repository: repository)
     }
+    
+    func provideJournalDetail() -> JournalDetailUseCase {
+        let repository = provideRepository()
+        return JournalDetailInteractor(repository: repository)
+    }
 }

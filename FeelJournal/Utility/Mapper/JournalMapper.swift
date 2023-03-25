@@ -19,8 +19,7 @@ class JournalMapper {
                 title: result.title,
                 createdAt: result.createdAt,
                 body: result.body,
-                feelingIndex: result.feelingIndex,
-                audioUrl: result.audioUrl
+                feelingIndex: result.feelingIndex
             )
         }
     }
@@ -36,7 +35,6 @@ class JournalMapper {
         journalEntity.createdAt = journalModel.createdAt
         journalEntity.body = journalModel.body
         journalEntity.feelingIndex = journalModel.feelingIndex
-        journalEntity.audioUrl = journalModel.audioUrl
         return journalEntity
     }
 }

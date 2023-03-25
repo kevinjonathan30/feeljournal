@@ -10,7 +10,6 @@ import Combine
 
 class AddJournalPresenter: ObservableObject {
     @Published var bodyValue = ""
-    @Published var viewState: AddJournalViewState = .selectMenu
     
     private let addJournalUseCase: AddJournalUseCase
     
@@ -27,13 +26,12 @@ class AddJournalPresenter: ObservableObject {
 
 extension AddJournalPresenter {
     func resetState() {
-        viewState = .selectMenu
         bodyValue = ""
     }
     
     func addJournal() {
         var journal = JournalModel()
-        journal.title = ""
+        journal.title = Date().convertToFullDateInString()
         journal.body = bodyValue
         journal.createdAt = Date()
         journal.feelingIndex = NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue)
@@ -56,10 +54,4 @@ extension AddJournalPresenter {
             })
             .store(in: &cancellables)
     }
-}
-
-enum AddJournalViewState {
-    case selectMenu
-    case audio
-    case text
 }

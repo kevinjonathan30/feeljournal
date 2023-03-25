@@ -52,7 +52,7 @@ struct CommonCard: View {
             }
         }
         .padding()
-        .background(
+        .background( // TODO: Use Glassmorphic effect
             RoundedRectangle(cornerRadius: 16)
                 .fill(.quaternary)
                 .opacity(0.6)
