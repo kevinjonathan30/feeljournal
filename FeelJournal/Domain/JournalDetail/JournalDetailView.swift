@@ -81,8 +81,7 @@ struct JournalDetailView_Previews: PreviewProvider {
             title: "Hello world",
             createdAt: Date(),
             body: "This is a sample body",
-            feelingIndex: 0,
-            audioUrl: ""
+            feelingIndex: 0
         )
         JournalDetailView(
             presenter: JournalDetailPresenter(journalDetailUseCase: Provider().provideJournalDetail()),

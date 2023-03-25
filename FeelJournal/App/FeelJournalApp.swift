@@ -31,6 +31,8 @@ extension FeelJournalApp {
                         AddJournalView(presenter: addJournalPresenter)
                     case .journalDetail(let journal):
                         JournalDetailView(presenter: journalDetailPresenter, journal: journal)
+                    case .settings:
+                        SettingsView()
                     }
                 }
             }

@@ -29,6 +29,15 @@ struct HomeView: View {
         }
         .navigationTitle("FeelJournal")
         .searchable(text: $presenter.searchQuery)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button {
+                    NavigationController.push(.settings)
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                }
+            }
+        }
         .sheet(isPresented: $presenter.showOnboarding) {
             OnboardingView()
                 .action {

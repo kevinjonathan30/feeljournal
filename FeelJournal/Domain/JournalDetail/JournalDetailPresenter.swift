@@ -34,8 +34,7 @@ extension JournalDetailPresenter {
             title: journal.title,
             createdAt: journal.createdAt,
             body: bodyValue,
-            feelingIndex: NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue),
-            audioUrl: journal.audioUrl
+            feelingIndex: NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue)
         )
         
         journalDetailUseCase.editJournal(journal: newJournal)

@@ -45,6 +45,7 @@
 		5DD18B2929BB38AF008E6FE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */; };
 		5DDA802D29CDCD020049589A /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA802C29CDCD020049589A /* LocalStorageManager.swift */; };
 		5DDA803229CEEB120049589A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA803129CEEB120049589A /* OnboardingView.swift */; };
+		5DDA803529CEF0CE0049589A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA803429CEF0CE0049589A /* SettingsView.swift */; };
 		5DDC3EA229C1CED500EFE1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */; };
 		5DDC3EA329C1CED500EFE1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */; };
 		5DDC3EA629C1CF9500EFE1CB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDC3EA529C1CF9500EFE1CB /* FirebaseAnalytics */; };
@@ -107,6 +108,7 @@
 		5DD18B2A29BF2924008E6FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DDA802C29CDCD020049589A /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		5DDA803129CEEB120049589A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5DDA803429CEF0CE0049589A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailPresenter.swift; sourceTree = "<group>"; };
@@ -192,11 +194,12 @@
 		5D47AB7E2904F07900B779A2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				5DDA802E29CEEAEA0049589A /* Onboarding */,
 				5D47AB852904F12000B779A2 /* AddJournal */,
 				5D47AB862904F17500B779A2 /* Analytics */,
 				5D47AB802904F0AF00B779A2 /* Home */,
 				5DAACB72292F9884009584B8 /* JournalDetail */,
+				5DDA802E29CEEAEA0049589A /* Onboarding */,
+				5DDA803329CEF0B40049589A /* Settings */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -378,6 +381,14 @@
 				5DDA803129CEEB120049589A /* OnboardingView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		5DDA803329CEF0B40049589A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5DDA803429CEF0CE0049589A /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -600,6 +611,7 @@
 				5D9E524E2979049600335294 /* Path.swift in Sources */,
 				5D9E526329790C1F00335294 /* JournalEntity.swift in Sources */,
 				5DAACB6D292CD932009584B8 /* JournalModel.swift in Sources */,
+				5DDA803529CEF0CE0049589A /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

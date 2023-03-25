@@ -11,4 +11,5 @@ enum Path: Hashable {
     case root
     case addJournal
     case journalDetail(JournalModel)
+    case settings
 }
