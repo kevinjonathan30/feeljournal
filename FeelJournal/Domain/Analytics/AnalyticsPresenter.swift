@@ -83,6 +83,11 @@ extension AnalyticsPresenter {
     }
     
     func determineCommonFeeling() {
+        guard !self.journals.isEmpty else {
+            self.commonFeeling = "No Data"
+            return
+        }
+        
         let feelingSum = self.journals.map({ $0.feelingIndex ?? 0.0 }).reduce(0, +)
         
         let averageFeeling: Double = feelingSum / Double(self.journals.count)

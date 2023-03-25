@@ -8,11 +8,15 @@
 import SwiftUI
 
 @main
-struct FeelJournalApp: App {    
+struct FeelJournalApp: App {
+    // AppDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     // Presenter
     let homePresenter = HomePresenter(homeUseCase: Provider().provideHome())
     let addJournalPresenter = AddJournalPresenter(addJournalUseCase: Provider().provideAddJournal())
     let analyticsPresenter = AnalyticsPresenter(analyticsUseCase: Provider().provideAnalytics())
+    let journalDetailPresenter = JournalDetailPresenter(journalDetailUseCase: Provider().provideJournalDetail())
 }
 
 extension FeelJournalApp {
@@ -26,7 +30,9 @@ extension FeelJournalApp {
                     case .addJournal:
                         AddJournalView(presenter: addJournalPresenter)
                     case .journalDetail(let journal):
-                        JournalDetailView(journal: journal)
+                        JournalDetailView(presenter: journalDetailPresenter, journal: journal)
+                    case .settings:
+                        SettingsView()
                     }
                 }
             }
