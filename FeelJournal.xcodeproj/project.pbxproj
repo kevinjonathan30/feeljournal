@@ -46,6 +46,8 @@
 		5DDA802D29CDCD020049589A /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA802C29CDCD020049589A /* LocalStorageManager.swift */; };
 		5DDA803229CEEB120049589A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA803129CEEB120049589A /* OnboardingView.swift */; };
 		5DDA803529CEF0CE0049589A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA803429CEF0CE0049589A /* SettingsView.swift */; };
+		5DDA803729CF4C530049589A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA803629CF4C530049589A /* NotificationManager.swift */; };
+		5DDA803B29CF4CFB0049589A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA803A29CF4CFB0049589A /* DateHelper.swift */; };
 		5DDC3EA229C1CED500EFE1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */; };
 		5DDC3EA329C1CED500EFE1CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */; };
 		5DDC3EA629C1CF9500EFE1CB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDC3EA529C1CF9500EFE1CB /* FirebaseAnalytics */; };
@@ -109,6 +111,8 @@
 		5DDA802C29CDCD020049589A /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		5DDA803129CEEB120049589A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5DDA803429CEF0CE0049589A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5DDA803629CF4C530049589A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		5DDA803A29CF4CFB0049589A /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		5DDC3EA129C1CED500EFE1CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailPresenter.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 				5DDA802C29CDCD020049589A /* LocalStorageManager.swift */,
 				5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */,
 				5D7013C829A2202300C5E1B7 /* NavigationController.swift */,
+				5DDA803629CF4C530049589A /* NotificationManager.swift */,
 				5D9E52532979072200335294 /* Provider.swift */,
 			);
 			path = Core;
@@ -305,6 +310,7 @@
 			children = (
 				5D9E526F2979199700335294 /* Enum */,
 				5D9E526529790D5F00335294 /* Extension */,
+				5DDA803C29CF50560049589A /* Helper */,
 				5D9E526C29790F0800335294 /* Mapper */,
 				5D9E5274297937D900335294 /* Modifier */,
 			);
@@ -389,6 +395,14 @@
 				5DDA803429CEF0CE0049589A /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		5DDA803C29CF50560049589A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5DDA803A29CF4CFB0049589A /* DateHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -580,6 +594,7 @@
 				5D9E52782979460E00335294 /* AddJournalInteractor.swift in Sources */,
 				5D9E526029790B9B00335294 /* LocaleDataSource.swift in Sources */,
 				5D47AB73290441E700B779A2 /* RootView.swift in Sources */,
+				5DDA803729CF4C530049589A /* NotificationManager.swift in Sources */,
 				5D9E52542979072200335294 /* Provider.swift in Sources */,
 				5D9E526929790DA500335294 /* LocalizationExtension.swift in Sources */,
 				5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */,
@@ -603,6 +618,7 @@
 				5DDA803229CEEB120049589A /* OnboardingView.swift in Sources */,
 				5D47AB892904F25800B779A2 /* AddJournalView.swift in Sources */,
 				5DDA802D29CDCD020049589A /* LocalStorageManager.swift in Sources */,
+				5DDA803B29CF4CFB0049589A /* DateHelper.swift in Sources */,
 				5DAACB71292F906C009584B8 /* Router.swift in Sources */,
 				5D7013C929A2202300C5E1B7 /* NavigationController.swift in Sources */,
 				5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */,

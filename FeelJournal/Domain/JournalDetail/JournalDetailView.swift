@@ -74,6 +74,8 @@ struct JournalDetailView: View {
     }
 }
 
+// MARK: Preview
+
 struct JournalDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let journal = JournalModel(

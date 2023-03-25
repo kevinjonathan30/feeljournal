@@ -134,6 +134,8 @@ private extension HomeView {
     }
 }
 
+// MARK: Preview
+
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(presenter: HomePresenter(homeUseCase: Provider().provideHome()))
