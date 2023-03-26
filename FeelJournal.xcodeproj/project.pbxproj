@@ -54,7 +54,6 @@
 		5DDA804529D007EB0049589A /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804429D007EB0049589A /* FirebaseAppCheck */; };
 		5DDA804729D007EB0049589A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804629D007EB0049589A /* FirebaseCrashlytics */; };
 		5DDA804929D007EB0049589A /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804829D007EB0049589A /* FirebasePerformance */; };
-		5DDA804B29D016E90049589A /* FeelJournalAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA804A29D016E90049589A /* FeelJournalAppCheckProviderFactory.swift */; };
 		5DDA804E29D05B880049589A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804D29D05B880049589A /* Realm */; };
 		5DDA805029D05B8C0049589A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804F29D05B8C0049589A /* RealmSwift */; };
 		5DDA805229D05B9D0049589A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA805129D05B9D0049589A /* FirebaseAnalytics */; };
@@ -124,7 +123,6 @@
 		5DDA803629CF4C530049589A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5DDA803A29CF4CFB0049589A /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		5DDA803D29CF5A470049589A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5DDA804A29D016E90049589A /* FeelJournalAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelJournalAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailPresenter.swift; sourceTree = "<group>"; };
 		5DE04DB529CDA3FE008A79A8 /* JournalDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailInteractor.swift; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */,
-				5DDA804A29D016E90049589A /* FeelJournalAppCheckProviderFactory.swift */,
 				5DDA802C29CDCD020049589A /* LocalStorageManager.swift */,
 				5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */,
 				5D7013C829A2202300C5E1B7 /* NavigationController.swift */,
@@ -655,7 +652,6 @@
 				5D47AB8F2904F29600B779A2 /* AnalyticsView.swift in Sources */,
 				5D47AB8B2904F26500B779A2 /* AddJournalPresenter.swift in Sources */,
 				5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */,
-				5DDA804B29D016E90049589A /* FeelJournalAppCheckProviderFactory.swift in Sources */,
 				5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */,
 				5DDA803229CEEB120049589A /* OnboardingView.swift in Sources */,
 				5D47AB892904F25800B779A2 /* AddJournalView.swift in Sources */,
