@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-import Firebase
+import FirebaseCore
+import FirebaseCrashlytics
+import FirebasePerformance
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
