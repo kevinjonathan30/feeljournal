@@ -5,10 +5,8 @@
 //  Created by Kevin Jonathan on 15/03/23.
 //
 
-import SwiftUI
-import FirebaseCore
-import FirebaseCrashlytics
-import FirebasePerformance
+import UIKit
+@_implementationOnly import Firebase
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
