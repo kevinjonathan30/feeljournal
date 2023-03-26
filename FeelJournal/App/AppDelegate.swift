@@ -18,3 +18,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
 }
+
+class FeelJournalAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
+  func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+    return AppAttestProvider(app: app)
+  }
+}
