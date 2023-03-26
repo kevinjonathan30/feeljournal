@@ -164,6 +164,7 @@
 				5D47AB6F290441E700B779A2 /* FeelJournal */,
 				5D36FB66296D8D3E00D888CC /* FeelJournalTests */,
 				5D47AB6E290441E700B779A2 /* Products */,
+				5DDA804C29D021970049589A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -411,6 +412,13 @@
 				5DDA803A29CF4CFB0049589A /* DateHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		5DDA804C29D021970049589A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -817,6 +825,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FeelJournal/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FeelJournal;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -849,6 +858,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FeelJournal/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FeelJournal;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
