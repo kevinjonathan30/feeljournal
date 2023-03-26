@@ -64,6 +64,15 @@ struct AnalyticsView: View {
             }
         }
         .navigationTitle("Analytics")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button {
+                    NavigationController.push(.settings)
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                }
+            }
+        }
     }
 }
 
