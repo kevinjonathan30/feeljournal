@@ -55,6 +55,13 @@
 		5DDA804729D007EB0049589A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804629D007EB0049589A /* FirebaseCrashlytics */; };
 		5DDA804929D007EB0049589A /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804829D007EB0049589A /* FirebasePerformance */; };
 		5DDA804B29D016E90049589A /* FeelJournalAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA804A29D016E90049589A /* FeelJournalAppCheckProviderFactory.swift */; };
+		5DDA804E29D05B880049589A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804D29D05B880049589A /* Realm */; };
+		5DDA805029D05B8C0049589A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA804F29D05B8C0049589A /* RealmSwift */; };
+		5DDA805229D05B9D0049589A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA805129D05B9D0049589A /* FirebaseAnalytics */; };
+		5DDA805429D05BA00049589A /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA805329D05BA00049589A /* FirebaseAnalyticsSwift */; };
+		5DDA805629D05BA40049589A /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA805529D05BA40049589A /* FirebaseAppCheck */; };
+		5DDA805829D05BA80049589A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA805729D05BA80049589A /* FirebaseCrashlytics */; };
+		5DDA805A29D05BAE0049589A /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 5DDA805929D05BAE0049589A /* FirebasePerformance */; };
 		5DDC3EAB29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */; };
 		5DDC3EAC29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */; };
 		5DE04DB429CDA28B008A79A8 /* JournalDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */; };
@@ -130,6 +137,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DDA805A29D05BAE0049589A /* FirebasePerformance in Frameworks */,
+				5DDA805429D05BA00049589A /* FirebaseAnalyticsSwift in Frameworks */,
+				5DDA805029D05B8C0049589A /* RealmSwift in Frameworks */,
+				5DDA804E29D05B880049589A /* Realm in Frameworks */,
+				5DDA805829D05BA80049589A /* FirebaseCrashlytics in Frameworks */,
+				5DDA805629D05BA40049589A /* FirebaseAppCheck in Frameworks */,
+				5DDA805229D05B9D0049589A /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +453,15 @@
 				5D36FB6A296D8D3E00D888CC /* PBXTargetDependency */,
 			);
 			name = FeelJournalTests;
+			packageProductDependencies = (
+				5DDA804D29D05B880049589A /* Realm */,
+				5DDA804F29D05B8C0049589A /* RealmSwift */,
+				5DDA805129D05B9D0049589A /* FirebaseAnalytics */,
+				5DDA805329D05BA00049589A /* FirebaseAnalyticsSwift */,
+				5DDA805529D05BA40049589A /* FirebaseAppCheck */,
+				5DDA805729D05BA80049589A /* FirebaseCrashlytics */,
+				5DDA805929D05BAE0049589A /* FirebasePerformance */,
+			);
 			productName = FeelJournalTests;
 			productReference = 5D36FB65296D8D3E00D888CC /* FeelJournalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -673,9 +696,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeelJournal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FeelJournal";
 			};
 			name = Debug;
@@ -692,9 +718,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeelJournal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FeelJournal";
 			};
 			name = Release;
@@ -962,6 +991,41 @@
 			productName = FirebaseCrashlytics;
 		};
 		5DDA804829D007EB0049589A /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DDA803F29D007EB0049589A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		5DDA804D29D05B880049589A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D9E5255297907EA00335294 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		5DDA804F29D05B8C0049589A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D9E5255297907EA00335294 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		5DDA805129D05B9D0049589A /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DDA803F29D007EB0049589A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5DDA805329D05BA00049589A /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DDA803F29D007EB0049589A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		5DDA805529D05BA40049589A /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DDA803F29D007EB0049589A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		5DDA805729D05BA80049589A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DDA803F29D007EB0049589A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		5DDA805929D05BAE0049589A /* FirebasePerformance */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5DDA803F29D007EB0049589A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebasePerformance;
