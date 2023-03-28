@@ -47,6 +47,7 @@ extension HomePresenter {
     func setOnboardingDone() {
         showOnboarding = false
         LocalStorageManager.setValue(key: "onboarding", value: true)
+        TrackerManager.requestTrackingAuthorization()
     }
 }
 
