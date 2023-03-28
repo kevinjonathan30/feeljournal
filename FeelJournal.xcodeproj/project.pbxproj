@@ -40,6 +40,8 @@
 		5DAACB6D292CD932009584B8 /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB6C292CD932009584B8 /* JournalModel.swift */; };
 		5DAACB71292F906C009584B8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB70292F906C009584B8 /* Router.swift */; };
 		5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB73292F98AF009584B8 /* JournalDetailView.swift */; };
+		5DCCD4FA29D2E70B00575BB8 /* TrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCD4F929D2E70B00575BB8 /* TrackerManager.swift */; };
+		5DCCD4FC29D2E84400575BB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DCCD4FB29D2E84400575BB8 /* LaunchScreen.storyboard */; };
 		5DD18B2329B5F27C008E6FE5 /* EventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */; };
 		5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2629BB2428008E6FE5 /* CommonCard.swift */; };
 		5DD18B2929BB38AF008E6FE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */; };
@@ -113,6 +115,8 @@
 		5DAACB6C292CD932009584B8 /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalModel.swift; sourceTree = "<group>"; };
 		5DAACB70292F906C009584B8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5DAACB73292F98AF009584B8 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
+		5DCCD4F929D2E70B00575BB8 /* TrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerManager.swift; sourceTree = "<group>"; };
+		5DCCD4FB29D2E84400575BB8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublisher.swift; sourceTree = "<group>"; };
 		5DD18B2629BB2428008E6FE5 /* CommonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCard.swift; sourceTree = "<group>"; };
 		5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 		5D9E524B2979043400335294 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				5DCCD4FB29D2E84400575BB8 /* LaunchScreen.storyboard */,
 				5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */,
 				5D47AB70290441E700B779A2 /* FeelJournalApp.swift */,
 				5D47AB72290441E700B779A2 /* RootView.swift */,
@@ -304,6 +309,7 @@
 				5D7013C829A2202300C5E1B7 /* NavigationController.swift */,
 				5DDA803629CF4C530049589A /* NotificationManager.swift */,
 				5D9E52532979072200335294 /* Provider.swift */,
+				5DCCD4F929D2E70B00575BB8 /* TrackerManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -548,6 +554,7 @@
 				5D791C28297449720086032A /* .swiftlint.yml in Resources */,
 				5DDA803E29CF5A470049589A /* GoogleService-Info.plist in Resources */,
 				5D47AB78290441EB00B779A2 /* Preview Assets.xcassets in Resources */,
+				5DCCD4FC29D2E84400575BB8 /* LaunchScreen.storyboard in Resources */,
 				5D47AB75290441EB00B779A2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -651,6 +658,7 @@
 				5D9E5276297937F100335294 /* HideKeyboardModifier.swift in Sources */,
 				5D47AB8F2904F29600B779A2 /* AnalyticsView.swift in Sources */,
 				5D47AB8B2904F26500B779A2 /* AddJournalPresenter.swift in Sources */,
+				5DCCD4FA29D2E70B00575BB8 /* TrackerManager.swift in Sources */,
 				5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */,
 				5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */,
 				5DDA803229CEEB120049589A /* OnboardingView.swift in Sources */,
@@ -688,7 +696,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -710,7 +718,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -844,7 +852,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"FeelJournal/Preview Content\"";
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
@@ -852,8 +860,10 @@
 				INFOPLIST_FILE = FeelJournal/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FeelJournal;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to provide a better user experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -877,7 +887,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"FeelJournal/Preview Content\"";
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
@@ -885,8 +895,10 @@
 				INFOPLIST_FILE = FeelJournal/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FeelJournal;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to provide a better user experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
