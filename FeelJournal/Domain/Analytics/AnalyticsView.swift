@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct AnalyticsView: View {
-    @ObservedObject var presenter: AnalyticsPresenter
+    @StateObject var presenter: AnalyticsPresenter
     
     var body: some View {
         VStack {

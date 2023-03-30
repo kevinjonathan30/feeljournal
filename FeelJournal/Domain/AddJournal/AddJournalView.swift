@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddJournalView: View {
-    @ObservedObject var presenter: AddJournalPresenter
+    @StateObject var presenter: AddJournalPresenter
     
     var body: some View {
         VStack {

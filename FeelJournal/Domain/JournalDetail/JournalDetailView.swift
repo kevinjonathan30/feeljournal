@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct JournalDetailView: View {
-    @ObservedObject var presenter: JournalDetailPresenter
+    @StateObject var presenter: JournalDetailPresenter
     @FocusState private var isInEditMode: Bool
     let journal: JournalModel
     
     init(presenter: JournalDetailPresenter, journal: JournalModel) {
-        self.presenter = presenter
+        self._presenter = StateObject(wrappedValue: presenter)
         self.journal = journal
     }
     
