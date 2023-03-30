@@ -87,6 +87,14 @@ private extension HomeView {
             } label: {
                 Label("Delete Journal", systemImage: "trash.fill")
             }
+        } preview: {
+            JournalDetailView(
+                presenter: Provider.provideJournalDetailPresenter(
+                    journal: journal
+                )
+            )
+            .id(UUID())
+            .frame(idealWidth: UIScreen.main.bounds.width)
         }
         .confirmationDialog(
             "This action cannot be undone.",

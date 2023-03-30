@@ -61,9 +61,9 @@ extension HomePresenter {
         $searchQuery
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .removeDuplicates()
-            .sink { [weak self] searchQuery in
+            .sink { [weak self] _ in
                 guard let self = self else { return }
-                self.getJournalList(query: searchQuery)
+                self.getJournalList()
             }
             .store(in: &cancellables)
     }
@@ -75,15 +75,15 @@ extension HomePresenter {
                 guard let self = self else { return }
                 switch event {
                 case .refreshJournalList:
-                    self.getJournalList(query: self.searchQuery)
+                    self.getJournalList()
                 }
             }
             .store(in: &cancellables)
     }
     
-    func getJournalList(query: String = "") {
+    func getJournalList() {
         viewState = .loading
-        homeUseCase.getJournalList(query: query)
+        homeUseCase.getJournalList(query: self.searchQuery)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
