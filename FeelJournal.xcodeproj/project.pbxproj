@@ -42,6 +42,7 @@
 		5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB73292F98AF009584B8 /* JournalDetailView.swift */; };
 		5DCCD4FA29D2E70B00575BB8 /* TrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCD4F929D2E70B00575BB8 /* TrackerManager.swift */; };
 		5DCCD4FC29D2E84400575BB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DCCD4FB29D2E84400575BB8 /* LaunchScreen.storyboard */; };
+		5DCCD4FE29D5910500575BB8 /* FeelJournalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCD4FD29D5910500575BB8 /* FeelJournalUITests.swift */; };
 		5DD18B2329B5F27C008E6FE5 /* EventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */; };
 		5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2629BB2428008E6FE5 /* CommonCard.swift */; };
 		5DD18B2929BB38AF008E6FE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */; };
@@ -117,6 +118,7 @@
 		5DAACB73292F98AF009584B8 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		5DCCD4F929D2E70B00575BB8 /* TrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerManager.swift; sourceTree = "<group>"; };
 		5DCCD4FB29D2E84400575BB8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5DCCD4FD29D5910500575BB8 /* FeelJournalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelJournalUITests.swift; sourceTree = "<group>"; };
 		5DD18B2229B5F27C008E6FE5 /* EventPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublisher.swift; sourceTree = "<group>"; };
 		5DD18B2629BB2428008E6FE5 /* CommonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCard.swift; sourceTree = "<group>"; };
 		5DD18B2829BB38AF008E6FE5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5D36FB67296D8D3E00D888CC /* FeelJournalTests.swift */,
+				5DCCD4FD29D5910500575BB8 /* FeelJournalUITests.swift */,
 			);
 			path = FeelJournalTests;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DDC3EAC29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */,
+				5DCCD4FE29D5910500575BB8 /* FeelJournalUITests.swift in Sources */,
 				5D36FB68296D8D3E00D888CC /* FeelJournalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -852,7 +856,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"FeelJournal/Preview Content\"";
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
@@ -869,7 +873,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -887,7 +891,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"FeelJournal/Preview Content\"";
 				DEVELOPMENT_TEAM = 3USSPQR589;
 				ENABLE_PREVIEWS = YES;
@@ -904,7 +908,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = am.dx.kevinjonathan.FeelJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

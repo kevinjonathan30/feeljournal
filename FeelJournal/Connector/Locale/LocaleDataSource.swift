@@ -29,61 +29,49 @@ class LocaleDataSource: NSObject {
 
 extension LocaleDataSource: LocaleDataSourceProtocol {
     func getJournalList(query: String = "") -> AnyPublisher<[JournalEntity], Error> {
-        return Future<[JournalEntity], Error> { completion in
-            if let realm = self.realm {
-                let journalEntities = {
-                    realm.objects(JournalEntity.self)
-                        .sorted(byKeyPath: "createdAt", ascending: false)
-                }()
-                var journalEntityList = journalEntities.toArray(ofType: JournalEntity.self)
-                if !query.isEmpty {
-                    journalEntityList = journalEntityList.filter({ ($0.title ?? "").contains(query) || ($0.body ?? "").contains(query) })
-                }
-                completion(.success(journalEntityList))
-            } else {
-                completion(.failure(DatabaseError.invalidInstance))
-            }
-        }.eraseToAnyPublisher()
+        guard let realm = self.realm else {
+            return Fail(error: DatabaseError.invalidInstance).eraseToAnyPublisher()
+        }
+        
+        var journalEntities = realm.objects(JournalEntity.self)
+            .sorted(byKeyPath: "createdAt", ascending: false)
+            .toArray(ofType: JournalEntity.self)
+        
+        if !query.isEmpty {
+            journalEntities = journalEntities.filter({ ($0.title ?? "").contains(query) || ($0.body ?? "").contains(query) })
+        }
+        
+        return Just(Array(journalEntities)).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
     
-    func addEditJournal(
-        from journalEntity: JournalEntity
-    ) -> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { completion in
-            if let realm = self.realm {
-                do {
-                    try realm.write {
-                        realm.add(journalEntity, update: .all)
-                        completion(.success(true))
-                    }
-                } catch {
-                    completion(.failure(DatabaseError.requestFailed))
-                }
-            } else {
-                completion(.failure(DatabaseError.invalidInstance))
+    func addEditJournal(from journalEntity: JournalEntity) -> AnyPublisher<Bool, Error> {
+        guard let realm = self.realm else {
+            return Fail(error: DatabaseError.invalidInstance).eraseToAnyPublisher()
+        }
+        
+        do {
+            try realm.write {
+                realm.add(journalEntity, update: .all)
             }
-        }.eraseToAnyPublisher()
+            return Just(true).setFailureType(to: Error.self).eraseToAnyPublisher()
+        } catch {
+            return Fail(error: DatabaseError.requestFailed).eraseToAnyPublisher()
+        }
     }
     
-    func deleteJournal(
-        withId id: String
-    ) -> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { completion in
-            if let realm = self.realm {
-                do {
-                    let journals = realm.objects(JournalEntity.self).filter("id = %@", id)
-                    try realm.write {
-                        for journal in journals {
-                            realm.delete(journal)
-                        }
-                        completion(.success(true))
-                    }
-                } catch {
-                    completion(.failure(DatabaseError.requestFailed))
-                }
-            } else {
-                completion(.failure(DatabaseError.invalidInstance))
+    func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error> {
+        guard let realm = self.realm else {
+            return Fail(error: DatabaseError.invalidInstance).eraseToAnyPublisher()
+        }
+        
+        do {
+            let journals = realm.objects(JournalEntity.self).filter("id = %@", id)
+            try realm.write {
+                realm.delete(journals)
             }
-        }.eraseToAnyPublisher()
+            return Just(true).setFailureType(to: Error.self).eraseToAnyPublisher()
+        } catch {
+            return Fail(error: DatabaseError.requestFailed).eraseToAnyPublisher()
+        }
     }
 }
