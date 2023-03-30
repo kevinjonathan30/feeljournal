@@ -9,17 +9,8 @@ import SwiftUI
 
 @main
 struct FeelJournalApp: App {
-    // AppDelegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    // Presenter
-    let homePresenter = HomePresenter(homeUseCase: Provider().provideHome())
-    let addJournalPresenter = AddJournalPresenter(addJournalUseCase: Provider().provideAddJournal())
-    let analyticsPresenter = AnalyticsPresenter(analyticsUseCase: Provider().provideAnalytics())
-    let journalDetailPresenter = JournalDetailPresenter(journalDetailUseCase: Provider().provideJournalDetail())
-}
-
-extension FeelJournalApp {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
@@ -28,16 +19,19 @@ extension FeelJournalApp {
                     case .root:
                         RootView()
                     case .addJournal:
-                        AddJournalView(presenter: addJournalPresenter)
+                        AddJournalView(
+                            presenter: Provider.provideAddJournalPresenter()
+                        )
                     case .journalDetail(let journal):
-                        JournalDetailView(presenter: journalDetailPresenter, journal: journal)
+                        JournalDetailView(
+                            presenter: Provider.provideJournalDetailPresenter(),
+                            journal: journal
+                        )
                     case .settings:
                         SettingsView()
                     }
                 }
             }
-            .environmentObject(homePresenter)
-            .environmentObject(analyticsPresenter)
         }
     }
 }

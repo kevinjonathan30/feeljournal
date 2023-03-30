@@ -13,8 +13,8 @@ class HomePresenter: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var viewState: ViewState = .loading
     @Published var searchQuery: String = ""
-    @Published var showConfirmationDialog = false
     @Published var showOnboarding = false
+    @Published var willDeleteJournalId: String = ""
     
     private let homeUseCase: HomeUseCase
     
@@ -73,8 +73,6 @@ extension HomePresenter {
                 switch event {
                 case .refreshJournalList:
                     self.getJournalList(query: self.searchQuery)
-                default:
-                    break
                 }
             }
             .store(in: &cancellables)
@@ -108,21 +106,18 @@ extension HomePresenter {
     }
     
     func deleteJournal(withId id: String) {
+        guard !id.isEmpty else { return }
+        
         homeUseCase.deleteJournal(withId: id)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] isSuccess in
                 guard let self = self else { return }
+                
+                self.willDeleteJournalId = ""
                 if isSuccess {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation {
-                            self.journals.removeAll { $0.id == UUID(uuidString: id) }
-                            EventPublisher.shared.journalSubject.send(.refreshAnalytics)
-                            
-                            if self.journals.isEmpty {
-                                self.viewState = .empty
-                            }
-                        }
+                        EventPublisher.shared.journalSubject.send(.refreshJournalList)
                     }
                 }
             })

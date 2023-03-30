@@ -37,10 +37,8 @@ extension AnalyticsPresenter {
             .sink { [weak self] event in
                 guard let self = self else { return }
                 switch event {
-                case .refreshAnalytics:
+                case .refreshJournalList:
                     self.getJournalList()
-                default:
-                    break
                 }
             }
             .store(in: &cancellables)

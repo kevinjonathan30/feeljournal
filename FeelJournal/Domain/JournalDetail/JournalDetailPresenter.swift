@@ -49,7 +49,6 @@ extension JournalDetailPresenter {
             }, receiveValue: { isSuccess in
                 if isSuccess {
                     EventPublisher.shared.journalSubject.send(.refreshJournalList)
-                    EventPublisher.shared.journalSubject.send(.refreshAnalytics)
                 }
             })
             .store(in: &cancellables)
@@ -63,7 +62,6 @@ extension JournalDetailPresenter {
                 guard self != nil else { return }
                 if isSuccess {
                     EventPublisher.shared.journalSubject.send(.refreshJournalList)
-                    EventPublisher.shared.journalSubject.send(.refreshAnalytics)
                     NavigationController.pop()
                 }
             })

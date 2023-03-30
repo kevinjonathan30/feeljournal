@@ -83,14 +83,18 @@ private extension HomeView {
             }
             
             Button(role: .destructive) {
-                self.presenter.showConfirmationDialog = true
+                self.presenter.willDeleteJournalId = journal.id.uuidString
             } label: {
                 Label("Delete Journal", systemImage: "trash.fill")
             }
         }
-        .confirmationDialog("This action cannot be undone.", isPresented: $presenter.showConfirmationDialog, titleVisibility: .visible) {
+        .confirmationDialog(
+            "This action cannot be undone.",
+            isPresented: .constant(!presenter.willDeleteJournalId.isEmpty),
+            titleVisibility: .visible
+        ) {
             Button("Delete Journal", role: .destructive) {
-                self.presenter.deleteJournal(withId: journal.id.uuidString)
+                self.presenter.deleteJournal(withId: presenter.willDeleteJournalId)
             }
         }
     }
@@ -138,6 +142,6 @@ private extension HomeView {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(presenter: HomePresenter(homeUseCase: Provider().provideHome()))
+        HomeView(presenter: Provider.provideHomePresenter())
     }
 }

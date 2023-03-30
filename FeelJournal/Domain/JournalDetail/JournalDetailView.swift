@@ -86,7 +86,7 @@ struct JournalDetailView_Previews: PreviewProvider {
             feelingIndex: 0
         )
         JournalDetailView(
-            presenter: JournalDetailPresenter(journalDetailUseCase: Provider().provideJournalDetail()),
+            presenter: Provider.provideJournalDetailPresenter(),
             journal: journal
         )
     }

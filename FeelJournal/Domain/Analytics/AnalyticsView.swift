@@ -139,6 +139,6 @@ private extension AnalyticsView {
 
 struct AnalyticsView_Previews: PreviewProvider {
     static var previews: some View {
-        AnalyticsView(presenter: AnalyticsPresenter(analyticsUseCase: Provider().provideAnalytics()))
+        AnalyticsView(presenter: Provider.provideAnalyticsPresenter())
     }
 }
