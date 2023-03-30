@@ -36,11 +36,14 @@ class HomePresenter: ObservableObject {
 
 extension HomePresenter {
     func getOnboardingStatus() {
-        if LocalStorageManager.getValue(key: "onboarding") == nil {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                guard let self = self else { return }
-                self.showOnboarding = true
-            }
+        guard LocalStorageManager.getValue(key: "onboarding") == nil else {
+            TrackerManager.requestTrackingAuthorization()
+            return
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            self.showOnboarding = true
         }
     }
     

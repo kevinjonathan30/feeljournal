@@ -24,8 +24,9 @@ struct FeelJournalApp: App {
                         )
                     case .journalDetail(let journal):
                         JournalDetailView(
-                            presenter: Provider.provideJournalDetailPresenter(),
-                            journal: journal
+                            presenter: Provider.provideJournalDetailPresenter(
+                                journal: journal
+                            )
                         )
                     case .settings:
                         SettingsView()

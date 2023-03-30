@@ -65,9 +65,10 @@ extension Provider {
         )
     }
     
-    static func provideJournalDetailPresenter() -> JournalDetailPresenter {
+    static func provideJournalDetailPresenter(journal: JournalModel) -> JournalDetailPresenter {
         return JournalDetailPresenter(
-            journalDetailUseCase: provideJournalDetailUseCase()
+            journalDetailUseCase: provideJournalDetailUseCase(),
+            journal: journal
         )
     }
 }

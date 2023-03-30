@@ -13,11 +13,14 @@ class JournalDetailPresenter: ObservableObject {
     @Published var bodyValue = ""
     
     private let journalDetailUseCase: JournalDetailUseCase
+    let journal: JournalModel
     
     private var cancellables: Set<AnyCancellable> = []
     
-    init(journalDetailUseCase: JournalDetailUseCase) {
+    init(journalDetailUseCase: JournalDetailUseCase, journal: JournalModel) {
         self.journalDetailUseCase = journalDetailUseCase
+        self.journal = journal
+        self.bodyValue = journal.body ?? ""
     }
     
     deinit {
@@ -26,7 +29,7 @@ class JournalDetailPresenter: ObservableObject {
 }
 
 extension JournalDetailPresenter {
-    func editJournal(journal: JournalModel) {
+    func editJournal() {
         guard journal.body != bodyValue else { return }
         
         let newJournal = JournalModel(
@@ -54,8 +57,8 @@ extension JournalDetailPresenter {
             .store(in: &cancellables)
     }
     
-    func deleteJournal(withId id: String) {
-        journalDetailUseCase.deleteJournal(withId: id)
+    func deleteJournal() {
+        journalDetailUseCase.deleteJournal(withId: journal.id.uuidString)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] isSuccess in
