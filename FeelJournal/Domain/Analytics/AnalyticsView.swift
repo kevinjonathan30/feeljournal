@@ -48,7 +48,7 @@ struct AnalyticsView: View {
                             .foregroundColor(.indigo)
                             .font(.footnote)
                         
-                        Text("Most Common Feeling")
+                        Text("Average Feeling")
                             .font(.footnote)
                             .bold()
                             .foregroundColor(.indigo)
@@ -57,7 +57,7 @@ struct AnalyticsView: View {
                     }
                     .padding(.bottom, 4)
                     
-                    Text(presenter.commonFeeling)
+                    Text(presenter.averageFeeling)
                         .font(.headline)
                         .padding(.bottom, 4)
                 }

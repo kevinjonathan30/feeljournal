@@ -13,7 +13,7 @@ class AnalyticsPresenter: ObservableObject {
     @Published var selectedFilter = 0
     @Published var viewState: ViewState = .loading
     @Published var message: String = ""
-    @Published var commonFeeling: String = "-"
+    @Published var averageFeeling: String = "-"
     
     private let analyticsUseCase: AnalyticsUseCase
     
@@ -62,14 +62,14 @@ extension AnalyticsPresenter {
                 withAnimation {
                     switch self.selectedFilter {
                     case 0:
-                        self.journals = journals.filter({ $0.createdAt ?? Date() > Date(timeIntervalSinceNow: -7 * 60 * 60 * 24) })
+                        self.journals = journals.filter({ $0.createdAt ?? Date() > Date(timeIntervalSinceNow: -7 * 60 * 60 * 24) && $0.feelingIndex ?? 0 >= -1 })
                     case 1:
-                        self.journals = journals.filter({ $0.createdAt ?? Date() > Date(timeIntervalSinceNow: -30 * 60 * 60 * 24) })
+                        self.journals = journals.filter({ $0.createdAt ?? Date() > Date(timeIntervalSinceNow: -30 * 60 * 60 * 24) && $0.feelingIndex ?? 0 >= -1 })
                     default:
                         break
                     }
                     
-                    self.determineCommonFeeling()
+                    self.determineAverageFeeling()
                     
                     if self.journals.isEmpty {
                         self.viewState = .empty
@@ -82,9 +82,9 @@ extension AnalyticsPresenter {
             .store(in: &cancellables)
     }
     
-    func determineCommonFeeling() {
+    func determineAverageFeeling() {
         guard !self.journals.isEmpty else {
-            self.commonFeeling = "No Data"
+            self.averageFeeling = "No Data"
             return
         }
         
@@ -93,13 +93,13 @@ extension AnalyticsPresenter {
         let averageFeeling: Double = feelingSum / Double(self.journals.count)
         switch averageFeeling {
         case let value where value > 0 && value <= 1:
-            self.commonFeeling =  "😀 Happy"
+            self.averageFeeling =  "😀 Happy"
         case let value where value < 0 && value >= -1:
-            self.commonFeeling = "😢 Sad"
+            self.averageFeeling = "😢 Sad"
         case 0:
-            self.commonFeeling = "😐 Neutral"
+            self.averageFeeling = "😐 Neutral"
         default:
-            self.commonFeeling = "❓Unknown"
+            self.averageFeeling = "❓Unknown"
         }
     }
 }
