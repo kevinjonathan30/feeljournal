@@ -24,46 +24,22 @@ struct AnalyticsView: View {
             }
             
             List {
-                VStack {
-                    HStack {
-                        Image(systemName: "chart.xyaxis.line")
-                            .foregroundColor(.indigo)
-                            .font(.footnote)
-                        
-                        Text("My Feeling Stats")
-                            .font(.footnote)
-                            .bold()
-                            .foregroundColor(.indigo)
-                        
-                        Spacer()
-                    }
-                    .padding(.bottom, 4)
-                    
+                Section(header: Text("My Feeling Stats")) {
                     chartView()
+                        .padding(.vertical)
                 }
                 
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "memories")
-                            .foregroundColor(.indigo)
-                            .font(.footnote)
-                        
-                        Text("Average Feeling")
-                            .font(.footnote)
-                            .bold()
-                            .foregroundColor(.indigo)
-                        
-                        Spacer()
+                Section(header: Text("Average Feeling")) {
+                    VStack(alignment: .leading) {
+                        Text(presenter.averageFeeling)
+                            .font(.headline)
+                            .padding(.vertical, 4)
                     }
-                    .padding(.bottom, 4)
-                    
-                    Text(presenter.averageFeeling)
-                        .font(.headline)
-                        .padding(.bottom, 4)
                 }
             }
         }
         .navigationTitle("Analytics")
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {

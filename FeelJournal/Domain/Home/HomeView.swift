@@ -28,6 +28,7 @@ struct HomeView: View {
             }
         }
         .navigationTitle("FeelJournal")
+        .navigationBarTitleDisplayMode(.large)
         .searchable(text: $presenter.searchQuery)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
