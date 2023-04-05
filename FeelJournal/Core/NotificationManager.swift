@@ -42,4 +42,15 @@ struct NotificationManager {
     static func cancelNotification() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["journalReminder"])
     }
+    
+    static func handleNotificationTap(identifier: String) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            switch identifier {
+            case "journalReminder":
+                NavigationController.push(.addJournal)
+            default:
+                break
+            }
+        }
+    }
 }

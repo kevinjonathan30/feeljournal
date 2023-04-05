@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -14,8 +15,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let providerFactory = FeelJournalAppCheckProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
         
+        UNUserNotificationCenter.current().delegate = self
+        
         FirebaseApp.configure()
         return true
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    internal func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        NotificationManager.handleNotificationTap(identifier: response.notification.request.identifier)
+        completionHandler()
     }
 }
 
