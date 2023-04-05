@@ -60,7 +60,7 @@ private extension AnalyticsView {
         VStack {
             switch presenter.viewState {
             case .loading:
-                ProgressView()
+                chartLoadingView()
             case .fail, .empty:
                 chartFailView()
             case .loaded:
@@ -71,10 +71,18 @@ private extension AnalyticsView {
     }
     
     @ViewBuilder
+    func chartLoadingView() -> some View {
+        ProgressView()
+            .frame(maxWidth: .infinity, alignment: .center)
+    }
+    
+    @ViewBuilder
     func chartFailView() -> some View {
         Text(self.presenter.message)
             .font(.headline)
             .foregroundColor(.gray)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .multilineTextAlignment(.center)
     }
     
     @ViewBuilder

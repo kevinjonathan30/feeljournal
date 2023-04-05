@@ -15,6 +15,7 @@ struct SettingsView: View {
         List {
             Section(header: Text("Journal Reminder")) {
                 Toggle("Daily Reminder", isOn: $isScheduled)
+                    .tint(.indigo)
                     .onChange(of: isScheduled) { isScheduled in
                         handleIsScheduledChange(isScheduled: isScheduled)
                     }

@@ -17,9 +17,9 @@ struct HomeView: View {
                 case .loading:
                     ProgressView()
                 case .fail:
-                    Text("Failed to Get Data")
+                    headlineText(text: "Failed to Get Journal Data")
                 case .empty:
-                    Text("No Journal")
+                    headlineText(text: "No Journal")
                 case .loaded:
                     loadedView()
                 }
@@ -29,7 +29,7 @@ struct HomeView: View {
         }
         .navigationTitle("FeelJournal")
         .navigationBarTitleDisplayMode(.large)
-        .searchable(text: $presenter.searchQuery)
+        .searchable(text: $presenter.searchQuery) // FIXME: Search Bar Scrolling Bug
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
@@ -54,6 +54,13 @@ struct HomeView: View {
 // MARK: ViewBuilder
 
 private extension HomeView {
+    @ViewBuilder
+    private func headlineText(text: String) -> some View {
+        Text(text)
+            .font(.headline)
+            .foregroundColor(.gray)
+    }
+    
     @ViewBuilder
     private func loadedView() -> some View {
         ScrollView {

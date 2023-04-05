@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D17EB4029DD812000210D2A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5D17EB3F29DD812000210D2A /* .swiftlint.yml */; };
 		5D36FB68296D8D3E00D888CC /* FeelJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D36FB67296D8D3E00D888CC /* FeelJournalTests.swift */; };
 		5D47AB71290441E700B779A2 /* FeelJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB70290441E700B779A2 /* FeelJournalApp.swift */; };
 		5D47AB73290441E700B779A2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47AB72290441E700B779A2 /* RootView.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D17EB3F29DD812000210D2A /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = FeelJournal/.swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		5D36FB65296D8D3E00D888CC /* FeelJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D36FB67296D8D3E00D888CC /* FeelJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelJournalTests.swift; sourceTree = "<group>"; };
 		5D47AB6D290441E700B779A2 /* FeelJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 			children = (
 				5D36FB67296D8D3E00D888CC /* FeelJournalTests.swift */,
 				5DCCD4FD29D5910500575BB8 /* FeelJournalUITests.swift */,
+				5D17EB3F29DD812000210D2A /* .swiftlint.yml */,
 			);
 			path = FeelJournalTests;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D17EB4029DD812000210D2A /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
