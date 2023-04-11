@@ -82,7 +82,10 @@ extension HomePresenter {
     }
     
     func getJournalList() {
-        viewState = .loading
+        if viewState != .loaded {
+            viewState = .loading
+        }
+        
         homeUseCase.getJournalList(query: self.searchQuery)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
