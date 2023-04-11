@@ -12,21 +12,18 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                switch presenter.viewState {
-                case .loading:
-                    ProgressView()
-                case .fail:
-                    headlineText(text: "Failed to Get Journal Data")
-                case .empty:
-                    headlineText(text: "No Journal")
-                case .loaded:
-                    loadedView()
-                }
-                
-                floatingButton()
+            switch presenter.viewState {
+            case .loading:
+                ProgressView()
+            case .fail:
+                headlineText(text: "Failed to Get Journal Data")
+            case .empty:
+                headlineText(text: "No Journal")
+            case .loaded:
+                loadedView()
             }
         }
+        .overlay(floatingButton(), alignment: .bottom)
         .navigationTitle("FeelJournal")
         .navigationBarTitleDisplayMode(.large)
         .searchable(text: $presenter.searchQuery) // FIXME: Search Bar Scrolling Bug
@@ -118,8 +115,6 @@ private extension HomeView {
     @ViewBuilder
     private func floatingButton() -> some View {
         VStack {
-            Spacer()
-            
             Button {
                 NavigationController.push(.addJournal)
             } label: {
@@ -133,6 +128,9 @@ private extension HomeView {
                             .clipShape(Capsule())
                     )
             }
+        }
+        .transaction { transaction in
+            transaction.animation = .none
         }
     }
 }
