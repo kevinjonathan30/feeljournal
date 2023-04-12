@@ -38,6 +38,10 @@ struct AnalyticsView: View {
                 }
             }
         }
+        .overlay(
+            CommonFloatingButton(),
+            alignment: .bottom
+        )
         .navigationTitle("Analytics")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {

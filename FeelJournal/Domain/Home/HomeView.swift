@@ -23,7 +23,10 @@ struct HomeView: View {
                 loadedView()
             }
         }
-        .overlay(floatingButton(), alignment: .bottom)
+        .overlay(
+            CommonFloatingButton().isHidden(presenter.viewState == .loading),
+            alignment: .bottom
+        )
         .navigationTitle("FeelJournal")
         .navigationBarTitleDisplayMode(.large)
         .searchable(text: $presenter.searchQuery) // FIXME: Search Bar Scrolling Bug
@@ -109,28 +112,6 @@ private extension HomeView {
             Button("Delete Journal", role: .destructive) {
                 self.presenter.deleteJournal(withId: presenter.willDeleteJournalId)
             }
-        }
-    }
-    
-    @ViewBuilder
-    private func floatingButton() -> some View {
-        VStack {
-            Button {
-                NavigationController.push(.addJournal)
-            } label: {
-                Image(systemName: "plus")
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(
-                        Capsule(style: .continuous)
-                            .background(.indigo)
-                            .clipShape(Capsule())
-                    )
-            }
-        }
-        .transaction { transaction in
-            transaction.animation = .none
         }
     }
 }

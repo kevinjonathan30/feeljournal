@@ -69,6 +69,7 @@
 		5DDC3EAC29C1CFCD00EFE1CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */; };
 		5DE04DB429CDA28B008A79A8 /* JournalDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */; };
 		5DE04DB629CDA3FE008A79A8 /* JournalDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE04DB529CDA3FE008A79A8 /* JournalDetailInteractor.swift */; };
+		5DF3C0F229E6306C00DF6622 /* CommonFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF3C0F129E6306C00DF6622 /* CommonFloatingButton.swift */; };
 		5DF97270298D23D80007B336 /* NaturalLanguageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */; };
 		5DF9727229962AE60007B336 /* AnalyticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */; };
 /* End PBXBuildFile section */
@@ -134,6 +135,7 @@
 		5DDC3EAA29C1CFCD00EFE1CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DE04DB329CDA28B008A79A8 /* JournalDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailPresenter.swift; sourceTree = "<group>"; };
 		5DE04DB529CDA3FE008A79A8 /* JournalDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailInteractor.swift; sourceTree = "<group>"; };
+		5DF3C0F129E6306C00DF6622 /* CommonFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFloatingButton.swift; sourceTree = "<group>"; };
 		5DF9726F298D23D80007B336 /* NaturalLanguageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageProcessor.swift; sourceTree = "<group>"; };
 		5DF9727129962AE60007B336 /* AnalyticsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -399,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				5DD18B2629BB2428008E6FE5 /* CommonCard.swift */,
+				5DF3C0F129E6306C00DF6622 /* CommonFloatingButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				5DD18B2729BB2428008E6FE5 /* CommonCard.swift in Sources */,
 				5DDA803229CEEB120049589A /* OnboardingView.swift in Sources */,
 				5D47AB892904F25800B779A2 /* AddJournalView.swift in Sources */,
+				5DF3C0F229E6306C00DF6622 /* CommonFloatingButton.swift in Sources */,
 				5DDA802D29CDCD020049589A /* LocalStorageManager.swift in Sources */,
 				5DDA803B29CF4CFB0049589A /* DateHelper.swift in Sources */,
 				5DAACB71292F906C009584B8 /* Router.swift in Sources */,
