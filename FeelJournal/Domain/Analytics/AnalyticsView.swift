@@ -31,7 +31,16 @@ struct AnalyticsView: View {
                 
                 Section(header: Text("Average Feeling")) {
                     VStack(alignment: .leading) {
-                        Text(presenter.averageFeeling)
+                        if !presenter.journals.isEmpty {
+                            Gauge(value: presenter.averageFeeling, in: -1...1) {
+                                Color.clear
+                            }
+                            .gaugeStyle(.accessoryLinear)
+                            .tint(Gradient(colors: [.indigo, .purple]))
+                            .padding(.top, 4)
+                        }
+                        
+                        Text(getAverageFeelingStringByIndex())
                             .font(.headline)
                             .padding(.vertical, 4)
                     }
@@ -119,6 +128,25 @@ private extension AnalyticsView {
                     }
                 }
             }
+        }
+    }
+}
+
+// MARK: Helper
+
+private extension AnalyticsView {
+    private func getAverageFeelingStringByIndex() -> String {
+        switch presenter.averageFeeling {
+        case let value where value > 0 && value <= 1:
+            return "😀 Happy"
+        case let value where value < 0 && value >= -1:
+            return "😢 Sad"
+        case 0:
+            return "😐 Neutral"
+        case -3:
+            return "No Data"
+        default:
+            return "❓ Unknown"
         }
     }
 }
