@@ -20,25 +20,7 @@ struct OnboardingView: View {
             
             Spacer()
             
-            VStack(alignment: .leading) {
-                featureView(
-                    image: "book.circle.fill",
-                    headline: "Write Your Story",
-                    subheadline: "Write your journal and capture your feeling in FeelJournal."
-                )
-                
-                featureView(
-                    image: "heart.circle.fill",
-                    headline: "Track Overall Feeling",
-                    subheadline: "FeelJournal can summarize your overall feeling based on your writing."
-                )
-                
-                featureView(
-                    image: "bell.circle.fill",
-                    headline: "Never Forget to Write Again",
-                    subheadline: "We can help to remind you to write your journal everyday."
-                )
-            }
+            featureListView()
             
             Spacer()
             
@@ -65,6 +47,29 @@ struct OnboardingView: View {
 // MARK: ViewBuilder
 
 private extension OnboardingView {
+    @ViewBuilder
+    func featureListView() -> some View {
+        VStack(alignment: .leading) {
+            featureView(
+                image: "book.circle.fill",
+                headline: "Write Your Story",
+                subheadline: "Write your journal and capture your feeling in FeelJournal."
+            )
+            
+            featureView(
+                image: "heart.circle.fill",
+                headline: "Track Overall Feeling",
+                subheadline: "FeelJournal will summarize your overall feeling based on your writing."
+            )
+            
+            featureView(
+                image: "bell.circle.fill",
+                headline: "Never Forget to Write Again",
+                subheadline: "FeelJournal can help to remind you to write your journal everyday."
+            )
+        }
+    }
+    
     @ViewBuilder
     func featureView(image: String, headline: String, subheadline: String) -> some View {
         HStack {

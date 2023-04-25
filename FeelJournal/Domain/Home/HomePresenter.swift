@@ -13,8 +13,8 @@ class HomePresenter: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var viewState: ViewState = .loading
     @Published var searchQuery: String = ""
-    @Published var showConfirmationDialog = false
     @Published var showOnboarding = false
+    @Published var willDeleteJournalId: String = ""
     
     private let homeUseCase: HomeUseCase
     
@@ -36,11 +36,14 @@ class HomePresenter: ObservableObject {
 
 extension HomePresenter {
     func getOnboardingStatus() {
-        if LocalStorageManager.getValue(key: "onboarding") == nil {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                guard let self = self else { return }
-                self.showOnboarding = true
-            }
+        guard LocalStorageManager.getValue(key: "onboarding") == nil else {
+            TrackerManager.requestTrackingAuthorization()
+            return
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            self.showOnboarding = true
         }
     }
     
@@ -58,9 +61,9 @@ extension HomePresenter {
         $searchQuery
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .removeDuplicates()
-            .sink { [weak self] searchQuery in
+            .sink { [weak self] _ in
                 guard let self = self else { return }
-                self.getJournalList(query: searchQuery)
+                self.getJournalList()
             }
             .store(in: &cancellables)
     }
@@ -72,17 +75,18 @@ extension HomePresenter {
                 guard let self = self else { return }
                 switch event {
                 case .refreshJournalList:
-                    self.getJournalList(query: self.searchQuery)
-                default:
-                    break
+                    self.getJournalList()
                 }
             }
             .store(in: &cancellables)
     }
     
-    func getJournalList(query: String = "") {
-        viewState = .loading
-        homeUseCase.getJournalList(query: query)
+    func getJournalList() {
+        if viewState != .loaded {
+            viewState = .loading
+        }
+        
+        homeUseCase.getJournalList(query: self.searchQuery)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -108,21 +112,18 @@ extension HomePresenter {
     }
     
     func deleteJournal(withId id: String) {
+        guard !id.isEmpty else { return }
+        
         homeUseCase.deleteJournal(withId: id)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] isSuccess in
                 guard let self = self else { return }
+                
+                self.willDeleteJournalId = ""
                 if isSuccess {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation {
-                            self.journals.removeAll { $0.id == UUID(uuidString: id) }
-                            EventPublisher.shared.journalSubject.send(.refreshAnalytics)
-                            
-                            if self.journals.isEmpty {
-                                self.viewState = .empty
-                            }
-                        }
+                        EventPublisher.shared.journalSubject.send(.refreshJournalList)
                     }
                 }
             })

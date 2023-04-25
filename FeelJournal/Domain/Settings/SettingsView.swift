@@ -15,21 +15,24 @@ struct SettingsView: View {
         List {
             Section(header: Text("Journal Reminder")) {
                 Toggle("Daily Reminder", isOn: $isScheduled)
+                    .tint(.indigo)
                     .onChange(of: isScheduled) { isScheduled in
                         handleIsScheduledChange(isScheduled: isScheduled)
                     }
                 
                 if isScheduled {
                     DatePicker("Notification Time", selection: Binding(
-                        get: { DateHelper.dateFormatter.date(from: notificationTimeString) ?? Date() },
-                        set: { notificationTimeString = DateHelper.dateFormatter.string(from: $0) }
+                        get: {
+                            DateHelper.dateFormatter.date(from: notificationTimeString) ?? Date()
+                        },
+                        set: {
+                            notificationTimeString = DateHelper.dateFormatter.string(from: $0)
+                            handleNotificationTimeChange()
+                        }
                     ), displayedComponents: .hourAndMinute)
                     .datePickerStyle(WheelDatePickerStyle())
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .onChange(of: notificationTimeString) { _ in
-                        handleNotificationTimeChange()
-                    }
                 }
             }
         }

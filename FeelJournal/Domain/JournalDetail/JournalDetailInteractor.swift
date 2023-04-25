@@ -21,7 +21,7 @@ class JournalDetailInteractor: JournalDetailUseCase {
     }
     
     func editJournal(journal: JournalModel) -> AnyPublisher<Bool, Error> {
-        return repository.editJournal(from: journal)
+        return repository.addEditJournal(from: journal)
     }
     
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error> {

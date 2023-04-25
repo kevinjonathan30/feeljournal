@@ -25,10 +25,6 @@ class AddJournalPresenter: ObservableObject {
 }
 
 extension AddJournalPresenter {
-    func resetState() {
-        bodyValue = ""
-    }
-    
     func addJournal() {
         var journal = JournalModel()
         journal.title = Date().convertToFullDateInString()
@@ -48,7 +44,6 @@ extension AddJournalPresenter {
             }, receiveValue: { isSuccess in
                 if isSuccess {
                     EventPublisher.shared.journalSubject.send(.refreshJournalList)
-                    EventPublisher.shared.journalSubject.send(.refreshAnalytics)
                     NavigationController.pop()
                 }
             })

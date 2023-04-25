@@ -20,4 +20,10 @@ extension View {
             for: nil
         )
     }
+    
+    @ViewBuilder func isHidden(_ isHidden: Bool) -> some View {
+        if !isHidden {
+            self
+        }
+    }
 }

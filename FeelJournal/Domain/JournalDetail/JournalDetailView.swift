@@ -8,19 +8,13 @@
 import SwiftUI
 
 struct JournalDetailView: View {
-    @ObservedObject var presenter: JournalDetailPresenter
+    @StateObject var presenter: JournalDetailPresenter
     @FocusState private var isInEditMode: Bool
-    let journal: JournalModel
-    
-    init(presenter: JournalDetailPresenter, journal: JournalModel) {
-        self.presenter = presenter
-        self.journal = journal
-    }
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text((journal.createdAt ?? Date()).convertToFullDateInString())
+                Text((presenter.journal.createdAt ?? Date()).convertToFullDateInString())
                     .font(.title2)
                     .bold()
                     .padding(.bottom, 8)
@@ -40,9 +34,6 @@ struct JournalDetailView: View {
         }
         .navigationTitle("Journal Detail")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            self.presenter.bodyValue = journal.body ?? ""
-        }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Menu {
@@ -58,7 +49,7 @@ struct JournalDetailView: View {
                 if isInEditMode {
                     Button {
                         self.isInEditMode = false
-                        self.presenter.editJournal(journal: journal)
+                        self.presenter.editJournal()
                     } label: {
                         Text("Done")
                             .bold()
@@ -68,7 +59,7 @@ struct JournalDetailView: View {
         }
         .confirmationDialog("This action cannot be undone.", isPresented: $presenter.showConfirmationDialog, titleVisibility: .visible) { // TODO: Refactor Confirmation Dialog Usage
             Button("Delete Journal", role: .destructive) {
-                self.presenter.deleteJournal(withId: journal.id.uuidString)
+                self.presenter.deleteJournal()
             }
         }
     }
@@ -86,8 +77,9 @@ struct JournalDetailView_Previews: PreviewProvider {
             feelingIndex: 0
         )
         JournalDetailView(
-            presenter: JournalDetailPresenter(journalDetailUseCase: Provider().provideJournalDetail()),
-            journal: journal
+            presenter: Provider.provideJournalDetailPresenter(
+                journal: journal
+            )
         )
     }
 }

@@ -24,6 +24,5 @@ final class EventPublisher {
 extension EventPublisher {
     enum JournalEvent {
         case refreshJournalList
-        case refreshAnalytics
     }
 }

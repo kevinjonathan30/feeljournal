@@ -8,34 +8,67 @@
 import RealmSwift
 import SwiftUI
 
-final class Provider: NSObject {
-    override init() {}
-    
-    private func provideRepository() -> FeelJournalRepositoryProtocol {
+// MARK: Repository Provider
+
+struct Provider {
+    static private func provideRepository() -> FeelJournalRepositoryProtocol {
         let realm = try? Realm()
         
         let locale: LocaleDataSource = LocaleDataSource.sharedInstance(realm)
         
         return FeelJournalRepository.sharedInstance(locale)
     }
-    
-    func provideHome() -> HomeUseCase {
+}
+
+// MARK: UseCase Provider
+
+extension Provider {
+    static private func provideHomeUseCase() -> HomeUseCase {
         let repository = provideRepository()
         return HomeInteractor(repository: repository)
     }
     
-    func provideAddJournal() -> AddJournalUseCase {
+    static private func provideAddJournalUseCase() -> AddJournalUseCase {
         let repository = provideRepository()
         return AddJournalInteractor(repository: repository)
     }
     
-    func provideAnalytics() -> AnalyticsUseCase {
+    static private func provideAnalyticsUseCase() -> AnalyticsUseCase {
         let repository = provideRepository()
         return AnalyticsInteractor(repository: repository)
     }
     
-    func provideJournalDetail() -> JournalDetailUseCase {
+    static private func provideJournalDetailUseCase() -> JournalDetailUseCase {
         let repository = provideRepository()
         return JournalDetailInteractor(repository: repository)
+    }
+}
+
+// MARK: Presenter Provider
+
+extension Provider {
+    static func provideHomePresenter() -> HomePresenter {
+        return HomePresenter(
+            homeUseCase: provideHomeUseCase()
+        )
+    }
+    
+    static func provideAddJournalPresenter() -> AddJournalPresenter {
+        return AddJournalPresenter(
+            addJournalUseCase: provideAddJournalUseCase()
+        )
+    }
+    
+    static func provideAnalyticsPresenter() -> AnalyticsPresenter {
+        return AnalyticsPresenter(
+            analyticsUseCase: provideAnalyticsUseCase()
+        )
+    }
+    
+    static func provideJournalDetailPresenter(journal: JournalModel) -> JournalDetailPresenter {
+        return JournalDetailPresenter(
+            journalDetailUseCase: provideJournalDetailUseCase(),
+            journal: journal
+        )
     }
 }

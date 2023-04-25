@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct AnalyticsView: View {
-    @ObservedObject var presenter: AnalyticsPresenter
+    @StateObject var presenter: AnalyticsPresenter
     
     var body: some View {
         VStack {
@@ -24,46 +24,35 @@ struct AnalyticsView: View {
             }
             
             List {
-                VStack {
-                    HStack {
-                        Image(systemName: "chart.xyaxis.line")
-                            .foregroundColor(.indigo)
-                            .font(.footnote)
-                        
-                        Text("My Feeling Stats")
-                            .font(.footnote)
-                            .bold()
-                            .foregroundColor(.indigo)
-                        
-                        Spacer()
-                    }
-                    .padding(.bottom, 4)
-                    
+                Section(header: Text("My Feeling Stats")) {
                     chartView()
+                        .padding(.vertical)
                 }
                 
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "memories")
-                            .foregroundColor(.indigo)
-                            .font(.footnote)
+                Section(header: Text("Average Feeling")) {
+                    VStack(alignment: .leading) {
+                        if !presenter.journals.isEmpty {
+                            Gauge(value: presenter.averageFeeling, in: -1...1) {
+                                Color.clear
+                            }
+                            .gaugeStyle(.accessoryLinear)
+                            .tint(Gradient(colors: [.indigo, .purple]))
+                            .padding(.top, 4)
+                        }
                         
-                        Text("Most Common Feeling")
-                            .font(.footnote)
-                            .bold()
-                            .foregroundColor(.indigo)
-                        
-                        Spacer()
+                        Text(getAverageFeelingStringByIndex())
+                            .font(.headline)
+                            .padding(.vertical, 4)
                     }
-                    .padding(.bottom, 4)
-                    
-                    Text(presenter.commonFeeling)
-                        .font(.headline)
-                        .padding(.bottom, 4)
                 }
             }
         }
+        .overlay(
+            CommonFloatingButton(),
+            alignment: .bottom
+        )
         .navigationTitle("Analytics")
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
@@ -84,7 +73,7 @@ private extension AnalyticsView {
         VStack {
             switch presenter.viewState {
             case .loading:
-                ProgressView()
+                chartLoadingView()
             case .fail, .empty:
                 chartFailView()
             case .loaded:
@@ -95,10 +84,18 @@ private extension AnalyticsView {
     }
     
     @ViewBuilder
+    func chartLoadingView() -> some View {
+        ProgressView()
+            .frame(maxWidth: .infinity, alignment: .center)
+    }
+    
+    @ViewBuilder
     func chartFailView() -> some View {
         Text(self.presenter.message)
             .font(.headline)
             .foregroundColor(.gray)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .multilineTextAlignment(.center)
     }
     
     @ViewBuilder
@@ -135,10 +132,29 @@ private extension AnalyticsView {
     }
 }
 
+// MARK: Helper
+
+private extension AnalyticsView {
+    private func getAverageFeelingStringByIndex() -> String {
+        switch presenter.averageFeeling {
+        case let value where value > 0 && value <= 1:
+            return "😀 Happy"
+        case let value where value < 0 && value >= -1:
+            return "😢 Sad"
+        case 0:
+            return "😐 Neutral"
+        case -3:
+            return "No Data"
+        default:
+            return "❓ Unknown"
+        }
+    }
+}
+
 // MARK: Preview
 
 struct AnalyticsView_Previews: PreviewProvider {
     static var previews: some View {
-        AnalyticsView(presenter: AnalyticsPresenter(analyticsUseCase: Provider().provideAnalytics()))
+        AnalyticsView(presenter: Provider.provideAnalyticsPresenter())
     }
 }
