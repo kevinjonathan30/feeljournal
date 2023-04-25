@@ -20,6 +20,8 @@ struct CommonFloatingButton: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
             Button {
                 action?()
             } label: {
@@ -53,4 +55,3 @@ extension CommonFloatingButton {
         return copy
     }
 }
-

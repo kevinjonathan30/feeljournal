@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import UserNotifications
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         let providerFactory = FeelJournalAppCheckProviderFactory()
@@ -20,6 +20,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         return true
     }
+    
+    // FIXME: Quick Shortcut
+
+//    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+//        if shortcutItem.type == "addJournal" {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                NavigationController.push(.addJournal)
+//                completionHandler(true)
+//            }
+//        } else {
+//            completionHandler(false)
+//        }
+//    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {

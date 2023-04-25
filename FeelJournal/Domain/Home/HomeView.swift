@@ -12,21 +12,22 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            switch presenter.viewState {
-            case .loading:
-                ProgressView()
-            case .fail:
-                headlineText(text: "Failed to Get Journal Data")
-            case .empty:
-                headlineText(text: "No Journal")
-            case .loaded:
-                loadedView()
+            ZStack {
+                switch presenter.viewState {
+                case .loading:
+                    ProgressView()
+                case .fail:
+                    headlineText(text: "Failed to Get Journal Data")
+                case .empty:
+                    headlineText(text: "No Journal")
+                case .loaded:
+                    loadedView()
+                }
+                
+                CommonFloatingButton()
+                    .isHidden(presenter.viewState == .loading)
             }
         }
-        .overlay(
-            CommonFloatingButton().isHidden(presenter.viewState == .loading),
-            alignment: .bottom
-        )
         .navigationTitle("FeelJournal")
         .navigationBarTitleDisplayMode(.large)
         .searchable(text: $presenter.searchQuery) // FIXME: Search Bar Scrolling Bug
@@ -41,9 +42,7 @@ struct HomeView: View {
         }
         .sheet(isPresented: $presenter.showOnboarding) {
             OnboardingView()
-                .action {
-                    presenter.setOnboardingDone()
-                }
+                .action { presenter.setOnboardingDone() }
                 .presentationDetents([.large])
                 .presentationDragIndicator(.hidden)
                 .interactiveDismissDisabled(true)
