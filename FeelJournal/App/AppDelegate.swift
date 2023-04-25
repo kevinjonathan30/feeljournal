@@ -14,25 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         let providerFactory = FeelJournalAppCheckProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
-        
         UNUserNotificationCenter.current().delegate = self
         
         FirebaseApp.configure()
         return true
     }
     
-    // FIXME: Quick Shortcut
-
-//    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-//        if shortcutItem.type == "addJournal" {
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                NavigationController.push(.addJournal)
-//                completionHandler(true)
-//            }
-//        } else {
-//            completionHandler(false)
-//        }
-//    }
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        if let shortcutItem = options.shortcutItem {
+            NavigationController.handleShortcutItem(shortcutItem: shortcutItem)
+        }
+        
+        let sceneConfiguration = UISceneConfiguration(name: "Scene Configuration", sessionRole: connectingSceneSession.role)
+        sceneConfiguration.delegateClass = SceneDelegate.self
+        
+        return sceneConfiguration
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
@@ -43,7 +40,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 }
 
 class FeelJournalAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
-  func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
-    return AppAttestProvider(app: app)
-  }
+    func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+        return AppAttestProvider(app: app)
+    }
 }
