@@ -15,8 +15,24 @@ struct NaturalLanguageProcessor {
         
         guard tagger.dominantLanguage != NLLanguage.undetermined else { return -2 }
         
-        let sentiment = tagger.tag(at: input.startIndex, unit: .paragraph, scheme: .sentimentScore).0
-        let score = Double(sentiment?.rawValue ?? "0") ?? 0
-        return score
+        let options: NLTagger.Options = [.omitWhitespace, .omitPunctuation]
+        let range = input.startIndex..<input.endIndex
+        var totalScore = 0.0
+        var tagCount = 0
+        
+        tagger.enumerateTags(in: range, unit: .sentence, scheme: .sentimentScore, options: options) { tag, _ in
+            if let tag = tag, let score = Double(tag.rawValue) {
+                totalScore += score
+                tagCount += 1
+            }
+            return true
+        }
+        
+        if tagCount > 0 {
+            let averageScore = totalScore / Double(tagCount)
+            return averageScore
+        } else {
+            return 0
+        }
     }
 }

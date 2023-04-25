@@ -20,6 +20,6 @@ class AddJournalInteractor: AddJournalUseCase {
     }
     
     func addJournal(journal: JournalModel) -> AnyPublisher<Bool, Error> {
-        return repository.addJournal(from: journal)
+        return repository.addEditJournal(from: journal)
     }
 }

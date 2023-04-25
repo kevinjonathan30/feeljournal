@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var presenter: HomePresenter
+    @StateObject var presenter: HomePresenter
     
     var body: some View {
         VStack {
@@ -17,18 +17,20 @@ struct HomeView: View {
                 case .loading:
                     ProgressView()
                 case .fail:
-                    Text("Failed to Get Data")
+                    headlineText(text: "Failed to Get Journal Data")
                 case .empty:
-                    Text("No Journal")
+                    headlineText(text: "No Journal")
                 case .loaded:
                     loadedView()
                 }
                 
-                floatingButton()
+                CommonFloatingButton()
+                    .isHidden(presenter.viewState == .loading)
             }
         }
         .navigationTitle("FeelJournal")
-        .searchable(text: $presenter.searchQuery)
+        .navigationBarTitleDisplayMode(.large)
+        .searchable(text: $presenter.searchQuery) // FIXME: Search Bar Scrolling Bug
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
@@ -40,9 +42,7 @@ struct HomeView: View {
         }
         .sheet(isPresented: $presenter.showOnboarding) {
             OnboardingView()
-                .action {
-                    presenter.setOnboardingDone()
-                }
+                .action { presenter.setOnboardingDone() }
                 .presentationDetents([.large])
                 .presentationDragIndicator(.hidden)
                 .interactiveDismissDisabled(true)
@@ -53,6 +53,13 @@ struct HomeView: View {
 // MARK: ViewBuilder
 
 private extension HomeView {
+    @ViewBuilder
+    private func headlineText(text: String) -> some View {
+        Text(text)
+            .font(.headline)
+            .foregroundColor(.gray)
+    }
+    
     @ViewBuilder
     private func loadedView() -> some View {
         ScrollView {
@@ -83,35 +90,26 @@ private extension HomeView {
             }
             
             Button(role: .destructive) {
-                self.presenter.showConfirmationDialog = true
+                self.presenter.willDeleteJournalId = journal.id.uuidString
             } label: {
                 Label("Delete Journal", systemImage: "trash.fill")
             }
+        } preview: {
+            JournalDetailView(
+                presenter: Provider.provideJournalDetailPresenter(
+                    journal: journal
+                )
+            )
+            .id(UUID())
+            .frame(idealWidth: UIScreen.main.bounds.width)
         }
-        .confirmationDialog("This action cannot be undone.", isPresented: $presenter.showConfirmationDialog, titleVisibility: .visible) {
+        .confirmationDialog(
+            "This action cannot be undone.",
+            isPresented: .constant(!presenter.willDeleteJournalId.isEmpty),
+            titleVisibility: .visible
+        ) {
             Button("Delete Journal", role: .destructive) {
-                self.presenter.deleteJournal(withId: journal.id.uuidString)
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private func floatingButton() -> some View {
-        VStack {
-            Spacer()
-            
-            Button {
-                NavigationController.push(.addJournal)
-            } label: {
-                Image(systemName: "plus")
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(
-                        Capsule(style: .continuous)
-                            .background(.indigo)
-                            .clipShape(Capsule())
-                    )
+                self.presenter.deleteJournal(withId: presenter.willDeleteJournalId)
             }
         }
     }
@@ -138,6 +136,6 @@ private extension HomeView {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(presenter: HomePresenter(homeUseCase: Provider().provideHome()))
+        HomeView(presenter: Provider.provideHomePresenter())
     }
 }

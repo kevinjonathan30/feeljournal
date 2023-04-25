@@ -10,8 +10,7 @@ import Combine
 
 protocol FeelJournalRepositoryProtocol {
     func getJournalList(query: String) -> AnyPublisher<[JournalModel], Error>
-    func addJournal(from journal: JournalModel) -> AnyPublisher<Bool, Error>
-    func editJournal(from journal: JournalModel) -> AnyPublisher<Bool, Error>
+    func addEditJournal(from journal: JournalModel) -> AnyPublisher<Bool, Error>
     func deleteJournal(withId id: String) -> AnyPublisher<Bool, Error>
 }
 
@@ -38,18 +37,10 @@ extension FeelJournalRepository: FeelJournalRepositoryProtocol {
             .eraseToAnyPublisher()
     }
     
-    func addJournal(
+    func addEditJournal(
         from journal: JournalModel
     ) -> AnyPublisher<Bool, Error> {
-        return self.locale.addJournal(
-            from: JournalMapper.mapJournalModelToEntity(input: journal)
-        ).eraseToAnyPublisher()
-    }
-    
-    func editJournal(
-        from journal: JournalModel
-    ) -> AnyPublisher<Bool, Error> {
-        return self.locale.addJournal(
+        return self.locale.addEditJournal(
             from: JournalMapper.mapJournalModelToEntity(input: journal)
         ).eraseToAnyPublisher()
     }

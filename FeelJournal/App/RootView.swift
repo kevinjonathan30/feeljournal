@@ -8,22 +8,20 @@
 import SwiftUI
 
 struct RootView: View {
-    // Presenter
-    @EnvironmentObject var homePresenter: HomePresenter
-    @EnvironmentObject var analyticsPresenter: AnalyticsPresenter
-}
-
-extension RootView {
     var body: some View {
         TabView {
             NavigationView {
-                HomeView(presenter: homePresenter)
+                HomeView(
+                    presenter: Provider.provideHomePresenter()
+                )
             }.tabItem {
                 Label("My Journal", systemImage: "book.fill")
             }
 
             NavigationView {
-                AnalyticsView(presenter: analyticsPresenter)
+                AnalyticsView(
+                    presenter: Provider.provideAnalyticsPresenter()
+                )
             }.tabItem {
                 Label("Analytics", systemImage: "chart.xyaxis.line")
             }

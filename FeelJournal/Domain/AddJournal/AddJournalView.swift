@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddJournalView: View {
-    @ObservedObject var presenter: AddJournalPresenter
+    @StateObject var presenter: AddJournalPresenter
     
     var body: some View {
         VStack {
@@ -32,9 +32,6 @@ struct AddJournalView: View {
                 }
                 .disabled(presenter.bodyValue.isEmpty)
             }
-        }
-        .onAppear {
-            presenter.resetState()
         }
     }
 }
@@ -68,6 +65,6 @@ extension AddJournalView {
 
 struct AddJournalView_Previews: PreviewProvider {
     static var previews: some View {
-        AddJournalView(presenter: AddJournalPresenter(addJournalUseCase: Provider().provideAddJournal()))
+        AddJournalView(presenter: Provider.provideAddJournalPresenter())
     }
 }
