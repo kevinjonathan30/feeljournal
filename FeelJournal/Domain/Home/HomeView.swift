@@ -30,7 +30,10 @@ struct HomeView: View {
         }
         .navigationTitle("FeelJournal")
         .navigationBarTitleDisplayMode(.large)
-        .searchable(text: $presenter.searchQuery) // FIXME: Search Bar Scrolling Bug
+        .searchable(
+            text: $presenter.searchQuery,
+            placement: .navigationBarDrawer(displayMode: .always)
+        )
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
