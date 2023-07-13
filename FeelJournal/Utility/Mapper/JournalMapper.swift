@@ -18,6 +18,7 @@ class JournalMapper {
                 id: UUID(uuidString: result.id ?? "") ?? UUID(),
                 title: result.title,
                 createdAt: result.createdAt,
+                updatedAt: result.updatedAt,
                 body: result.body,
                 feelingIndex: result.feelingIndex
             )
@@ -33,6 +34,7 @@ class JournalMapper {
         journalEntity.id = journalModel.id.uuidString
         journalEntity.title = journalModel.title
         journalEntity.createdAt = journalModel.createdAt
+        journalEntity.updatedAt = journalModel.updatedAt
         journalEntity.body = journalModel.body
         journalEntity.feelingIndex = journalModel.feelingIndex
         return journalEntity

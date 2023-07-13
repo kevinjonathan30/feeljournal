@@ -36,6 +36,7 @@ extension JournalDetailPresenter {
             id: journal.id,
             title: journal.title,
             createdAt: journal.createdAt,
+            updatedAt: Date(),
             body: bodyValue,
             feelingIndex: NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue)
         )
