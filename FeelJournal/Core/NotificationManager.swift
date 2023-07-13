@@ -22,16 +22,16 @@ struct NotificationManager {
     
     // Schedule daily notification at user-selected time
     static func scheduleNotification(notificationTimeString: String) {
+        guard let date = DateHelper.dateFormatter.date(from: notificationTimeString) else {
+            return
+        }
+        
         let content = UNMutableNotificationContent()
         content.title = "Write in your journal"
         content.body = "Take a few minutes to write down your thoughts and feelings."
-        content.sound = UNNotificationSound.default
+        content.sound = .default
         
-        var dateComponents = DateComponents()
-        let calendar = Calendar.current
-        dateComponents.hour = calendar.component(.hour, from: DateHelper.dateFormatter.date(from: notificationTimeString) ?? Date())
-        dateComponents.minute = calendar.component(.minute, from: DateHelper.dateFormatter.date(from: notificationTimeString) ?? Date())
-        
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: "journalReminder", content: content, trigger: trigger)
         

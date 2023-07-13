@@ -38,7 +38,7 @@ extension LocaleDataSource: LocaleDataSourceProtocol {
             .toArray(ofType: JournalEntity.self)
         
         if !query.isEmpty {
-            journalEntities = journalEntities.filter({ ($0.title ?? "").contains(query) || ($0.body ?? "").contains(query) })
+            journalEntities = journalEntities.filter({ ($0.title?.lowercased() ?? "").contains(query.lowercased()) || ($0.body?.lowercased() ?? "").contains(query.lowercased()) })
         }
         
         return Just(Array(journalEntities)).setFailureType(to: Error.self).eraseToAnyPublisher()

@@ -12,6 +12,7 @@ public class JournalEntity: Object {
     @Persisted var id: String?
     @Persisted var title: String?
     @Persisted var createdAt: Date?
+    @Persisted var updatedAt: Date?
     @Persisted var body: String?
     @Persisted var feelingIndex: Double?
     

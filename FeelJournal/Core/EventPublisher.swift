@@ -9,16 +9,15 @@ import Foundation
 import Combine
 
 final class EventPublisher {
-    init() {}
-    
     static let shared = EventPublisher()
-
-    func journalPublisher() -> AnyPublisher<JournalEvent, Never> {
-        journalSubject
-            .eraseToAnyPublisher()
-    }
     
     let journalSubject = PassthroughSubject<JournalEvent, Never>()
+    
+    func journalPublisher() -> AnyPublisher<JournalEvent, Never> {
+        journalSubject.eraseToAnyPublisher()
+    }
+    
+    private init() {}
 }
 
 extension EventPublisher {

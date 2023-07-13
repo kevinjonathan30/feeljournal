@@ -14,7 +14,6 @@ struct AddJournalView: View {
         VStack {
             textView()
         }
-        .hideKeyboardOnTap()
         .navigationTitle("Add Journal")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -33,6 +32,7 @@ struct AddJournalView: View {
                 .disabled(presenter.bodyValue.isEmpty)
             }
         }
+        .hideKeyboardOnTap()
     }
 }
 
