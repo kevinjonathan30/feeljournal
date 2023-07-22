@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         
         FirebaseApp.configure()
+        LocalStorageManager.migrateRealm()
         return true
     }
     

@@ -11,6 +11,7 @@ struct JournalModel: Identifiable, Hashable {
     var id: UUID = UUID()
     var title: String?
     var createdAt: Date?
+    var updatedAt: Date?
     var body: String?
     var feelingIndex: Double?
 }

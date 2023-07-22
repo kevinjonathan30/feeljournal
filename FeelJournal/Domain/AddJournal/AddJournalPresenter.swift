@@ -26,10 +26,13 @@ class AddJournalPresenter: ObservableObject {
 
 extension AddJournalPresenter {
     func addJournal() {
+        let currentDate: Date = Date()
+        
         var journal = JournalModel()
-        journal.title = Date().convertToFullDateInString()
+        journal.title = currentDate.convertToFullDateInString()
         journal.body = bodyValue
-        journal.createdAt = Date()
+        journal.createdAt = currentDate
+        journal.updatedAt = currentDate
         journal.feelingIndex = NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue)
         
         addJournalUseCase.addJournal(journal: journal)
