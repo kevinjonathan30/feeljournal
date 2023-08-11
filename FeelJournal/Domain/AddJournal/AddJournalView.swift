@@ -17,8 +17,61 @@ struct AddJournalView: View {
                 Text("How are you feeling today?")
                     .font(.title2)
                 
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        VStack {
+                            Text("😢")
+                                .font(.title)
+                            
+                            Text("Sad")
+                                .foregroundColor(.white)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(.indigo)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        VStack {
+                            Text("😐")
+                                .font(.title)
+                            
+                            Text("Neutral")
+                                .foregroundColor(.white)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(.indigo)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        VStack {
+                            Text("😀")
+                                .font(.title)
+                            
+                            Text("Happy")
+                                .foregroundColor(.white)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(.indigo)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                    }
+                }.padding(.vertical)
+                
+                Text("Describe your state of mind")
+                    .font(.title2)
+                
                 TextField(
-                    "Describe your state of mind",
+                    "Write here..",
                     text: $presenter.bodyValue,
                     axis: .vertical
                 )
