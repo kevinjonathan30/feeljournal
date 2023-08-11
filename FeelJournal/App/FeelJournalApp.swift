@@ -14,7 +14,7 @@ struct FeelJournalApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ViewRouter(router: NavigationController.router) { path in
+                ViewRouter(router: NavigationController.getRouter()) { path in
                     switch path {
                     case .root:
                         RootView()

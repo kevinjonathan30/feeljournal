@@ -9,10 +9,28 @@ import SwiftUI
 
 struct AddJournalView: View {
     @StateObject var presenter: AddJournalPresenter
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
-            textView()
+            VStack(alignment: .leading) {
+                Text("How are you feeling today?")
+                    .font(.title2)
+                
+                TextField(
+                    "Describe your state of mind",
+                    text: $presenter.bodyValue,
+                    axis: .vertical
+                )
+                .multilineTextAlignment(.leading)
+                .lineLimit(10, reservesSpace: true)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(getColorScheme())
+                )
+            }
+            .padding()
         }
         .navigationTitle("Add Journal")
         .navigationBarTitleDisplayMode(.inline)
@@ -36,30 +54,14 @@ struct AddJournalView: View {
     }
 }
 
-// MARK: ViewBuilder
+// MARK: Helper
 
-extension AddJournalView {
-    @ViewBuilder
-    func textView() -> some View {
-        VStack {
-            Text("How are you feeling today?")
-                .font(.title3)
-                .bold()
-            
-            TextField(
-                "Write about your day here..",
-                text: $presenter.bodyValue,
-                axis: .vertical
-            )
-            .multilineTextAlignment(.leading)
-            .lineLimit(10, reservesSpace: true)
-            .padding(8)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.indigo)
-            )
-            .padding()
+private extension AddJournalView {
+    private func getColorScheme() -> Color {
+        if colorScheme == .dark {
+            return .indigo.opacity(0.2)
         }
+        return .indigo.opacity(0.1)
     }
 }
 

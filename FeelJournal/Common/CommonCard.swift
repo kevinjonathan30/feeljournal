@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CommonCard: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     private let leading: AnyView?
     private let title: String
     private let subtitle: String?
@@ -40,7 +42,7 @@ struct CommonCard: View {
                     
                     if action != nil {
                         Image(systemName: "chevron.right")
-                            .opacity(0.8)
+                            .opacity(0.5)
                     }
                 }.padding(.bottom, 1)
                 
@@ -52,15 +54,25 @@ struct CommonCard: View {
             }
         }
         .padding()
-        .background( // TODO: Use Glassmorphic effect
+        .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(.quaternary)
-                .opacity(0.6)
+                .fill(getColorScheme())
         )
         .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .onTapGesture {
             action?()
         }
+    }
+}
+
+// MARK: Helper
+
+private extension CommonCard {
+    private func getColorScheme() -> Color {
+        if colorScheme == .dark {
+            return .indigo.opacity(0.2)
+        }
+        return .indigo.opacity(0.1)
     }
 }
 

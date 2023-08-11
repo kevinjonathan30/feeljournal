@@ -8,7 +8,11 @@
 import UIKit
 
 struct NavigationController {
-    static var router = Router<Path>(root: .root)
+    static private var router = Router<Path>(root: .root)
+    
+    static func getRouter() -> Router<Path> {
+        return router
+    }
     
     static func push(_ path: Path) {
         router.push(path)
