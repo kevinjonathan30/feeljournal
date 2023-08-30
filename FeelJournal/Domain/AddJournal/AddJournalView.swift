@@ -14,59 +14,6 @@ struct AddJournalView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text("How are you feeling today?")
-                    .font(.title2)
-                
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        VStack {
-                            Text("😢")
-                                .font(.title)
-                            
-                            Text("Sad")
-                                .foregroundColor(.white)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(.indigo)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                    }
-                    
-                    Button {
-                        
-                    } label: {
-                        VStack {
-                            Text("😐")
-                                .font(.title)
-                            
-                            Text("Neutral")
-                                .foregroundColor(.white)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(.indigo)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                    }
-                    
-                    Button {
-                        
-                    } label: {
-                        VStack {
-                            Text("😀")
-                                .font(.title)
-                            
-                            Text("Happy")
-                                .foregroundColor(.white)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(.indigo)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                    }
-                }.padding(.vertical)
-                
                 Text("Describe your state of mind")
                     .font(.title2)
                 
@@ -100,7 +47,7 @@ struct AddJournalView: View {
                     Text("Done")
                         .bold()
                 }
-                .disabled(presenter.bodyValue.isEmpty)
+                .disabled(presenter.bodyValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
         }
         .hideKeyboardOnTap()
