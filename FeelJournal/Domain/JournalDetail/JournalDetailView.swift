@@ -54,6 +54,7 @@ struct JournalDetailView: View {
                         Text("Done")
                             .bold()
                     }
+                    .disabled(presenter.bodyValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
         }
