@@ -24,6 +24,7 @@ final class Router<T: Hashable>: ObservableObject {
     
     /// Pop from current screen, go back to previous screen
     func pop() {
+        guard !paths.isEmpty else { return }
         paths.removeLast()
     }
     
@@ -35,6 +36,7 @@ final class Router<T: Hashable>: ObservableObject {
     
     /// Quickly pop from current screen to the root screen
     func popToRoot() {
+        guard !paths.isEmpty else { return }
         paths.removeAll()
     }
 }

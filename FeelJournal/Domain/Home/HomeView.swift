@@ -11,23 +11,21 @@ struct HomeView: View {
     @StateObject var presenter: HomePresenter
     
     var body: some View {
-        NavigationView {
-            VStack {
-                ZStack {
-                    switch presenter.viewState {
-                    case .loading:
-                        ProgressView()
-                    case .fail:
-                        headlineText(text: "Failed to Get Journal Data")
-                    case .empty:
-                        headlineText(text: "No Journal")
-                    case .loaded:
-                        loadedView()
-                    }
-                    
-                    CommonFloatingButton()
-                        .isHidden(presenter.viewState == .loading)
+        VStack {
+            ZStack {
+                switch presenter.viewState {
+                case .loading:
+                    ProgressView()
+                case .fail:
+                    headlineText(text: "Failed to Get Journal Data")
+                case .empty:
+                    headlineText(text: "No Journal")
+                case .loaded:
+                    loadedView()
                 }
+                
+                CommonFloatingButton()
+                    .isHidden(presenter.viewState == .loading)
             }
             .navigationTitle("FeelJournal")
             .navigationBarTitleDisplayMode(.large)
@@ -40,17 +38,17 @@ struct HomeView: View {
                     }
                 }
             }
-        }
-        .searchable(
-            text: $presenter.searchQuery,
-            placement: .navigationBarDrawer(displayMode: .always)
-        )
-        .sheet(isPresented: $presenter.showOnboarding) {
-            OnboardingView()
-                .action { presenter.setOnboardingDone() }
-                .presentationDetents([.large])
-                .presentationDragIndicator(.hidden)
-                .interactiveDismissDisabled(true)
+            .searchable(
+                text: $presenter.searchQuery,
+                placement: .navigationBarDrawer(displayMode: .always)
+            )
+            .sheet(isPresented: $presenter.showOnboarding) {
+                OnboardingView()
+                    .action { presenter.setOnboardingDone() }
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.hidden)
+                    .interactiveDismissDisabled(true)
+            }
         }
     }
 }

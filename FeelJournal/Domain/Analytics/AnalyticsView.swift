@@ -12,47 +12,45 @@ struct AnalyticsView: View {
     @StateObject var presenter: AnalyticsPresenter
     
     var body: some View {
-        NavigationView {
-            VStack {
-                ZStack {
-                    VStack {
-                        Picker("Date Filter", selection: $presenter.selectedFilter) {
-                            Text("Last 7 days").tag(0)
-                            Text("Last 30 days").tag(1)
-                        }
-                        .pickerStyle(.segmented)
-                        .padding(.horizontal)
-                        .onChange(of: presenter.selectedFilter) { _ in
-                            presenter.getJournalList()
+        VStack {
+            ZStack {
+                VStack {
+                    Picker("Date Filter", selection: $presenter.selectedFilter) {
+                        Text("Last 7 days").tag(0)
+                        Text("Last 30 days").tag(1)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal)
+                    .onChange(of: presenter.selectedFilter) { _ in
+                        presenter.getJournalList()
+                    }
+                    
+                    List {
+                        Section(header: Text("My Feeling Stats")) {
+                            chartView()
+                                .padding(.vertical)
                         }
                         
-                        List {
-                            Section(header: Text("My Feeling Stats")) {
-                                chartView()
-                                    .padding(.vertical)
-                            }
-                            
-                            Section(header: Text("Average Feeling")) {
-                                VStack(alignment: .leading) {
-                                    if !presenter.journals.isEmpty {
-                                        Gauge(value: presenter.averageFeeling, in: -1...1) {
-                                            Color.clear
-                                        }
-                                        .gaugeStyle(.accessoryLinear)
-                                        .tint(Gradient(colors: [.indigo, .purple]))
-                                        .padding(.top, 8)
+                        Section(header: Text("Average Feeling")) {
+                            VStack(alignment: .leading) {
+                                if !presenter.journals.isEmpty {
+                                    Gauge(value: presenter.averageFeeling, in: -1...1) {
+                                        Color.clear
                                     }
-                                    
-                                    Text(getAverageFeelingStringByIndex())
-                                        .font(.headline)
-                                        .padding(.vertical, 4)
+                                    .gaugeStyle(.accessoryLinear)
+                                    .tint(Gradient(colors: [.indigo, .purple]))
+                                    .padding(.top, 8)
                                 }
+                                
+                                Text(getAverageFeelingStringByIndex())
+                                    .font(.headline)
+                                    .padding(.vertical, 4)
                             }
                         }
                     }
-                    
-                    CommonFloatingButton()
                 }
+                
+                CommonFloatingButton()
             }
             .navigationBarTitleDisplayMode(.large)
             .navigationTitle("Analytics")

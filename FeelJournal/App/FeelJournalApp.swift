@@ -10,29 +10,35 @@ import SwiftUI
 @main
 struct FeelJournalApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @State private var selectedItem = 0
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ViewRouter(router: NavigationController.getRouter()) { path in
-                    switch path {
-                    case .root:
-                        RootView()
-                    case .addJournal:
-                        AddJournalView(
-                            presenter: Provider.provideAddJournalPresenter()
-                        )
-                    case .journalDetail(let journal):
-                        JournalDetailView(
-                            presenter: Provider.provideJournalDetailPresenter(
-                                journal: journal
-                            )
-                        )
-                    case .settings:
-                        SettingsView()
-                    }
-                }
+            TabView(selection: $selectedItem) {
+                provideJournalTab()
+                provideAnalyticsTab()
             }
         }
+        .onChange(of: selectedItem) { _ in
+            NavigationController.popToRoot()
+        }
+    }
+}
+
+extension FeelJournalApp {
+    private func provideJournalTab() -> some View {
+        RootView(selectedTab: 0)
+            .tag(0)
+            .tabItem {
+                Label("My Journal", systemImage: "book.fill")
+            }
+    }
+    
+    private func provideAnalyticsTab() -> some View {
+        RootView(selectedTab: 1)
+            .tag(1)
+            .tabItem {
+                Label("Analytics", systemImage: "chart.xyaxis.line")
+            }
     }
 }

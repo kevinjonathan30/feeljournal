@@ -22,6 +22,10 @@ struct NavigationController {
         router.pop()
     }
     
+    static func popToRoot() {
+        router.popToRoot()
+    }
+    
     static func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) {
         switch shortcutItem.type {
         case "addJournal":
