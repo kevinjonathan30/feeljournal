@@ -10,19 +10,17 @@ import SwiftUI
 struct RootView: View {
     var body: some View {
         TabView {
-            NavigationView {
-                HomeView(
-                    presenter: Provider.provideHomePresenter()
-                )
-            }.tabItem {
+            HomeView(
+                presenter: Provider.provideHomePresenter()
+            )
+            .tabItem {
                 Label("My Journal", systemImage: "book.fill")
             }
-
-            NavigationView {
-                AnalyticsView(
-                    presenter: Provider.provideAnalyticsPresenter()
-                )
-            }.tabItem {
+            
+            AnalyticsView(
+                presenter: Provider.provideAnalyticsPresenter()
+            )
+            .tabItem {
                 Label("Analytics", systemImage: "chart.xyaxis.line")
             }
         }

@@ -11,38 +11,40 @@ struct HomeView: View {
     @StateObject var presenter: HomePresenter
     
     var body: some View {
-        VStack {
-            ZStack {
-                switch presenter.viewState {
-                case .loading:
-                    ProgressView()
-                case .fail:
-                    headlineText(text: "Failed to Get Journal Data")
-                case .empty:
-                    headlineText(text: "No Journal")
-                case .loaded:
-                    loadedView()
+        NavigationView {
+            VStack {
+                ZStack {
+                    switch presenter.viewState {
+                    case .loading:
+                        ProgressView()
+                    case .fail:
+                        headlineText(text: "Failed to Get Journal Data")
+                    case .empty:
+                        headlineText(text: "No Journal")
+                    case .loaded:
+                        loadedView()
+                    }
+                    
+                    CommonFloatingButton()
+                        .isHidden(presenter.viewState == .loading)
                 }
-                
-                CommonFloatingButton()
-                    .isHidden(presenter.viewState == .loading)
+            }
+            .navigationTitle("FeelJournal")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        NavigationController.push(.settings)
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                    }
+                }
             }
         }
-        .navigationTitle("FeelJournal")
-        .navigationBarTitleDisplayMode(.large)
         .searchable(
             text: $presenter.searchQuery,
             placement: .navigationBarDrawer(displayMode: .always)
         )
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button {
-                    NavigationController.push(.settings)
-                } label: {
-                    Image(systemName: "gearshape.fill")
-                }
-            }
-        }
         .sheet(isPresented: $presenter.showOnboarding) {
             OnboardingView()
                 .action { presenter.setOnboardingDone() }
