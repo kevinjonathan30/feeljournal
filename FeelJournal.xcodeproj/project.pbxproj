@@ -41,6 +41,8 @@
 		5DAACB6D292CD932009584B8 /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB6C292CD932009584B8 /* JournalModel.swift */; };
 		5DAACB71292F906C009584B8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB70292F906C009584B8 /* Router.swift */; };
 		5DAACB74292F98AF009584B8 /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAACB73292F98AF009584B8 /* JournalDetailView.swift */; };
+		5DBAE4842AE01034002AF3BF /* TabState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBAE4832AE01034002AF3BF /* TabState.swift */; };
+		5DBAE4872AE0235D002AF3BF /* CommonTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBAE4862AE0235D002AF3BF /* CommonTabView.swift */; };
 		5DCCD4FA29D2E70B00575BB8 /* TrackerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCD4F929D2E70B00575BB8 /* TrackerManager.swift */; };
 		5DCCD4FC29D2E84400575BB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DCCD4FB29D2E84400575BB8 /* LaunchScreen.storyboard */; };
 		5DCCD4FE29D5910500575BB8 /* FeelJournalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCD4FD29D5910500575BB8 /* FeelJournalUITests.swift */; };
@@ -120,6 +122,8 @@
 		5DAACB6C292CD932009584B8 /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalModel.swift; sourceTree = "<group>"; };
 		5DAACB70292F906C009584B8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5DAACB73292F98AF009584B8 /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
+		5DBAE4832AE01034002AF3BF /* TabState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabState.swift; sourceTree = "<group>"; };
+		5DBAE4862AE0235D002AF3BF /* CommonTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTabView.swift; sourceTree = "<group>"; };
 		5DCCD4F929D2E70B00575BB8 /* TrackerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerManager.swift; sourceTree = "<group>"; };
 		5DCCD4FB29D2E84400575BB8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DCCD4FD29D5910500575BB8 /* FeelJournalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelJournalUITests.swift; sourceTree = "<group>"; };
@@ -376,7 +380,7 @@
 		5D9E526F2979199700335294 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				5D9E5270297919A600335294 /* ViewState.swift */,
+				5DBAE4852AE021D8002AF3BF /* State */,
 				5D9E526629790D7300335294 /* CustomError.swift */,
 			);
 			path = Enum;
@@ -400,11 +404,21 @@
 			path = JournalDetail;
 			sourceTree = "<group>";
 		};
+		5DBAE4852AE021D8002AF3BF /* State */ = {
+			isa = PBXGroup;
+			children = (
+				5DBAE4832AE01034002AF3BF /* TabState.swift */,
+				5D9E5270297919A600335294 /* ViewState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		5DD18B2429BB2339008E6FE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				5DD18B2629BB2428008E6FE5 /* CommonCard.swift */,
 				5DF3C0F129E6306C00DF6622 /* CommonFloatingButton.swift */,
+				5DBAE4862AE0235D002AF3BF /* CommonTabView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -653,6 +667,7 @@
 				5DED78E529F7DDA20076F8BF /* SceneDelegate.swift in Sources */,
 				5D9E52782979460E00335294 /* AddJournalInteractor.swift in Sources */,
 				5D9E526029790B9B00335294 /* LocaleDataSource.swift in Sources */,
+				5DBAE4872AE0235D002AF3BF /* CommonTabView.swift in Sources */,
 				5D47AB73290441E700B779A2 /* RootView.swift in Sources */,
 				5DDA803729CF4C530049589A /* NotificationManager.swift in Sources */,
 				5D9E52542979072200335294 /* Provider.swift in Sources */,
@@ -664,6 +679,7 @@
 				5D9E526729790D7300335294 /* CustomError.swift in Sources */,
 				5DD18B2329B5F27C008E6FE5 /* EventPublisher.swift in Sources */,
 				5D9E5271297919A600335294 /* ViewState.swift in Sources */,
+				5DBAE4842AE01034002AF3BF /* TabState.swift in Sources */,
 				5DE04DB429CDA28B008A79A8 /* JournalDetailPresenter.swift in Sources */,
 				5DE04DB629CDA3FE008A79A8 /* JournalDetailInteractor.swift in Sources */,
 				5D9E526E29790F1E00335294 /* JournalMapper.swift in Sources */,

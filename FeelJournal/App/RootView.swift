@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct RootView: View {
-    var selectedTab: Int = 0
+    var selectedTab: TabState = .home
     
     var body: some View {
         NavigationStack {
             ViewRouter(router: NavigationController.getRouter()) { path in
                 switch path {
                 case .root:
-                    determineRootView(index: selectedTab)
+                    determineRootView(selectedTab: selectedTab)
                 case .addJournal:
                     AddJournalView(
                         presenter: Provider.provideAddJournalPresenter()
@@ -35,12 +35,14 @@ struct RootView: View {
 }
 
 extension RootView {
-    @ViewBuilder func determineRootView(index: Int) -> some View {
-        if index == 0 {
+    @ViewBuilder 
+    func determineRootView(selectedTab: TabState) -> some View {
+        switch selectedTab {
+        case .home:
             HomeView(
                 presenter: Provider.provideHomePresenter()
             )
-        } else {
+        case .analytics:
             AnalyticsView(
                 presenter: Provider.provideAnalyticsPresenter()
             )
@@ -50,6 +52,6 @@ extension RootView {
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView(selectedTab: 0)
+        RootView(selectedTab: .home)
     }
 }
