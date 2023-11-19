@@ -56,7 +56,8 @@ struct CommonCard: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(getColorScheme())
+                .fill(getQuaternaryColor()) // TODO: Change to Color Scheme
+                .opacity(0.6)
         )
         .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .onTapGesture {
@@ -73,6 +74,10 @@ private extension CommonCard {
             return .indigo.opacity(0.2)
         }
         return .indigo.opacity(0.1)
+    }
+    
+    private func getQuaternaryColor() -> HierarchicalShapeStyle {
+        return .quaternary
     }
 }
 

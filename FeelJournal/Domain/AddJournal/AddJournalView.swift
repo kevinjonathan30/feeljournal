@@ -13,24 +13,25 @@ struct AddJournalView: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
-                Text("Describe your state of mind")
-                    .font(.title2)
+            VStack {
+                Text("How are you feeling today?")
+                    .font(.title3)
+                    .bold()
                 
                 TextField(
-                    "Write here..",
+                    "Write about your day here..",
                     text: $presenter.bodyValue,
                     axis: .vertical
                 )
                 .multilineTextAlignment(.leading)
                 .lineLimit(10, reservesSpace: true)
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(getColorScheme())
+                .padding(8)
+                .overlay( // TODO: Change to Color Scheme
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.indigo)
                 )
+                .padding()
             }
-            .padding()
         }
         .navigationTitle("Add Journal")
         .navigationBarTitleDisplayMode(.inline)
