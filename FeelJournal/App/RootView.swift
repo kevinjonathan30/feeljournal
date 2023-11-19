@@ -8,29 +8,50 @@
 import SwiftUI
 
 struct RootView: View {
+    var selectedTab: TabState = .home
+    
     var body: some View {
-        TabView {
-            NavigationView {
-                HomeView(
-                    presenter: Provider.provideHomePresenter()
-                )
-            }.tabItem {
-                Label("My Journal", systemImage: "book.fill")
+        NavigationStack {
+            ViewRouter(router: NavigationController.getRouter()) { path in
+                switch path {
+                case .root:
+                    determineRootView(selectedTab: selectedTab)
+                case .addJournal:
+                    AddJournalView(
+                        presenter: Provider.provideAddJournalPresenter()
+                    )
+                case .journalDetail(let journal):
+                    JournalDetailView(
+                        presenter: Provider.provideJournalDetailPresenter(
+                            journal: journal
+                        )
+                    )
+                case .settings:
+                    SettingsView()
+                }
             }
+        }
+    }
+}
 
-            NavigationView {
-                AnalyticsView(
-                    presenter: Provider.provideAnalyticsPresenter()
-                )
-            }.tabItem {
-                Label("Analytics", systemImage: "chart.xyaxis.line")
-            }
+extension RootView {
+    @ViewBuilder 
+    func determineRootView(selectedTab: TabState) -> some View {
+        switch selectedTab {
+        case .home:
+            HomeView(
+                presenter: Provider.provideHomePresenter()
+            )
+        case .analytics:
+            AnalyticsView(
+                presenter: Provider.provideAnalyticsPresenter()
+            )
         }
     }
 }
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView()
+        RootView(selectedTab: .home)
     }
 }

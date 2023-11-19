@@ -27,28 +27,28 @@ struct HomeView: View {
                 CommonFloatingButton()
                     .isHidden(presenter.viewState == .loading)
             }
-        }
-        .navigationTitle("FeelJournal")
-        .navigationBarTitleDisplayMode(.large)
-        .searchable(
-            text: $presenter.searchQuery,
-            placement: .navigationBarDrawer(displayMode: .always)
-        )
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button {
-                    NavigationController.push(.settings)
-                } label: {
-                    Image(systemName: "gearshape.fill")
+            .navigationTitle("FeelJournal")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        NavigationController.push(.settings)
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                    }
                 }
             }
-        }
-        .sheet(isPresented: $presenter.showOnboarding) {
-            OnboardingView()
-                .action { presenter.setOnboardingDone() }
-                .presentationDetents([.large])
-                .presentationDragIndicator(.hidden)
-                .interactiveDismissDisabled(true)
+            .searchable(
+                text: $presenter.searchQuery,
+                placement: .navigationBarDrawer(displayMode: .always)
+            )
+            .sheet(isPresented: $presenter.showOnboarding) {
+                OnboardingView()
+                    .action { presenter.setOnboardingDone() }
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.hidden)
+                    .interactiveDismissDisabled(true)
+            }
         }
     }
 }

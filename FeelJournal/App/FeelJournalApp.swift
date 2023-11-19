@@ -13,26 +13,34 @@ struct FeelJournalApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ViewRouter(router: NavigationController.router) { path in
-                    switch path {
-                    case .root:
-                        RootView()
-                    case .addJournal:
-                        AddJournalView(
-                            presenter: Provider.provideAddJournalPresenter()
-                        )
-                    case .journalDetail(let journal):
-                        JournalDetailView(
-                            presenter: Provider.provideJournalDetailPresenter(
-                                journal: journal
-                            )
-                        )
-                    case .settings:
-                        SettingsView()
-                    }
-                }
-            }
+            CommonTabView(
+                tabItems: [
+                    provideTab(
+                        selectedTab: .home,
+                        alt: "My Journal",
+                        systemImage: "book.fill"
+                    ),
+                    provideTab(
+                        selectedTab: .analytics,
+                        alt: "Analytics",
+                        systemImage: "chart.xyaxis.line"
+                    )
+                ]
+            )
         }
+    }
+}
+
+extension FeelJournalApp {
+    private func provideTab(
+        selectedTab: TabState,
+        alt: String,
+        systemImage: String
+    ) -> some View {
+        RootView(selectedTab: selectedTab)
+            .tag(selectedTab)
+            .tabItem {
+                Label(alt, systemImage: systemImage)
+            }
     }
 }

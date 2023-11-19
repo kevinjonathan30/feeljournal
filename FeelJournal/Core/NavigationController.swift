@@ -8,21 +8,40 @@
 import UIKit
 
 struct NavigationController {
-    static var router = Router<Path>(root: .root)
+    static private var selectedTab: TabState = .home
+    static private var homeRouter = Router<Path>(root: .root)
+    static private var analyticsRouter = Router<Path>(root: .root)
+    
+    static func setSelectedTab(newSelectedTab: TabState) {
+        selectedTab = newSelectedTab
+    }
+    
+    static func getRouter() -> Router<Path> {
+        switch selectedTab {
+        case .home:
+            return homeRouter
+        case .analytics:
+            return analyticsRouter
+        }
+    }
     
     static func push(_ path: Path) {
-        router.push(path)
+        getRouter().push(path)
     }
     
     static func pop() {
-        router.pop()
+        getRouter().pop()
+    }
+    
+    static func popToRoot() {
+        getRouter().popToRoot()
     }
     
     static func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) {
         switch shortcutItem.type {
         case "addJournal":
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                router.push(.addJournal)
+                getRouter().push(.addJournal)
             }
         default:
             break
