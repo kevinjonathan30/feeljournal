@@ -15,7 +15,7 @@ struct RootView: View {
             ViewRouter(router: NavigationController.getRouter()) { path in
                 switch path {
                 case .root:
-                    determineRootView(selectedTab: selectedTab)
+                    determineRootView()
                 case .addJournal:
                     AddJournalView(
                         presenter: Provider.provideAddJournalPresenter()
@@ -36,8 +36,8 @@ struct RootView: View {
 
 extension RootView {
     @ViewBuilder 
-    func determineRootView(selectedTab: TabState) -> some View {
-        switch selectedTab {
+    func determineRootView() -> some View {
+        switch self.selectedTab {
         case .home:
             HomeView(
                 presenter: Provider.provideHomePresenter()
