@@ -37,7 +37,6 @@ class HomePresenter: ObservableObject {
 extension HomePresenter {
     func getOnboardingStatus() {
         guard LocalStorageManager.getValue(key: "onboarding") == nil else {
-            TrackerManager.requestTrackingAuthorization()
             return
         }
         
@@ -50,7 +49,6 @@ extension HomePresenter {
     func setOnboardingDone() {
         showOnboarding = false
         LocalStorageManager.setValue(key: "onboarding", value: true)
-        TrackerManager.requestTrackingAuthorization()
     }
 }
 
