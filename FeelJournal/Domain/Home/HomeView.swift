@@ -79,7 +79,8 @@ private extension HomeView {
     private func cardView(journal: JournalModel) -> some View {
         CommonCard(
             leading: AnyView(Text(getFeelingByIndex(feelingIndex: journal.feelingIndex ?? 0.0))),
-            title: (journal.createdAt ?? Date()).convertToFullDateInString(),
+            headline: (journal.createdAt ?? Date()).convertToFullDateInString(),
+            title: journal.title ?? "",
             subtitle: journal.body ?? ""
         )
         .action {

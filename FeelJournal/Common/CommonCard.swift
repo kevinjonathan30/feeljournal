@@ -11,6 +11,7 @@ struct CommonCard: View {
     @Environment(\.colorScheme) var colorScheme
     
     private let leading: AnyView?
+    private let headline: String
     private let title: String
     private let subtitle: String?
     var action: (() -> Void)?
@@ -20,44 +21,49 @@ struct CommonCard: View {
     ///   - leading: Card leading
     ///   - title: Card title
     ///   - subtitle: Card subtitle
-    init(leading: AnyView?, title: String, subtitle: String?) {
+    init(leading: AnyView?, headline: String, title: String, subtitle: String?) {
         self.leading = leading
+        self.headline = headline
         self.title = title
         self.subtitle = subtitle
     }
     
     var body: some View {
-        HStack {
-            if let leading = leading {
-                leading
-            }
-            
+        HStack(alignment: .top) {
             VStack(alignment: .leading) {
+                HStack {
+                    Text(headline)
+                        .font(.caption)
+                        .foregroundStyle(.indigo)
+                        .bold()
+                    
+                    Spacer()
+                }.padding(.bottom, 1)
+                
                 HStack {
                     Text(title)
                         .bold()
                         .opacity(0.8)
                     
                     Spacer()
-                    
-                    if action != nil {
-                        Image(systemName: "chevron.right")
-                            .opacity(0.5)
-                    }
                 }.padding(.bottom, 1)
                 
                 if let subtitle = subtitle {
                     Text(subtitle)
-                        .lineLimit(1)
+                        .lineLimit(5)
                         .opacity(0.5)
                 }
+            }
+            
+            if let leading = leading {
+                leading
             }
         }
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(getQuaternaryColor()) // TODO: Change to Color Scheme
-                .opacity(0.6)
+                .opacity(0.5)
         )
         .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .onTapGesture {

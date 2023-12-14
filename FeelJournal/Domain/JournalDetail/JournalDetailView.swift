@@ -14,7 +14,7 @@ struct JournalDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text((presenter.journal.createdAt ?? Date()).convertToFullDateInString())
+                Text(presenter.journal.title ?? "")
                     .font(.title2)
                     .bold()
                     .padding(.bottom, 8)
