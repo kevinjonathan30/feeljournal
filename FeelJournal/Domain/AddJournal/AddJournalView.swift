@@ -66,8 +66,10 @@ private extension AddJournalView {
     }
 }
 
-struct AddJournalView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddJournalView(presenter: Provider.provideAddJournalPresenter())
-    }
+// MARK: Preview
+
+#Preview {
+    AddJournalView(
+        presenter: Provider.provideAddJournalPresenter()
+    )
 }

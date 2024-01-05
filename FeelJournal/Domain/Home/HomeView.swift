@@ -138,8 +138,8 @@ private extension HomeView {
 
 // MARK: Preview
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(presenter: Provider.provideHomePresenter())
-    }
+#Preview {
+    HomeView(
+        presenter: Provider.provideHomePresenter()
+    )
 }

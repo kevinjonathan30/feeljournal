@@ -43,14 +43,8 @@ extension JournalDetailPresenter {
         
         journalDetailUseCase.editJournal(journal: newJournal)
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure:
-                    break
-                case .finished:
-                    break
-                }
-            }, receiveValue: { isSuccess in
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { isSuccess in
                 if isSuccess {
                     EventPublisher.shared.journalSubject.send(.refreshJournalList)
                 }

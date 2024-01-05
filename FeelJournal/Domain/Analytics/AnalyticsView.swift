@@ -155,8 +155,8 @@ private extension AnalyticsView {
 
 // MARK: Preview
 
-struct AnalyticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnalyticsView(presenter: Provider.provideAnalyticsPresenter())
-    }
+#Preview {
+    AnalyticsView(
+        presenter: Provider.provideAnalyticsPresenter()
+    )
 }

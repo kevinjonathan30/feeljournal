@@ -68,19 +68,16 @@ struct JournalDetailView: View {
 
 // MARK: Preview
 
-struct JournalDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let journal = JournalModel(
-            id: UUID(),
-            title: "Hello world",
-            createdAt: Date(),
-            body: "This is a sample body",
-            feelingIndex: 0
-        )
-        JournalDetailView(
-            presenter: Provider.provideJournalDetailPresenter(
-                journal: journal
+#Preview {
+    JournalDetailView(
+        presenter: Provider.provideJournalDetailPresenter(
+            journal: JournalModel(
+                id: UUID(),
+                title: "Hello world",
+                createdAt: Date(),
+                body: "This is a sample body",
+                feelingIndex: 0
             )
         )
-    }
+    )
 }

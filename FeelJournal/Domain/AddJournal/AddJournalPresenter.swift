@@ -37,18 +37,12 @@ extension AddJournalPresenter {
         
         addJournalUseCase.addJournal(journal: journal)
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure:
-                    break
-                case .finished:
-                    break
-                }
-            }, receiveValue: { isSuccess in
-                if isSuccess {
-                    EventPublisher.shared.journalSubject.send(.refreshJournalList)
-                    NavigationController.pop()
-                }
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { isSuccess in
+                guard isSuccess else { return }
+                
+                EventPublisher.shared.journalSubject.send(.refreshJournalList)
+                NavigationController.pop()
             })
             .store(in: &cancellables)
     }

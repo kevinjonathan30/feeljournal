@@ -13,7 +13,12 @@ class AnalyticsPresenter: ObservableObject {
     @Published var selectedFilter = 0
     @Published var viewState: ViewState = .loading
     @Published var message: String = ""
-    @Published var averageFeeling: Double = -3
+    var averageFeeling: Double {
+        guard !self.journals.isEmpty else { return -3 }
+        
+        let feelingSum = self.journals.map({ $0.feelingIndex ?? 0.0 }).reduce(0, +)
+        return feelingSum / Double(self.journals.count)
+    }
     
     private let analyticsUseCase: AnalyticsUseCase
     
@@ -67,8 +72,6 @@ extension AnalyticsPresenter {
                         break
                     }
                     
-                    self.determineAverageFeeling()
-                    
                     if self.journals.isEmpty {
                         self.viewState = .empty
                         self.message = "No Data"
@@ -78,15 +81,5 @@ extension AnalyticsPresenter {
                 }
             })
             .store(in: &cancellables)
-    }
-    
-    func determineAverageFeeling() {
-        guard !self.journals.isEmpty else {
-            self.averageFeeling = -3
-            return
-        }
-        
-        let feelingSum = self.journals.map({ $0.feelingIndex ?? 0.0 }).reduce(0, +)
-        self.averageFeeling = feelingSum / Double(self.journals.count)
     }
 }

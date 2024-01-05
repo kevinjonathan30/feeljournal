@@ -62,8 +62,6 @@ private extension SettingsView {
 
 // MARK: Preview
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
+#Preview {
+    SettingsView()
 }
