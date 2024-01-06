@@ -12,6 +12,9 @@ class JournalDetailPresenter: ObservableObject {
     @Published var showConfirmationDialog = false
     @Published var titleValue = ""
     @Published var bodyValue = ""
+    var feelingIndex: Double {
+        return NaturalLanguageProcessor.processSentimentAnalysis(input: self.bodyValue)
+    }
     
     private let journalDetailUseCase: JournalDetailUseCase
     let journal: JournalModel
@@ -40,7 +43,7 @@ extension JournalDetailPresenter {
             createdAt: journal.createdAt,
             updatedAt: Date(),
             body: bodyValue,
-            feelingIndex: NaturalLanguageProcessor.processSentimentAnalysis(input: bodyValue)
+            feelingIndex: feelingIndex
         )
         
         journalDetailUseCase.editJournal(journal: newJournal)

@@ -13,29 +13,30 @@ struct AddJournalView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                TextField(
-                    "How are you feeling today?",
-                    text: $presenter.titleValue
-                )
-                .font(.title2)
-                .bold()
-                .padding(.bottom, 8)
-                
-                TextField(
-                    "Write about your day here..",
-                    text: $presenter.bodyValue,
-                    axis: .vertical
-                )
-                .focused($isInEditMode)
-                .multilineTextAlignment(.leading)
-                
-                Spacer()
+        VStack {
+            TextField(
+                "Untitled",
+                text: $presenter.titleValue
+            )
+            .font(.title2)
+            .bold()
+            
+            ScrollView {
+                VStack(alignment: .leading) {
+                    TextField(
+                        "Write about your day here..",
+                        text: $presenter.bodyValue,
+                        axis: .vertical
+                    )
+                    .focused($isInEditMode)
+                    .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
         }
+        .padding()
         .onAppear {
             isInEditMode = true
         }

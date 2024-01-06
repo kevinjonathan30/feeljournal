@@ -12,30 +12,38 @@ struct JournalDetailView: View {
     @FocusState private var isInEditMode: Bool
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                TextField(
-                    "Untitled",
-                    text: $presenter.titleValue
-                )
-                .focused($isInEditMode)
-                .font(.title2)
-                .bold()
-                .padding(.bottom, 8)
-                
-                TextField(
-                    "Write about your day here..",
-                    text: $presenter.bodyValue,
-                    axis: .vertical
-                )
-                .focused($isInEditMode)
-                .multilineTextAlignment(.leading)
-                
+        VStack {
+            HStack {
+                Text((presenter.journal.createdAt ?? Date()).convertToFullDateInString())
+                    .font(.footnote)
                 Spacer()
+                Text(getAverageFeelingStringByIndex())
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
+            
+            TextField(
+                "Untitled",
+                text: $presenter.titleValue
+            )
+            .focused($isInEditMode)
+            .font(.title2)
+            .bold()
+            
+            ScrollView {
+                VStack(alignment: .leading) {
+                    TextField(
+                        "Write about your day here..",
+                        text: $presenter.bodyValue,
+                        axis: .vertical
+                    )
+                    .focused($isInEditMode)
+                    .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
+        .padding()
         .navigationTitle("Journal Detail")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -66,6 +74,23 @@ struct JournalDetailView: View {
             Button("Delete Journal", role: .destructive) {
                 self.presenter.deleteJournal()
             }
+        }
+    }
+}
+
+// MARK: Helper
+
+private extension JournalDetailView {
+    private func getAverageFeelingStringByIndex() -> String {
+        switch presenter.feelingIndex {
+        case let value where value > 0 && value <= 1:
+            return "😀"
+        case let value where value < 0 && value >= -1:
+            return "😢"
+        case 0:
+            return "😐"
+        default:
+            return "❓"
         }
     }
 }
