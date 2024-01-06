@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 class AddJournalPresenter: ObservableObject {
+    @Published var titleValue = ""
     @Published var bodyValue = ""
     
     private let addJournalUseCase: AddJournalUseCase
@@ -29,7 +30,7 @@ extension AddJournalPresenter {
         let currentDate: Date = Date()
         
         var journal = JournalModel()
-        journal.title = currentDate.convertToFullDateInString()
+        journal.title = !titleValue.isEmpty ? titleValue : currentDate.convertToFullDateInString()
         journal.body = bodyValue
         journal.createdAt = currentDate
         journal.updatedAt = currentDate

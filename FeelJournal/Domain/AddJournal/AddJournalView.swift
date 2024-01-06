@@ -9,29 +9,35 @@ import SwiftUI
 
 struct AddJournalView: View {
     @StateObject var presenter: AddJournalPresenter
+    @FocusState private var isInEditMode: Bool
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        VStack {
-            VStack {
-                Text("How are you feeling today?")
-                    .font(.title3)
-                    .bold()
+        ScrollView {
+            VStack(alignment: .leading) {
+                TextField(
+                    "How are you feeling today?",
+                    text: $presenter.titleValue
+                )
+                .font(.title2)
+                .bold()
+                .padding(.bottom, 8)
                 
                 TextField(
                     "Write about your day here..",
                     text: $presenter.bodyValue,
                     axis: .vertical
                 )
+                .focused($isInEditMode)
                 .multilineTextAlignment(.leading)
-                .lineLimit(10, reservesSpace: true)
-                .padding(8)
-                .overlay( // TODO: Change to Color Scheme
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.indigo)
-                )
-                .padding()
+                
+                Spacer()
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+        }
+        .onAppear {
+            isInEditMode = true
         }
         .navigationTitle("Add Journal")
         .navigationBarTitleDisplayMode(.inline)
