@@ -14,10 +14,14 @@ struct JournalDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text(presenter.journal.title ?? "")
-                    .font(.title2)
-                    .bold()
-                    .padding(.bottom, 8)
+                TextField(
+                    "Untitled",
+                    text: $presenter.titleValue
+                )
+                .focused($isInEditMode)
+                .font(.title2)
+                .bold()
+                .padding(.bottom, 8)
                 
                 TextField(
                     "Write about your day here..",

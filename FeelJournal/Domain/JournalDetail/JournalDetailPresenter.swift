@@ -10,6 +10,7 @@ import Combine
 
 class JournalDetailPresenter: ObservableObject {
     @Published var showConfirmationDialog = false
+    @Published var titleValue = ""
     @Published var bodyValue = ""
     
     private let journalDetailUseCase: JournalDetailUseCase
@@ -20,6 +21,7 @@ class JournalDetailPresenter: ObservableObject {
     init(journalDetailUseCase: JournalDetailUseCase, journal: JournalModel) {
         self.journalDetailUseCase = journalDetailUseCase
         self.journal = journal
+        self.titleValue = journal.title ?? ""
         self.bodyValue = journal.body ?? ""
     }
     
@@ -30,11 +32,11 @@ class JournalDetailPresenter: ObservableObject {
 
 extension JournalDetailPresenter {
     func editJournal() {
-        guard journal.body != bodyValue else { return }
+        guard journal.title != titleValue || journal.body != bodyValue else { return }
         
         let newJournal = JournalModel(
             id: journal.id,
-            title: journal.title,
+            title: titleValue,
             createdAt: journal.createdAt,
             updatedAt: Date(),
             body: bodyValue,
